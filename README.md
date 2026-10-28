@@ -6,8 +6,19 @@ A web-first real-time speech translation application, preparing for a community 
 
 > 当前阶段：文档准备。本仓库先发布 README 与开源计划，应用源码、安装命令和可运行版本将在后续里程碑提供。
 
+## 产品体验与下载
+
+| 入口 | 地址 | 用途 |
+| --- | --- | --- |
+| Welcome 产品介绍页 | [了解 Luna 翻译](https://simultrans.lunalabs.cn/welcome/) | 查看产品介绍与各端体验、下载入口 |
+| 线上 Web 体验 | [打开网页版](https://simultrans.lunalabs.cn/) | 在浏览器中体验 Luna 翻译 |
+| iOS 下载 | [在 App Store 下载 Luna翻译](https://apps.apple.com/cn/app/id6806330215) | 下载已上线的 iOS 应用 |
+
+以上为现有线上产品入口；社区版源码按开源计划分阶段发布。iOS 应用已有下载入口，iOS 源码整理仍安排在 Web 与后端之后。
+
 ## 计划提供的能力
 
+- Welcome 产品介绍页与各端体验、下载入口。
 - 浏览器麦克风输入、实时原文与译文字幕。
 - 翻译语音播放，以及相应的会话与音频处理。
 - 服务端网关、模型服务适配和前后端通信协议。
