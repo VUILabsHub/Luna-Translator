@@ -1,3 +1,14 @@
 .community-banner{padding:8px 16px;background:#edf4ef;color:#244d35;font:13px/1.6 system-ui;text-align:center;border-bottom:1px solid #d5e4d8}.community-login,.community-settings{max-width:620px;margin:64px auto;padding:24px;font-family:system-ui;line-height:1.7}.community-login form{display:grid;gap:16px}.community-login input,.community-login button,.community-settings button{min-height:44px;padding:10px 16px;border:1px solid #9aa99f;border-radius:10px;font:inherit}.community-login button,.community-settings button{background:#244d35;color:white;cursor:pointer}.community-login p{overflow-wrap:anywhere}.community-login code{font-size:12px}.community-login input:focus-visible{outline:3px solid #9ec4aa}button:disabled{opacity:.6}
 
 .community-audio-input{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 20px;background:#fff;font:13px/1.5 system-ui}.community-audio-input input{max-width:240px}.community-audio-input [role=alert]{color:#a22}
+
+/* Keep the product's scaled layout, with readable community text on phones. */
+@media (max-width:900px) {
+ .global-shell .showcase-multilingual-device .realtime-showcase-source {font-size:14px;line-height:1.65}
+ .global-shell .showcase-multilingual-device .showcase-translation-line strong {font-size:16px;line-height:1.65}
+ .global-shell .showcase-finished-summary strong {font-size:20px;line-height:1.4}
+ .global-shell .showcase-finished-summary span {font-size:12px;line-height:1.6}
+ .global-shell .session-audio-label,.global-shell .session-audio-time,.global-shell .session-audio-rate {font-size:12px;line-height:1.5}
+ .global-shell .showcase-session-share > button,.global-shell .realtime-showcase-back {font-size:14px;min-height:36px}
+ .community-audio-input input {max-width:100%}
+}

@@ -54,7 +54,7 @@ export function HomeModeSwitch({ value, disabled = false, meetingAvailable, onCh
         ref={element => { buttons.current[option.value] = element }}
         data-mode={option.value} aria-label={option.label} aria-selected={value === option.value}
         disabled={blocked} tabIndex={tabStop === option.value ? 0 : -1}
-        title={option.value === 'meeting' && !meetingAvailable ? '会议暂不可用，请登录后重试或稍后再试。' : undefined}
+        title={option.value === 'meeting' && !meetingAvailable ? '多人会议将在后续社区版本提供。' : undefined}
         onKeyDown={event => move(event, option.value)}
         onClick={() => { if (!blocked && value !== option.value) onChange(option.value) }}>
         {option.value === 'solo' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3" /><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8" /></svg>}

@@ -98,6 +98,7 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
   const [liveServerId, setLiveServerId] = useState('')
   const [saving, setSaving] = useState(false)
   const startedAt = useRef(0)
+  const finishedAt = useRef(0)
   const completionReason = useRef<'client_stopped' | 'session_time_limit'>('client_stopped')
   const limitTriggered = useRef(false)
   const [now, setNow] = useState(Date.now())
@@ -257,7 +258,7 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
   const allRows = allTurns.flatMap(turn => turn.rows.map(row => ({ ...row, sourceLanguage: turn.sourceLanguage })))
   const settings = buildSessionSettings({ mode: 'solo', scene: 'conversation', provider: provider?.id, sourceLanguage: 'auto', targetLanguages: [...new Set(allTurns.flatMap(turn => [turn.sourceLanguage, turn.targetLanguage]))], service: 'websocket', voiceClone: provider?.voiceClone, echoCancellation: true, vadLoudnessMode: 'frame_rms', vadLoudnessThresholdDbfs: quickNoiseThreshold(sides[speaker].noiseReduction), fontSize })
   const historyInput = (turns: TurnRows[]): ConsumerHistoryInput => buildConsumerHistoryInput({
-    sessionId: [...new Set(turns.map(turn => turn.sessionId))].join(':'), provider: provider?.id || '', sourceLanguage: 'auto', targetLanguages: [...new Set(turns.flatMap(turn => [turn.targetLanguage, turn.sourceLanguage]))], durationMs: startedAt.current ? Date.now() - startedAt.current : 0,
+    sessionId: [...new Set(turns.map(turn => turn.sessionId))].join(':'), provider: provider?.id || '', sourceLanguage: 'auto', targetLanguages: [...new Set(turns.flatMap(turn => [turn.targetLanguage, turn.sourceLanguage]))], durationMs: startedAt.current ? (finishedAt.current || Date.now()) - startedAt.current : 0,
     rows: turns.flatMap(turn => turn.rows), settings,
     devices: {
       inputs: (['top', 'bottom'] as const).map(side => ({ side: side === 'top' ? 'a' : 'b', label: conversationDeviceOptions(audioDevices.inputDevices, sidesRef.current[side].inputDeviceId, 'input', audioDevices.defaultInputDeviceLabel).find(option => option.value === sidesRef.current[side].inputDeviceId)?.label || '跟随系统麦克风' })),
@@ -305,6 +306,7 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
       if (!current()) return
       if (!stopped) throw new Error('正在等待最后一句完成，请稍后重试。')
       if (!current()) return
+      if (!finishedAt.current) finishedAt.current = Date.now()
       const turns = completedRef.current
       if (sessionMode === 'consumer' && turns.length > 0) {
         setSaving(true)
