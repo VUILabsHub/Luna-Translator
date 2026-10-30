@@ -2228,12 +2228,6 @@ function SoloShowcase({ mode, sessionMode, audioDevices, fontSize, onModeChange,
     ...backfilledOutputs,
     ...(backfill && backfillSession.outputs[backfill.language] ? { [backfill.language]: backfillSession.outputs[backfill.language] } : {}),
   }), [backfill, backfillSession.outputs, backfilledOutputs, session.outputs])
-  const semanticLayouts = useMultilingualSemanticLayouts(
-    targetLanguages,
-    mergedOutputs,
-    terminalStatus(session.status),
-    true,
-  )
   const displayLanguageOrder = useMemo(() => [
     primaryLanguage,
     ...targetLanguages.filter((language) => language !== primaryLanguage),
@@ -2268,22 +2262,14 @@ function SoloShowcase({ mode, sessionMode, audioDevices, fontSize, onModeChange,
     fontSize,
     audio: session.audioProcessingDiagnostics || undefined,
   }), [scene, config?.buildSha, deepFilterNet, displayLanguageOrder, effectiveVoiceClone, fontSize, noisePreset, provider, service, session.voiceMode, session.audioProcessingDiagnostics, sourceLanguage, translationModel, ttsModel, sessionVadMode, sessionVadThreshold, webRTCEchoCancellation])
-  const rowsByPrimaryLanguage = useMemo(() => Object.fromEntries(targetLanguages.map((language) => {
-    const languageOrder = [language, ...targetLanguages.filter((candidate) => candidate !== language)]
-    const fallbackRows = buildMultilingualShowcaseRows(
-      session.sourceText,
-      session.sourceSegments,
-      languageOrder,
-      mergedOutputs,
-    )
-    return [language, buildPrimaryDrivenMultilingualRows(
-      targetLanguages,
-      language,
-      semanticLayouts,
-      fallbackRows,
-      mergedOutputs,
-    )]
-  })), [mergedOutputs, semanticLayouts, session.sourceSegments, session.sourceText, targetLanguages])
+  // External ASR and TTS boundaries are independent. Community v0.1 pairs
+  // the whole utterance, preserving every word without inventing sentence alignment.
+  const rowsByPrimaryLanguage = useMemo(() => {
+    const translations = Object.fromEntries(targetLanguages.map(language => [language, mergedOutputs[language]?.translation || '']))
+    const hasText = Boolean(session.sourceText.trim() || Object.values(translations).some(text => text.trim()))
+    const whole: MultilingualShowcaseRow[] = hasText ? [{id:'community-utterance',source:session.sourceText,startMs:0,committed:terminalStatus(session.status),translations,outputAudioStarts:{},outputAudioEnds:{}}] : []
+    return Object.fromEntries(targetLanguages.map(language => [language,whole]))
+  }, [mergedOutputs, session.sourceText, session.status, targetLanguages])
   const rows = rowsByPrimaryLanguage[primaryLanguage] || []
   const visibleRowsByPrimaryLanguage = Object.values(rowsByPrimaryLanguage).some((layoutRows) => layoutRows.length > 0)
     ? rowsByPrimaryLanguage

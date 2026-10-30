@@ -14,7 +14,7 @@ import { DeviceCombobox, ShowcaseFrame, type ShowcaseFontSize } from '../pages/M
 import { ConversationTranscript } from './HomeConversation'
 import { HomeModeSwitch } from './HomeModeSwitch'
 import { FinishedSessionView } from './FinishedSessionView'
-import { buildMultilingualShowcaseRows, type MultilingualShowcaseRow } from '../lib/multilingualShowcase'
+import { type MultilingualShowcaseRow } from '../lib/multilingualShowcase'
 import { buildConsumerHistoryInput, checkpointConsumerHistory, clearConsumerHistoryCheckpoint, saveConsumerHistory, type ConsumerHistoryInput } from '../lib/consumerHistory'
 import { finishedSessionDataFromRecord } from '../lib/finishedSessionData'
 import { buildSessionSettings } from '../lib/sessionSettings'
@@ -34,6 +34,13 @@ type TurnRows = { sessionId: string; side: ConversationSide; sourceLanguage: str
 const labels = { top: '上方屏幕', bottom: '下方屏幕' }
 const noiseLabels = { weak: '弱', medium_weak: '较弱', default: '默认', medium_strong: '较强', strong: '强' }
 const secondsLabel = (ms: number) => `${String(Math.floor(Math.max(0, ms) / 60000)).padStart(2, '0')}:${String(Math.floor(Math.max(0, ms) / 1000) % 60).padStart(2, '0')}`
+
+// The public providers do not share sentence boundaries. Keep one honest pair
+// per speaking turn rather than pairing independent ASR/TTS chunks by index.
+function wholeTurnRows(id:string, sourceLanguage:string, target:string, source:string, translation:string): MultilingualShowcaseRow[] {
+ if (!source.trim() && !translation.trim()) return []
+ return [{id:conversationHistoryRowId(id,'whole-turn'),source,sourceLanguage,startMs:0,committed:true,translations:{[sourceLanguage]:source,[target]:translation},outputAudioStarts:{},outputAudioEnds:{}}]
+}
 
 type ConversationShowcaseProps = {
   audioDevices: AudioDevices; fontSize: ShowcaseFontSize; sessionMode: MultilingualSessionMode; meetingAvailable: boolean; onHomeModeChange: (mode: WebHomeMode) => void
@@ -109,12 +116,8 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
     if (!isCurrent()) return
     const snapshot = turnRef.current
     const target = snapshot.sides[oppositeConversationSide(snapshot.side)].language
-    const currentOutput = runtimeRef.current?.outputs[target]
     const recordedOutput = entry.multilingualOutputs?.find(output => output.targetLanguage === target)
-    const output = currentOutput && recordedOutput ? { ...currentOutput, translation: recordedOutput.translationText, segments: recordedOutput.translationSegments || [] } : currentOutput
-    const rows = buildMultilingualShowcaseRows(entry.sourceText || '', entry.sourceSegments || [], [target], output ? { [target]: output } : {}).map(row => ({
-      ...row, id: conversationHistoryRowId(entry.id, row.id), translations: { ...row.translations, [snapshot.sides[snapshot.side].language]: row.source },
-    }))
+    const rows = wholeTurnRows(entry.id, snapshot.sides[snapshot.side].language, target, entry.sourceText || '', recordedOutput?.translationText || '')
     const value: TurnRows = { sessionId: entry.id, side: snapshot.side, sourceLanguage: snapshot.sides[snapshot.side].language, targetLanguage: target, rows }
     completedRef.current = [...completedRef.current.filter(turn => turn.sessionId !== entry.id), value]
     archives.current[entry.id] = audio
@@ -248,8 +251,8 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
     } catch (error) { if (current()) setNotice(error instanceof Error ? error.message : '暂停未完成，请重试。') }
     finally { if (current()) { lock.current = false; setChanging(false) } }
   }
-  const currentRawRows = liveServerId && session.parentSessionID === liveServerId ? buildMultilingualShowcaseRows(session.sourceText, session.sourceSegments, targetLanguages, session.outputs) : []
-  const currentRows = currentRawRows.map(row => ({ ...row, id: conversationHistoryRowId(session.parentSessionID, row.id), translations: { ...row.translations, [route.sourceLanguage]: row.source } }))
+  const currentRows = liveServerId && session.parentSessionID === liveServerId
+    ? wholeTurnRows(liveServerId, route.sourceLanguage, route.targetLanguage, session.sourceText, session.outputs[route.targetLanguage]?.translation || '') : []
   const allTurns = [...completedTurns.filter(turn => turn.sessionId !== liveServerId || currentRows.length === 0), ...(liveServerId && currentRows.length > 0 ? [{ sessionId: liveServerId, side: turn.side, sourceLanguage: route.sourceLanguage, targetLanguage: route.targetLanguage, rows: currentRows }] : [])]
   const allRows = allTurns.flatMap(turn => turn.rows.map(row => ({ ...row, sourceLanguage: turn.sourceLanguage })))
   const settings = buildSessionSettings({ mode: 'solo', scene: 'conversation', provider: provider?.id, sourceLanguage: 'auto', targetLanguages: [...new Set(allTurns.flatMap(turn => [turn.sourceLanguage, turn.targetLanguage]))], service: 'websocket', voiceClone: provider?.voiceClone, echoCancellation: true, vadLoudnessMode: 'frame_rms', vadLoudnessThresholdDbfs: quickNoiseThreshold(sides[speaker].noiseReduction), fontSize })
@@ -364,6 +367,6 @@ function OwnedConversationShowcase({ audioDevices, fontSize, sessionMode, meetin
     onModeChange={() => undefined} onControl={() => switchTurn(speaker)} onMute={() => setMuted(value => !value)} startLabel="开始对话"
     onPause={() => { void pauseOrResume() }}
     onComplete={() => { void finish().catch(() => undefined) }} onLeave={finish} leaveReady={!started || finished}>
-    <ConversationTranscript languages={[sides.top.language, sides.bottom.language]} rowsByLanguage={{ [sides.top.language]: allRows, [sides.bottom.language]: allRows }} activeSide={speaker} onActiveSideChange={side => { if (side !== speaker && !changing) void switchTurn(side) }} displayModes={{ top: sides.top.displayMode, bottom: sides.bottom.displayMode }} speakingControls disabled={changing || paused} />
+    <ConversationTranscript languages={[sides.top.language, sides.bottom.language]} rowsByLanguage={{ [sides.top.language]: allRows, [sides.bottom.language]: allRows }} activeSide={speaker} onActiveSideChange={side => { if (side !== speaker && !changing) void switchTurn(side) }} displayModes={{ top: sides.top.displayMode, bottom: sides.bottom.displayMode }} speakingControls disabled={changing} />
   </ShowcaseFrame>
 }
