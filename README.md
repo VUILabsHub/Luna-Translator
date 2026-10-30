@@ -54,15 +54,7 @@
 
 ## 参考架构
 
-```mermaid
-flowchart LR
-    Web[浏览器 Web / 音频输入与播放] --> Gateway[Nginx / 同源 HTTP 与 WebSocket]
-    Gateway --> Backend[Go / 会话、鉴权与产品 API]
-    Backend --> Luna[Luna / 实时译文与译音]
-    Backend --> ASR[百炼 ASR / 可选原文识别]
-    Backend --> Embedding[百炼 Embedding / 可选向量评分接口]
-    Backend --> Data[数据卷 / 历史、音频与分享快照]
-```
+![Luna Translator 社区版架构：浏览器、Go 后端、外部模型 API 与持久化数据卷](docs/assets/architecture.svg)
 
 模型凭据保留在后端。浏览器负责采集和播放，后端负责服务编排与数据保存。完整接口和数据生命周期见 [架构说明](docs/architecture.md) 与 [服务协议](docs/providers.md)。
 

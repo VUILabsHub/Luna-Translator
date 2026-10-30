@@ -52,15 +52,7 @@ This repository contains a self-hosted **Web frontend and Go backend**. Run it o
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    Web[Browser / audio capture and playback] --> Gateway[Nginx / same-origin HTTP and WebSocket]
-    Gateway --> Backend[Go / sessions, authentication and product API]
-    Backend --> Luna[Luna / translated text and speech]
-    Backend --> ASR[Model Studio ASR / optional source captions]
-    Backend --> Embedding[Model Studio Embedding / optional scoring API]
-    Backend --> Data[Data volume / history, audio and snapshots]
-```
+![Luna Translator architecture: browser, Go backend, external model APIs and persistent storage](docs/assets/architecture.en.svg)
 
 Provider credentials stay in the backend. The browser captures and plays audio; the backend coordinates services and persists data. See [architecture and data](docs/architecture.md) and [provider contracts](docs/providers.md) for details. The extended guides are currently in Chinese.
 
