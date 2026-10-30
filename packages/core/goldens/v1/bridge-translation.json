@@ -1,0 +1,36 @@
+{
+  "contract": "realtime-text-sync",
+  "version": 1,
+  "reducer": "bridgeTranslation",
+  "cases": [
+    {
+      "id": "B1",
+      "rule": "R10",
+      "title": "update 全量替换、delta 追加、done 取较长者并按完成句切分",
+      "events": [
+        { "type": "translation_update", "text": "Hello wor" },
+        { "type": "translation_delta", "text": "ld" },
+        { "type": "translation_done", "text": "Hello world." }
+      ],
+      "finalize": false,
+      "expected": {
+        "text": "Hello world.",
+        "units": [ { "id": "webrtc-translation-sentence-0", "text": "Hello world." } ]
+      }
+    },
+    {
+      "id": "B2",
+      "rule": "R10",
+      "title": "done 不得截短已累计文本；finalize 把未完句余量纳入末单元",
+      "events": [
+        { "type": "translation_update", "text": "Hello world extra" },
+        { "type": "translation_done", "text": "Hello world." }
+      ],
+      "finalize": true,
+      "expected": {
+        "text": "Hello world extra",
+        "units": [ { "id": "webrtc-translation-sentence-0", "text": "Hello world extra" } ]
+      }
+    }
+  ]
+}

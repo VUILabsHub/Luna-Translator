@@ -1,0 +1,25 @@
+.showcase-language-picker-menu { z-index: 10020; box-sizing: border-box; margin: 0; padding: 6px; border: 1px solid #dce2dd; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px #0a0f0a18; overflow-y: auto; overscroll-behavior: contain; color: #0a0f0a; font-family: "Noto Serif SC Variable", serif; }
+.showcase-language-picker-menu > button[role="option"] { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; min-height: 44px; margin: 0; padding: 8px 12px; border: 0; border-radius: 8px; background: #fff; color: #0a0f0a; text-align: left; font: inherit; font-size: 14px; line-height: 1.5; cursor: pointer; }
+.showcase-language-picker-menu > button[role="option"] > span { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.showcase-language-picker-menu > button[role="option"] b { min-width: 28px; font-weight: 400; }
+.showcase-language-picker-menu > button[role="option"] em { font-style: normal; overflow-wrap: anywhere; }
+.showcase-language-picker-menu > button[role="option"] > span > b,
+.showcase-language-picker-menu > button[role="option"] > span > em { font-size: 14px; line-height: 1.5; }
+.showcase-language-picker-menu > button[role="option"] i { display: flex; flex: 0 0 16px; align-items: center; justify-content: center; width: 16px; height: 16px; border: 0; background: transparent; }
+.showcase-language-picker-menu > button[role="option"] i img { width: 16px; height: 16px; }
+.showcase-language-picker-menu > button[role="option"].is-selected { background: #f1f5f2; }
+.showcase-language-picker-menu > button[role="option"]:disabled { opacity: .4; cursor: default; }
+.showcase-language-picker-menu > button[role="option"]:focus-visible { outline: 2px solid #365337; outline-offset: -2px; }
+.showcase-language-picker-menu > p { margin: 6px 12px; color: #68736b; font-size: 12px; line-height: 1.5; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"] { color: #68736b; font-weight: 400; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"].is-selected { color: #0a0f0a; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"] > span > em { color: inherit; font-weight: 400; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"][aria-selected] > i::after { content: none; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"][aria-selected="false"] > i { background: none; opacity: 0; }
+.showcase-language-picker-menu.showcase-duo-language-list > button[role="option"][aria-selected="true"] > i { background: url('/showcase/check-16.svg') center / 16px no-repeat; opacity: 1; }
+.showcase-language-picker-menu.showcase-duo-language-list[aria-multiselectable="true"] > button[role="option"] > i { background: url('/showcase/checkbox-12-off.svg') center / 16px no-repeat; opacity: 1; }
+.showcase-language-picker-menu.showcase-duo-language-list[aria-multiselectable="true"] > button[role="option"][aria-selected="true"] > i { background-image: url('/showcase/checkbox-12-on.svg'); }
+/* iOS72 language list typography, with browser-safe physical touch targets. */
+.showcase-language-picker-menu.is-canary > button[role="option"] { min-height:47px; font-size:16px; line-height:24px; }
+.showcase-language-picker-menu.is-canary > button[role="option"] > span > b,
+.showcase-language-picker-menu.is-canary > button[role="option"] > span > em { font-size:16px; line-height:24px; }

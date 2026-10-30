@@ -1,0 +1,342 @@
+/* 分享落地页（/s/{token}）。移动端优先竖屏排版，浅色观感与 /ui-showcase 一致。
+   行级视觉复用 showcase.css / showcase-multilingual.css 里已全局引入的
+   showcase-row-meta / realtime-showcase-source / showcase-translation-* 类；
+   本文件只负责页面背景、元信息卡片与文档式滚动列表容器。 */
+
+.shared-session-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.24rem 0.16rem calc(0.48rem + env(safe-area-inset-bottom));
+  color: #0a0f0a;
+  background: #eef2f0;
+  font-family: Poppins, "HarmonyOS Sans SC", "Noto Sans SC Variable", Inter, "PingFang SC", system-ui, sans-serif;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+
+.shared-session-sheet {
+  width: min(4.28rem, 100%);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+/* —— 会话元信息头卡片 —— */
+
+.shared-session-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.2rem;
+  border-radius: 0.12rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12); /* shadow.card */
+}
+
+.shared-session-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.12rem;
+}
+
+.shared-session-card-top--actions-only {
+  justify-content: flex-end;
+}
+
+.shared-session-card h1 {
+  margin: 0;
+  font: 400 0.24rem/0.34rem "Songti SC", "Noto Serif SC Variable", STSong, "Noto Serif SC", serif;
+  color: #0a0f0a;
+}
+
+.shared-session-abnormal {
+  width: fit-content;
+  margin: 0;
+  padding: 0.04rem 0.09rem;
+  color: #92501d;
+  border-radius: 9.99rem;
+  background: #fff4e8;
+  font-size: 0.12rem;
+  line-height: 0.18rem;
+}
+
+.shared-session-languages {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+  color: #365337;
+  font: 400 0.15rem/0.23rem "Songti SC", "Noto Serif SC Variable", STSong, "Noto Serif SC", serif;
+}
+
+.shared-session-languages-arrow {
+  color: rgba(54, 83, 55, 0.55);
+}
+
+.shared-session-meta {
+  margin: 0.06rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.04rem;
+  padding-top: 0.1rem;
+  border-top: 0.01rem solid #eef1ee;
+}
+
+.shared-session-meta > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.12rem;
+}
+
+.shared-session-meta dt {
+  color: rgba(10, 15, 10, 0.45); /* color.ink45 */
+  font-size: 0.12rem;
+  line-height: 0.22rem;
+}
+
+.shared-session-meta dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+  color: rgba(10, 15, 10, 0.45); /* color.ink45 */
+  font-size: 0.12rem;
+  line-height: 0.22rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* —— 逐句列表：普通文档流滚动，替代直播窗的绝对定位 transcript —— */
+
+.shared-session-rows {
+  margin: 0;
+  padding: 0.2rem 0.14rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  list-style: none;
+  border-radius: 0.12rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12); /* shadow.card */
+}
+
+.shared-session-rows > li {
+  min-width: 0;
+}
+
+.shared-session-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+}
+
+/* 只读页：整句可读，去掉直播行的悬停/点击反馈 */
+.shared-session-row .realtime-showcase-source {
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.shared-session-row .showcase-translation-line {
+  cursor: default;
+}
+
+.shared-session-row .showcase-translation-line:hover,
+.shared-session-row .showcase-translation-line:focus-visible {
+  background: #fbfbfb;
+}
+
+.shared-session-row .showcase-translation-line strong {
+  overflow-wrap: anywhere;
+}
+
+.shared-session-empty {
+  margin: 0;
+  padding: 0.32rem 0.2rem;
+  color: rgba(10, 15, 10, 0.5);
+  text-align: center;
+  border-radius: 0.12rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12); /* shadow.card */
+}
+
+/* 会话设置折叠区（历史详情，登录态专属；分享页不返回 settings）。 */
+.consumer-history-settings {
+  padding: 0.12rem 0.16rem;
+  border-radius: 0.12rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12); /* shadow.card */
+}
+
+.consumer-history-settings > summary {
+  cursor: pointer;
+  font-size: 0.15rem;
+  font-weight: 600;
+  list-style-position: inside;
+}
+
+.consumer-history-settings-table {
+  margin-top: 0.1rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.12rem;
+  line-height: 0.18rem;
+}
+
+.consumer-history-settings-table th,
+.consumer-history-settings-table td {
+  padding: 0.05rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-top: 0.01rem solid rgba(10, 15, 10, 0.06);
+}
+
+.consumer-history-settings-table th {
+  width: 40%;
+  color: rgba(10, 15, 10, 0.5);
+  font-weight: 400;
+}
+
+.consumer-history-settings-table td {
+  color: rgba(10, 15, 10, 0.8);
+  overflow-wrap: anywhere;
+}
+
+.consumer-history-trace {
+  margin: 0.1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.06rem;
+  color: rgba(10, 15, 10, 0.5);
+  font-size: 0.12rem;
+}
+
+.consumer-history-trace code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.11rem;
+  overflow-wrap: anywhere;
+}
+
+.consumer-history-trace button {
+  padding: 0.02rem 0.1rem;
+  border: 0.01rem solid rgba(10, 15, 10, 0.12);
+  border-radius: 9.99rem;
+  background: transparent;
+  color: inherit;
+  font-size: 0.11rem;
+  cursor: pointer;
+}
+
+.shared-session-footer p {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.45); /* color.ink45 */
+  text-align: center;
+  font-size: 0.12rem;
+  line-height: 0.22rem;
+}
+
+.consumer-history-notice {
+  margin: 0;
+  color: #6d3c34; /* color.danger */
+  font-size: 0.12rem;
+  line-height: 0.22rem;
+  text-align: center;
+}
+
+/* —— 整页状态：加载中 / 失效 / 稍后重试 —— */
+
+.shared-session-status {
+  margin: auto;
+  width: min(3.2rem, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.36rem 0.28rem;
+  text-align: center;
+  border-radius: 0.12rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12); /* shadow.card */
+}
+
+.shared-session-status strong {
+  font-size: 0.18rem;
+  font-weight: 600;
+  line-height: 0.26rem;
+}
+
+.shared-session-status p {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.55);
+  font-size: 0.14rem;
+  line-height: 0.22rem;
+}
+
+.shared-session-spinner {
+  width: 0.22rem;
+  height: 0.22rem;
+  border: 0.02rem solid rgba(54, 83, 55, 0.2);
+  border-top-color: #365337;
+  border-radius: 50%;
+  animation: shared-session-spin 0.8s linear infinite;
+}
+
+@keyframes shared-session-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.shared-session-retry {
+  margin-top: 0.06rem;
+  padding: 0 0.28rem;
+  height: 0.46rem; /* control.primaryHeight */
+  color: #fff;
+  border: 0;
+  border-radius: 9.99rem; /* radius.pill */
+  background: #365337; /* color.brand */
+  font: inherit;
+  font-size: 0.15rem;
+  font-weight: 600;
+  line-height: 0.22rem;
+  cursor: pointer;
+}
+
+.shared-session-retry:hover {
+  background: #2c452d;
+}
+
+@media (min-width: 720px) {
+  .shared-session-page {
+    padding-top: 0.48rem;
+  }
+
+  .shared-session-sheet {
+    width: min(5.6rem, 100%);
+  }
+}
+
+/* 转化 CTA:引导进入 webui 竖屏体验 */
+.shared-session-cta {
+  display: block;
+  margin: 0.2rem auto 0.04rem;
+  padding: 0 0.28rem;
+  max-width: 3.2rem;
+  text-align: center;
+  background: #365337; /* color.brand */
+  color: #fff;
+  border-radius: 9.99rem; /* radius.pill */
+  font-size: 0.15rem;
+  font-weight: 600;
+  line-height: 0.46rem; /* control.primaryHeight */
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.shared-session-cta:hover { opacity: 0.88; }
+.shared-session-status .shared-session-cta { margin-top: 0.24rem; }

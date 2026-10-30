@@ -1,0 +1,257 @@
+/* 结束页「完整音频」卡片（Figma 727:4741，音频卡 Frame 929:4182）。
+ * 全部尺寸按 root-scale.css 的约定写 rem：设计稿 1px = 0.01rem。
+ * 中文用 Songti SC / Noto Serif SC Variable，时间与倍速数字用 Poppins。 */
+
+.session-audio-downloads {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 0.24rem;
+  padding: 0.06rem;
+  border-radius: 0.24rem;
+  background: #f5f6f5;
+  color: #0a0f0a;
+  text-align: left;
+}
+
+/* 标题行（929:4183）：padding 12/12/6，「完整音频」Songti SC Black 14/22 墨色。 */
+.session-audio-title {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.12rem 0.12rem 0.06rem;
+}
+.session-audio-title h3 {
+  margin: 0;
+  font: 900 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  word-break: break-word;
+}
+
+/* 音轨容器（929:4185）：padding 6/12，音轨之间 gap 12。 */
+.session-audio-tracks {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.06rem 0.12rem;
+}
+.session-audio-status {
+  margin: 0;
+  font: 400 0.12rem / 0.16rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.55);
+}
+
+.session-audio-loading,
+.session-audio-empty {
+  margin: 0.24rem 0;
+}
+.session-audio-empty p {
+  margin: 0 0 0.08rem;
+  font: 600 0.18rem / 1.5 "Songti SC", "Noto Serif SC Variable", serif;
+}
+.session-audio-empty span {
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem / 1.6 "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-finished-empty-title {
+  margin: 0.24rem 0 0;
+  font: 600 0.24rem / 1.5 "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+}
+
+/* 甲/乙两组之间保留一条 1px #e6e9e6 分隔线。 */
+.session-audio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+.session-audio-group + .session-audio-group {
+  padding-top: 0.12rem;
+  border-top: 0.01rem solid #e6e9e6;
+}
+
+/* 单条音轨（929:4229）：标签 Songti Bold 14/22，与胶囊间距 6。 */
+.session-audio-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  min-width: 0;
+}
+.session-audio-track-label {
+  font: 700 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  word-break: break-word;
+}
+
+/* 播放胶囊（929:4205）：白底全圆角，padding 8/16/8/10，高 46。 */
+.session-audio-player {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* 稿上主区 359 + 间距 36 + 下载 16。 */
+  gap: 0.36rem;
+  width: 100%;
+  height: 0.46rem;
+  padding: 0.08rem 0.16rem 0.08rem 0.1rem;
+  border-radius: 99rem;
+  background: #fff;
+  overflow: hidden;
+}
+.session-audio-player-main {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.session-audio-play,
+.session-audio-rate {
+  appearance: none;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.session-audio-play:focus-visible,
+.session-audio-rate:focus-visible,
+.session-audio-progress:focus-visible,
+.session-audio-download:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.02rem;
+}
+
+/* 播放/暂停按钮（929:4208）：30 圆、#f1f1f1 底、13 图标。 */
+.session-audio-play {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 0.3rem;
+  height: 0.3rem;
+  padding: 0;
+  border-radius: 999rem;
+  background: #f1f1f1;
+}
+.session-audio-play img {
+  display: block;
+  width: 0.13rem;
+  height: 0.13rem;
+}
+/* 暂停图形：两根 2px 竖条。 */
+.session-audio-pause-glyph {
+  position: relative;
+  display: block;
+  width: 0.13rem;
+  height: 0.13rem;
+}
+.session-audio-pause-glyph::before,
+.session-audio-pause-glyph::after {
+  content: "";
+  position: absolute;
+  top: 0.01rem;
+  bottom: 0.01rem;
+  width: 0.02rem;
+  border-radius: 0.01rem;
+  background: #0a0f0a;
+}
+.session-audio-pause-glyph::before { left: 0.03rem; }
+.session-audio-pause-glyph::after { right: 0.03rem; }
+
+/* 当前时间（931:4233）：Poppins 12/16，墨色 55%。 */
+.session-audio-time {
+  flex: 0 0 auto;
+  font: 400 0.12rem / 0.16rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  color: rgba(10, 15, 10, 0.55);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 进度条（931:4232）：轨道高 4、圆角 17、底色 #f5f6f5；已播部分 #568157 圆角 14。
+ * 外层撑到 24 高作为点击/焦点区域，轨道垂直居中。 */
+.session-audio-progress {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0.4rem;
+  height: 0.24rem;
+  border-radius: 0.12rem;
+  cursor: pointer;
+  touch-action: none;
+}
+.session-audio-progress-track {
+  position: relative;
+  width: 100%;
+  height: 0.04rem;
+  border-radius: 0.17rem;
+  background: #f5f6f5;
+  overflow: hidden;
+}
+.session-audio-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.04rem;
+  border-radius: 0.14rem;
+  background: #568157;
+}
+
+/* 倍速 chip（931:4260）：#f1f5f2 底、padding 2/8、全圆角，Poppins 12/16 墨色 55%。 */
+.session-audio-rate {
+  flex: 0 0 auto;
+  padding: 0.02rem 0.08rem;
+  border-radius: 0.99rem;
+  background: #f1f5f2;
+  font: 400 0.12rem / 0.16rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  color: rgba(10, 15, 10, 0.55);
+  white-space: nowrap;
+}
+
+/* 下载（931:4251）：16 图标。 */
+.session-audio-download {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 0.16rem;
+  height: 0.16rem;
+  border-radius: 0.04rem;
+  color: inherit;
+  text-decoration: none;
+}
+.session-audio-download img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.session-audio-download.is-pending { opacity: 0.4; }
+
+/* 原生 <audio>：保留在 DOM（含 controls，避免 UA 样式把它 display:none），
+ * 视觉上裁剪到 1px、透明、不响应指针；播放由上面的胶囊通过 ref 驱动。 */
+.session-audio-native {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0.01rem;
+  height: 0.01rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}

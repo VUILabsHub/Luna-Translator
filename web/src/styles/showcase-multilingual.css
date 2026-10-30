@@ -1,0 +1,4536 @@
+.showcase-multilingual-device {
+  --showcase-source-font-size: 0.14rem;
+  --showcase-source-line-height: 0.22rem;
+  --showcase-secondary-font-size: 0.14rem;
+  --showcase-secondary-line-height: 0.22rem;
+  --showcase-primary-font-size: 0.16rem;
+  --showcase-primary-line-height: 0.24rem;
+  --showcase-meta-font-size: 0.14rem;
+  --showcase-meta-line-height: 0.22rem;
+  --showcase-time-font-size: 0.14rem;
+  --showcase-time-line-height: 0.22rem;
+  background: #fff;
+}
+
+.showcase-multilingual-device.showcase-font-size--small {
+  --showcase-source-font-size: 0.12rem;
+  --showcase-source-line-height: 0.2rem;
+  --showcase-secondary-font-size: 0.12rem;
+  --showcase-secondary-line-height: 0.2rem;
+  --showcase-primary-font-size: 0.14rem;
+  --showcase-primary-line-height: 0.22rem;
+  --showcase-meta-font-size: 0.12rem;
+  --showcase-meta-line-height: 0.18rem;
+  --showcase-time-font-size: 0.1rem;
+  --showcase-time-line-height: 0.16rem;
+}
+
+.showcase-multilingual-device.showcase-font-size--large {
+  --showcase-source-font-size: 0.16rem;
+  --showcase-source-line-height: 0.24rem;
+  --showcase-secondary-font-size: 0.16rem;
+  --showcase-secondary-line-height: 0.24rem;
+  --showcase-primary-font-size: 0.18rem;
+  --showcase-primary-line-height: 0.28rem;
+  --showcase-meta-font-size: 0.14rem;
+  --showcase-meta-line-height: 0.21rem;
+  --showcase-time-font-size: 0.13rem;
+  --showcase-time-line-height: 0.19rem;
+}
+
+.showcase-multilingual-device .realtime-showcase-header {
+  z-index: 30;
+  height: calc(0.96rem + env(safe-area-inset-top));
+}
+
+.showcase-session-actions {
+  position: absolute;
+  z-index: 5;
+  bottom: calc(0.68rem + env(safe-area-inset-bottom));
+  left: 50%;
+  width: min(2.23rem, calc(100% - 0.48rem));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  transform: translateX(-50%);
+}
+
+.showcase-session-share {
+  position: absolute;
+  z-index: 6;
+  bottom: calc(0.26rem + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.showcase-session-share > button {
+  min-width: 0;
+  height: 0.24rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.04rem;
+  padding: 0.02rem 0.08rem;
+  color: rgba(10, 15, 10, 0.45);
+  border: 0;
+  border-radius: 9.99rem;
+  background: transparent;
+  backdrop-filter: none;
+  font: 400 0.12rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+.showcase-session-share > button img {
+  width: 0.14rem;
+  height: 0.14rem;
+  flex: none;
+  opacity: 0.5;
+}
+
+.showcase-session-share > button:hover,
+.showcase-session-share > button:focus-visible {
+  color: #365337;
+  outline: none;
+}
+
+.showcase-session-share > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.showcase-session-share > button[aria-busy="true"] {
+  cursor: wait;
+}
+
+.showcase-session-share-toast {
+  position: absolute;
+  bottom: 1.18rem;
+  left: 50%;
+  width: max-content;
+  max-width: min(2.24rem, calc(100vw - 0.38rem));
+  padding: 0.07rem 0.11rem;
+  color: #fff;
+  border-radius: 9.99rem;
+  background: rgba(35, 57, 38, 0.9);
+  box-shadow: 0 0.08rem 0.24rem rgba(29, 61, 48, 0.16);
+  font: 400 0.1rem/0.14rem Poppins, "Noto Sans SC Variable", sans-serif;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.showcase-multilingual-device.realtime-showcase-device--recording .realtime-showcase-motion-stage {
+  transform: translateY(-0.18rem);
+}
+
+.showcase-session-action {
+  width: 0.7rem;
+  height: 0.94rem;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 0.67rem 0.22rem;
+  justify-items: center;
+  align-items: center;
+  gap: 0.05rem;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.55);
+  border: 0;
+  background: transparent;
+  font: 400 0.12rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+.showcase-session-action:disabled {
+  cursor: wait;
+  opacity: 0.48;
+}
+
+.showcase-session-action-icon {
+  position: relative;
+  box-sizing: border-box;
+  width: 0.48rem;
+  height: 0.48rem;
+  display: grid;
+  place-items: center;
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.01rem 0.086rem rgba(0, 0, 0, 0.03);
+}
+
+.showcase-session-action--primary .showcase-session-action-icon {
+  width: 0.67rem;
+  height: 0.67rem;
+  color: #fff;
+  border-color: #365337;
+  background: #365337;
+  box-shadow: 0 0.1rem 0.28rem rgba(29, 61, 48, 0.22);
+}
+
+.showcase-session-action-icon img {
+  width: 0.14rem;
+  height: 0.14rem;
+}
+
+.showcase-session-action-icon--volume img {
+  width: 0.15rem;
+  height: 0.13rem;
+}
+
+.showcase-session-action.is-active .showcase-session-action-icon--volume::after {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.015rem;
+  content: "";
+  border-radius: 0.99rem;
+  background: #568157;
+  transform: rotate(-45deg);
+}
+
+.showcase-session-action-icon--pause::before,
+.showcase-session-action-icon--pause::after {
+  width: 0.03rem;
+  height: 0.16rem;
+  content: "";
+  border-radius: 0.02rem;
+  background: currentColor;
+}
+
+.showcase-session-action-icon--pause {
+  grid-template-columns: repeat(2, 0.03rem);
+  align-content: center;
+  justify-content: center;
+  gap: 0.05rem;
+}
+
+.showcase-session-action-icon--play::before {
+  margin-left: 0.03rem;
+  content: "";
+  border-top: 0.08rem solid transparent;
+  border-bottom: 0.08rem solid transparent;
+  border-left: 0.13rem solid currentColor;
+}
+
+
+.showcase-multilingual-controls {
+  justify-content: space-between;
+  gap: 0.1rem;
+}
+
+
+
+
+.showcase-completed-language-switch {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.showcase-completed-language-group {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.showcase-completed-language-group::-webkit-scrollbar {
+  display: none;
+}
+
+.showcase-completed-language-side {
+  width: 0.19rem;
+  height: 0.19rem;
+  display: grid;
+  flex: 0 0 0.19rem;
+  place-items: center;
+  color: #365337;
+  border-radius: 0.06rem;
+  background: rgba(54, 83, 55, 0.09);
+  font: 600 0.1rem/0.14rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-completed-language-group button {
+  min-width: 0;
+  min-height: 0.4rem;
+  padding: 0.06rem 0.16rem 0.12rem;
+  display: inline-flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.04rem;
+  color: rgba(10, 15, 10, 0.45);
+  border: 0;
+  border-bottom: 0.01rem solid #dfe1df;
+  border-radius: 0;
+  background: transparent;
+  font: 400 0.14rem/0.16rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.showcase-completed-language-group button.is-active {
+  flex: 0 0 auto;
+  color: #456746;
+  border-color: #365337;
+  background: transparent;
+  font-weight: 700;
+}
+
+.showcase-completed-language-group[data-language-count="2"] button,
+.showcase-completed-language-group[data-language-count="2"] button.is-active {
+  flex: 1 1 0;
+}
+
+.showcase-completed-language-group button > span {
+  font-size: inherit;
+}
+
+.showcase-multilingual-transcript.showcase-multilingual-transcript--completed {
+  top: calc(2.38rem + env(safe-area-inset-top));
+}
+
+.showcase-multilingual-transcript--completed .realtime-showcase-transcript-track {
+  justify-content: flex-start;
+}
+
+.showcase-stereo-swap {
+  flex: none;
+  padding: 0.05rem 0.08rem;
+  color: #315c3c;
+  border: 0.01rem solid rgba(49, 92, 60, 0.14);
+  border-radius: 9.99rem;
+  background: rgba(245, 247, 245, 0.88);
+  font: 500 0.08rem/0.14rem Poppins, "Noto Sans SC Variable", sans-serif;
+  cursor: pointer;
+}
+
+.showcase-stereo-swap:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.showcase-multilingual-transcript {
+  top: calc(1.98rem + env(safe-area-inset-top));
+  bottom: calc(1.91rem + env(safe-area-inset-bottom));
+  height: auto;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript {
+  top: calc(0.56rem + env(safe-area-inset-top));
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 0.42rem,
+    #000 100%
+  );
+}
+
+.showcase-multilingual-transcript .realtime-showcase-transcript-track {
+  gap: 0.24rem;
+  padding: 0.2rem 0.24rem 0;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript .realtime-showcase-transcript-track {
+  gap: 0.32rem;
+  padding-top: 0.12rem;
+  padding-bottom: 0;
+}
+
+.showcase-multilingual-row {
+  gap: 0.06rem !important;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.showcase-multilingual-row--featured {
+  gap: 0.12rem !important;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.showcase-multilingual-row--history {
+  opacity: 1;
+}
+
+.showcase-multilingual-row--live {
+  opacity: 1;
+}
+
+.showcase-multilingual-transcript .realtime-showcase-source,
+.showcase-multilingual-transcript .realtime-showcase-listening {
+  color: #0a0f0a;
+  font-size: var(--showcase-source-font-size);
+  line-height: var(--showcase-source-line-height);
+}
+
+.showcase-multilingual-row--history > .realtime-showcase-source,
+.showcase-multilingual-row--featured > .realtime-showcase-source,
+.showcase-duo-bubble > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.45);
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.showcase-source-playback {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.showcase-source-playback:hover,
+.showcase-source-playback:focus-visible,
+.showcase-source-playback.is-playing {
+  color: #365337;
+  outline: none;
+}
+
+.showcase-row-meta {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.showcase-row-meta strong {
+  font: 600 var(--showcase-meta-font-size)/var(--showcase-meta-line-height) Poppins, sans-serif;
+}
+
+.showcase-row-meta time {
+  color: rgba(10, 15, 10, 0.25);
+  font: 400 var(--showcase-time-font-size)/var(--showcase-time-line-height) Poppins, sans-serif;
+}
+
+.showcase-row-meta--solo {
+  justify-content: flex-start;
+}
+
+.showcase-translation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.showcase-translation-line {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 0.24rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.06rem;
+  min-height: 0.48rem;
+  padding: 0.12rem;
+  color: rgba(10, 15, 10, 0.55);
+  border: 0;
+  border-radius: 0.12rem;
+  background: transparent;
+  font-family: Poppins, "Noto Sans SC Variable", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.showcase-translation-line:hover,
+.showcase-translation-line:focus-visible {
+  background: rgba(86, 129, 87, 0.07);
+  outline: none;
+}
+
+.showcase-sentence-playback-icon {
+  display: inline-block;
+  width: 0.14rem;
+  height: 0.14rem;
+  margin-left: 0.06rem;
+  vertical-align: -0.02rem;
+  fill: currentColor;
+  opacity: 0.65;
+}
+
+.showcase-sentence-playback-icon.is-playing {
+  color: #365337;
+  opacity: 1;
+}
+
+.showcase-translation-badge,
+.showcase-translation-speaker {
+  width: 0.24rem;
+  height: 0.24rem;
+  display: grid;
+  place-items: center;
+  color: rgba(10, 15, 10, 0.55);
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 0.04rem;
+  background: transparent;
+  font: 400 0.12rem/0.14rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-translation-badge.is-output {
+  color: #fff;
+  border-color: #365337;
+  background: #365337;
+}
+
+.showcase-translation-speaker {
+  border: 0;
+}
+
+.showcase-translation-speaker img {
+  width: 0.08rem;
+  height: 0.06rem;
+}
+
+.showcase-translation-line strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--showcase-secondary-font-size);
+  font-weight: 400;
+  line-height: var(--showcase-secondary-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.showcase-translation-line.is-primary {
+  color: #0a0f0a;
+}
+
+.showcase-translation-line.is-primary strong {
+  font-size: var(--showcase-secondary-font-size);
+  line-height: var(--showcase-secondary-line-height);
+  white-space: normal;
+}
+
+.showcase-translation-list:not(.is-solo).is-featured .showcase-translation-line.is-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+  min-height: 0;
+  padding: 0.12rem;
+  border-radius: 0.12rem;
+  background: #fff;
+}
+
+.showcase-primary-language {
+  display: flex;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.showcase-primary-language b {
+  width: 0.16rem;
+  height: 0.16rem;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 0.04rem;
+  background: #365337;
+  font: 900 0.0914rem/0.1333rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-primary-language em {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem/0.22rem Poppins, "Noto Sans SC Variable", sans-serif;
+  text-transform: uppercase;
+}
+
+/* 双人结束页的历史行保留胶囊样式；进行中的双人行见下方 Figma 576:7847 规则。 */
+.showcase-multilingual-transcript--completed .showcase-duo-bubble--history .showcase-translation-line {
+  min-height: 0.36rem;
+  padding: 0.06rem;
+  color: rgba(10, 15, 10, 0.55);
+  border-radius: 0.12rem;
+  background: #f8f8f8;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble--history .showcase-translation-badge {
+  border-color: transparent;
+  border-radius: 0.06rem;
+  background: #f1f1f1;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble--history .showcase-translation-line strong {
+  font-size: var(--showcase-secondary-font-size);
+  font-weight: 400;
+  line-height: var(--showcase-secondary-line-height);
+  white-space: nowrap;
+}
+
+.showcase-translation-list:not(.is-solo):is(.is-featured, .is-terminal) .showcase-translation-line.is-primary strong {
+  font-size: var(--showcase-primary-font-size);
+  font-weight: 500;
+  line-height: var(--showcase-primary-line-height);
+  white-space: normal;
+}
+
+.showcase-translation-list:not(.is-solo).is-terminal .showcase-translation-line.is-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+  min-height: 0;
+  padding: 0.12rem;
+  color: #0a0f0a;
+  border-radius: 0.12rem;
+  background: #f8f8f8;
+}
+
+.showcase-translation-list:not(.is-solo).is-terminal .showcase-primary-language b {
+  width: 0.28rem;
+  height: 0.28rem;
+  font-size: 0.16rem;
+  line-height: 0.2333rem;
+}
+
+.showcase-translation-list.is-solo.is-featured {
+  gap: 0.12rem;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line,
+.showcase-translation-list.is-solo.is-terminal .showcase-translation-line,
+.showcase-multilingual-row--history .showcase-translation-line {
+  min-height: 0.24rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line {
+  gap: 0.12rem;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary {
+  color: #0a0f0a;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary strong,
+.showcase-translation-list.is-solo.is-terminal .showcase-translation-line.is-primary strong {
+  font-size: var(--showcase-secondary-font-size);
+  font-weight: 500;
+  line-height: var(--showcase-secondary-line-height);
+  white-space: normal;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary .showcase-translation-badge {
+  color: #0a0f0a;
+  border-color: #0a0f0a;
+  font-weight: 900;
+}
+
+/* 主语言单独成行的预览态只管布局；颜色、字重、行高由下方播放态规则决定（在念时才是绿 600 14/24）。 */
+.showcase-translation-list.is-solo.is-featured.is-primary-preview .showcase-translation-line.is-primary strong {
+  display: block;
+  overflow: visible;
+  font-size: var(--showcase-secondary-font-size);
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.showcase-multilingual-row--history .showcase-translation-line,
+.showcase-translation-list.is-solo.is-terminal .showcase-translation-line {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-multilingual-row--history .showcase-translation-badge,
+.showcase-translation-list.is-solo.is-terminal .showcase-translation-badge {
+  display: none;
+}
+
+.showcase-multilingual-row--history .showcase-translation-line strong {
+  overflow: visible;
+  color: rgba(10, 15, 10, 0.55);
+  font-size: var(--showcase-secondary-font-size);
+  font-weight: 500;
+  line-height: var(--showcase-secondary-line-height);
+  text-overflow: clip;
+  white-space: normal;
+}
+
+/*
+ * Figma 565:6727「多段」进行中的译文按 TTS 播放状态着色，而不是按行的位置：
+ * 未读（还会念到）墨色 100% / Poppins Medium 500 14/22；
+ * 阅读中 #568157 / SemiBold 600 14/24；
+ * 已读或暂停跳过 墨色 55% / Medium 500 14/22。
+ * 只作用于主语言行；次语言（日/韩）按设计稿保持 55% 灰。结束页沿用静态样式。
+ */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-unread,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-unread strong {
+  color: #0a0f0a;
+  font-weight: 500;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-read,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-read strong {
+  color: rgba(10, 15, 10, 0.55);
+  font-weight: 500;
+}
+
+/* 播放态只改颜色与字重，不改行高：行高 22→24 会让在放的那行长高，内容区贴底对齐时整页上移（用户反馈）。 */
+
+/* 整行在念但片段无法逐段渲染（文字与 TTS 段落对不上）时，整行按「阅读中」着色。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing strong {
+  color: #568157;
+  font-weight: 600;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary .showcase-translation-playback-fragment.is-pending {
+  color: #0a0f0a;
+  font-weight: 500;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-playback-fragment.is-playing {
+  color: #568157;
+  font-weight: 600;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-playback-fragment.is-played,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-playback-fragment.is-skipped {
+  color: rgba(10, 15, 10, 0.55);
+  font-weight: 500;
+}
+
+/*
+ * 结束页译文默认墨色（Figma 569:7261），会话中的片段状态不再带入；
+ * 点击回放时沿用播放态：在放绿 600 14/24，放完灰 55%。
+ */
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary.is-playing,
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary.is-playing strong {
+  color: #568157;
+  font-weight: 600;
+}
+
+
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary.is-read,
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary.is-read strong {
+  color: rgba(10, 15, 10, 0.55);
+  font-weight: 500;
+}
+
+/* 结束页与进行中一致：没念过的译文（未读）墨色 100% / 500；念过（is-read）55%，在念（is-playing）绿。 */
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary:not(.is-read):not(.is-playing),
+.showcase-multilingual-transcript--completed .showcase-translation-list.is-terminal .showcase-translation-line.is-primary:not(.is-read):not(.is-playing) strong {
+  color: #0a0f0a;
+  font-weight: 500;
+}
+
+/* 日语正文使用常规字重；覆盖主译文、历史和结束页的 500 字重。
+ * 局部 important 用于跨上述不同优先级的状态规则，播放强调仍保留。 */
+.showcase-translation-line strong:lang(ja),
+.showcase-translation-line strong:lang(ja) .showcase-translation-playback-fragment:not(.is-playing) {
+  font-weight: 400 !important;
+}
+
+.showcase-translation-line.is-playing strong:lang(ja),
+.showcase-translation-line strong:lang(ja) .showcase-translation-playback-fragment.is-playing {
+  font-weight: 600 !important;
+}
+
+/* 以下按文字调整方向和字体的规则只在 Canary 生效：TSX 只在 Canary 给译文行加 canary-script（RTL 行再加 is-rtl、
+ * strong 设 dir="rtl"），prod 的渲染保持不变。
+ * 阿拉伯语、乌尔都语从右往左、右对齐。译文行是 grid 或列向 flex，strong 作为子项已块级化，direction / text-align
+ * 设在它上面才生效；按钮本身不翻转，语言标签与播放列位置不变。按钮的 text-align: left 会被继承，所以这里显式改回
+ * start（RTL 下即右侧）；列向 flex 的 flex-start 会把 strong 收成内容宽，用 stretch 撑满整行再右对齐。 */
+.showcase-translation-line.canary-script strong:is(:lang(ar), :lang(ur)) {
+  direction: rtl;
+  unicode-bidi: isolate;
+  text-align: start;
+  align-self: stretch;
+}
+
+.showcase-translation-line.canary-script strong:is(:lang(ar), :lang(ur)) .showcase-sentence-playback-icon {
+  margin-right: 0.06rem;
+  margin-left: 0;
+}
+
+/* 历史行的按钮是内容宽（fit-content），整行靠右，阅读起点与 RTL 一致（is-rtl 只在 Canary 出现）。 */
+.showcase-translation-line.canary-script.is-rtl {
+  margin-left: auto;
+}
+
+/* 阿拉伯、乌尔都、泰、越南、俄语用系统字体：Poppins 与宋体子集缺这些字形，同一行会混排两套字体。
+ * 其余拉丁语言保留现有字体，缺字由系统回退。局部 important 理由同上，要跨过各状态规则里的 font 简写。 */
+.showcase-translation-line.canary-script strong:is(:lang(ar), :lang(ur), :lang(th), :lang(vi), :lang(ru)) {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* 泰文上下叠加元音和声调符号，阿拉伯字母的升部、降部也较高：放宽行高，避免单行 overflow: hidden 时被裁掉。 */
+.showcase-translation-line.canary-script strong:is(:lang(th), :lang(ar), :lang(ur)) {
+  line-height: 1.6 !important;
+}
+
+.showcase-row-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.showcase-multilingual-transcript--completed .showcase-multilingual-row {
+  gap: 0.06rem !important;
+}
+
+/* 结束态时间戳：片段上方，PingFang 14/22，墨色 45%（Figma 569:7261）。 */
+.showcase-row-time {
+  display: block;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem/0.22rem "PingFang SC", Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript--completed .showcase-multilingual-row > .realtime-showcase-source {
+  margin-bottom: 0.02rem;
+}
+
+.showcase-multilingual-transcript--completed .showcase-row-footer {
+  margin-top: 0;
+}
+
+.showcase-row-footer > time {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 var(--showcase-time-font-size)/var(--showcase-time-line-height) "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Figma 576:7847「双人 · 多段」：段间距 32，甲行左对齐、乙行右缩 32（行宽 = 轨道宽 - 32）。 */
+.showcase-duo-transcript .realtime-showcase-transcript-track {
+  align-items: stretch;
+  gap: 0.32rem;
+}
+
+.showcase-duo-transcript {
+  top: calc(1.7rem + env(safe-area-inset-top));
+  bottom: max(calc(1.74rem + env(safe-area-inset-bottom)), calc(100% - 7.09rem));
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-duo-transcript {
+  top: calc(0.58rem + env(safe-area-inset-top));
+}
+
+.showcase-duo-bubble {
+  width: calc(100% - 0.32rem);
+  gap: 0.06rem !important;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.showcase-duo-bubble--b {
+  align-self: flex-end;
+}
+
+.showcase-duo-bubble--featured {
+  gap: 0.12rem !important;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* 进行中的双人历史行：无胶囊、无角标，译文 Poppins 500 14/22，颜色交给播放态规则。 */
+.showcase-duo-transcript:not(.showcase-multilingual-transcript--completed) .showcase-duo-bubble--history .showcase-translation-line {
+  min-height: 0.24rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-duo-transcript:not(.showcase-multilingual-transcript--completed) .showcase-duo-bubble--history .showcase-translation-badge {
+  display: none;
+}
+
+.showcase-duo-transcript:not(.showcase-multilingual-transcript--completed) .showcase-duo-bubble--history .showcase-translation-line strong {
+  overflow: visible;
+  color: rgba(10, 15, 10, 0.55);
+  font-size: var(--showcase-secondary-font-size);
+  font-weight: 500;
+  line-height: var(--showcase-secondary-line-height);
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.showcase-duo-bubble--history {
+  opacity: 1;
+}
+
+.showcase-duo-bubble--live {
+  opacity: 1;
+}
+
+.showcase-duo-bubble.is-active {
+  box-shadow: none;
+}
+
+
+/* ---------- 逐句反馈（竖屏体验页，匿名 web 端点） ---------- */
+
+.sentence-feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.04rem;
+  min-width: 0;
+  /* 按钮 0.2rem，与译文行左缘对齐；上下留 0.04rem 行节奏。 */
+  margin: 0.04rem 0 0;
+}
+
+.sentence-feedback-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+/* Figma 569:7261：图标 0.16rem、间距 12；按钮本体 20×20（hover 底色的尺寸），
+   用伪元素把触控命中区扩到 36×36。 */
+.sentence-feedback-thumb {
+  position: relative;
+  width: 0.2rem;
+  height: 0.2rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: rgba(4, 15, 36, 0.55);
+  border: 0;
+  border-radius: 0.02rem;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sentence-feedback-thumb::before {
+  content: "";
+  position: absolute;
+  inset: -0.08rem;
+}
+
+.sentence-feedback-thumb:focus-visible {
+  outline: 0.02rem solid rgba(86, 129, 87, 0.45);
+  outline-offset: 0.02rem;
+}
+
+/* 三态：未选线框；hover 浅底 + 实心；已选实心（无底）。 */
+.sentence-feedback-thumb:hover,
+.sentence-feedback-thumb:focus-visible {
+  background: #f1f5f2;
+}
+
+.sentence-feedback-thumb-icon {
+  width: 0.16rem;
+  height: 0.16rem;
+  background: currentColor;
+  mask: var(--thumb-outline) center / 0.16rem 0.16rem no-repeat;
+  -webkit-mask: var(--thumb-outline) center / 0.16rem 0.16rem no-repeat;
+}
+
+.sentence-feedback-thumb-icon.is-up {
+  --thumb-outline: url("/showcase/thumb-up-outline.svg");
+  --thumb-fill: url("/showcase/thumb-up-fill.svg");
+}
+
+.sentence-feedback-thumb-icon.is-down {
+  --thumb-outline: url("/showcase/thumb-down-outline.svg");
+  --thumb-fill: url("/showcase/thumb-down-fill.svg");
+}
+
+/* hover / 焦点 / 选中：只有这一枚切实心并带底色，另一枚保持描边。 */
+.sentence-feedback-thumb:hover .sentence-feedback-thumb-icon,
+.sentence-feedback-thumb:focus-visible .sentence-feedback-thumb-icon,
+.sentence-feedback-thumb.is-active .sentence-feedback-thumb-icon {
+  mask-image: var(--thumb-fill);
+  -webkit-mask-image: var(--thumb-fill);
+}
+
+.sentence-feedback-notice {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--danger, #b42318);
+  font: 400 0.12rem/0.18rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sentence-feedback-pop {
+  position: absolute;
+  z-index: 80;
+  width: min(3rem, calc(100vw - 0.24rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.14rem;
+  border-radius: 0.14rem;
+  background: #fff;
+  box-shadow: 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12), 0 0.06rem 0.16rem rgba(4, 15, 36, 0.12);
+}
+
+.sentence-feedback-pop:focus {
+  outline: none;
+}
+
+.sentence-feedback-pop__title {
+  color: #0a0f0a;
+  font: 600 0.15rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.sentence-feedback-pop__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.08rem;
+}
+
+.sentence-feedback-pop__chips button {
+  min-height: 0.44rem;
+  padding: 0 0.14rem;
+  color: rgba(10, 15, 10, 0.55);
+  border: 0.01rem solid #dfe1df;
+  border-radius: 0.99rem;
+  background: #fbfbfb;
+  font: 400 0.13rem/0.2rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.sentence-feedback-pop__chips button.is-active {
+  color: #fff;
+  border-color: #365337;
+  background: #365337;
+}
+
+.sentence-feedback-pop__textwrap {
+  position: relative;
+}
+
+.sentence-feedback-pop__textwrap textarea {
+  width: 100%;
+  min-height: 0.6rem;
+  padding: 0.08rem 0.1rem 0.2rem;
+  color: #0a0f0a;
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 0.1rem;
+  background: #fbfbfb;
+  font: 400 0.13rem/0.2rem "Noto Sans SC Variable", sans-serif;
+  resize: none;
+}
+
+.sentence-feedback-pop__textwrap textarea:focus-visible {
+  border-color: #568157;
+  outline: none;
+}
+
+.sentence-feedback-pop__charcount {
+  position: absolute;
+  right: 0.1rem;
+  bottom: 0.06rem;
+  color: rgba(10, 15, 10, 0.3);
+  font: 400 0.11rem/0.16rem Poppins, sans-serif;
+}
+
+.sentence-feedback-pop__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.08rem;
+}
+
+.sentence-feedback-pop__actions button {
+  min-width: 0.76rem;
+  min-height: 0.44rem;
+  padding: 0 0.16rem;
+  border-radius: 0.99rem;
+  font: 400 0.14rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+.sentence-feedback-pop__skip {
+  color: rgba(10, 15, 10, 0.5);
+  border: 0.01rem solid #dfe1df;
+  background: #fff;
+}
+
+.sentence-feedback-pop__submit {
+  color: #fff;
+  border: 0.01rem solid #365337;
+  background: #365337;
+}
+
+.sentence-feedback-pop__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ---------- 声音克隆 opt-in（consumer 设置面板开关 + 单独同意弹窗） ---------- */
+
+.showcase-voice-clone-row small {
+  margin-top: 0.02rem;
+}
+
+.showcase-voice-clone-consent {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.24rem;
+  background: rgba(10, 15, 10, 0.42);
+}
+
+.showcase-voice-clone-consent-card {
+  width: min(4.2rem, 100%);
+  max-height: min(78vh, 6.2rem);
+  overflow-y: auto;
+  padding: 0.24rem 0.22rem 0.2rem;
+  border: 0.01rem solid rgba(49, 92, 60, 0.06); /* color.hairlineSoft */
+  border-radius: 0.18rem; /* radius.card */
+  background: #fff;
+  box-shadow: 0 0.14rem 0.34rem rgba(30, 59, 39, 0.18);
+}
+
+.showcase-voice-clone-consent-card h2 {
+  margin: 0;
+  font: 400 0.22rem/1.35 "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+}
+
+.showcase-voice-clone-consent-points {
+  margin: 0.14rem 0 0;
+  padding-left: 0.18rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  font-size: 0.12rem;
+  line-height: 0.19rem;
+  color: rgba(10, 15, 10, 0.72);
+}
+
+.showcase-voice-clone-consent-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  margin-top: 0.18rem;
+}
+
+.showcase-voice-clone-consent-accept {
+  height: 0.44rem;
+  border: 0;
+  border-radius: 9.99rem;
+  background: #568157; /* color.green */
+  font-size: 0.14rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  cursor: pointer;
+}
+
+.showcase-voice-clone-consent-decline {
+  height: 0.4rem;
+  border: 0;
+  border-radius: 9.99rem;
+  background: transparent;
+  font-size: 0.13rem;
+  font-family: inherit;
+  color: rgba(10, 15, 10, 0.55);
+  cursor: pointer;
+}
+
+.showcase-confirm-dialog {
+  width: min(5.2rem, calc(100vw - 0.32rem));
+  max-height: calc(100dvh - 0.32rem);
+  padding: 0;
+  overflow: auto;
+  color: #0a0f0a;
+  border: 0;
+  border-radius: 0.2rem;
+  background: #fff;
+  box-shadow: 0 0.18rem 0.48rem rgba(10, 15, 10, 0.24);
+}
+
+.showcase-confirm-dialog::backdrop {
+  background: rgba(10, 15, 10, 0.48);
+  backdrop-filter: blur(0.03rem);
+}
+
+.showcase-confirm-dialog__content {
+  padding: 0.24rem;
+}
+
+.showcase-confirm-dialog h2 {
+  margin: 0 0 0.14rem;
+  font: 600 0.22rem/1.35 "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-confirm-dialog p {
+  margin: 0.1rem 0 0;
+  color: rgba(10, 15, 10, 0.68);
+  font: 400 0.13rem/1.7 Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-confirm-dialog .showcase-confirm-dialog__lead {
+  color: #0a0f0a;
+  font-weight: 600;
+}
+
+.showcase-confirm-dialog pre {
+  margin: 0.1rem 0 0;
+  padding: 0.12rem 0.14rem;
+  overflow-x: auto;
+  color: #eef6ef;
+  border-radius: 0.12rem;
+  background: #203c29;
+  white-space: pre;
+}
+
+.showcase-confirm-dialog code {
+  font: 400 0.11rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.showcase-confirm-dialog .showcase-confirm-dialog__note {
+  color: rgba(10, 15, 10, 0.52);
+  font-size: 0.11rem;
+}
+
+.showcase-confirm-dialog__actions {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 0.1rem;
+}
+
+.showcase-confirm-dialog__actions button {
+  min-width: 0;
+  height: 0.44rem;
+  flex: 1 1 0;
+  color: #365337;
+  border: 0.01rem solid rgba(54, 83, 55, 0.18);
+  border-radius: 9.99rem;
+  background: #f5f7f5;
+  font: 600 0.13rem/1 Poppins, "Noto Sans SC Variable", sans-serif;
+  cursor: pointer;
+}
+
+.showcase-confirm-dialog__actions button.is-primary {
+  color: #fff;
+  border-color: #365337;
+  background: #365337;
+}
+
+/* 弹窗里的勾选行（「以后不再提示」）：原生 checkbox 只保留可访问性，视觉沿用登录页的正负选图标。 */
+.showcase-confirm-dialog__option {
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+  margin: 0.16rem 0 0;
+  color: rgba(10, 15, 10, 0.68);
+  font: 400 0.12rem/1.5 Poppins, "Noto Sans SC Variable", sans-serif;
+  cursor: pointer;
+}
+
+.showcase-confirm-dialog__option input[type="checkbox"] {
+  position: absolute;
+  width: 0.01rem;
+  height: 0.01rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.showcase-confirm-dialog__option i {
+  flex: none;
+  width: 0.18rem;
+  height: 0.18rem;
+  background: url("/showcase/checkbox-off.svg") center / contain no-repeat;
+}
+
+.showcase-confirm-dialog__option input[type="checkbox"]:checked + i {
+  background-image: url("/showcase/checkbox-on.svg");
+}
+
+.showcase-confirm-dialog__option input[type="checkbox"]:focus-visible + i {
+  border-radius: 0.04rem;
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.02rem;
+}
+
+/* ---------- 设置面板信息图标与说明弹窗 ---------- */
+.showcase-multilingual-settings .realtime-showcase-setting-select > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.04rem;
+}
+
+.showcase-setting-info {
+  width: 0.16rem;
+  height: 0.16rem;
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.45);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.showcase-setting-info svg {
+  width: 0.14rem;
+  height: 0.14rem;
+}
+
+.showcase-setting-info:hover,
+.showcase-setting-info:focus-visible {
+  color: #365337;
+  outline: none;
+}
+
+.showcase-setting-info-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 0.24rem;
+  background: rgba(10, 15, 10, 0.45);
+}
+
+.showcase-setting-info-dialog {
+  width: min(3.38rem, 100%);
+  max-height: min(6.4rem, calc(100% - 0.48rem));
+  overflow-y: auto;
+  padding: 0.16rem;
+  color: #0a0f0a;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(0, 0, 0, 0.12), 0 0.03rem 0.06rem -0.04rem rgba(0, 0, 0, 0.18);
+  scrollbar-width: thin;
+}
+
+.showcase-setting-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.12rem;
+}
+
+.showcase-setting-info-header h2 {
+  margin: 0;
+  font: 700 0.16rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-close {
+  width: 0.28rem;
+  height: 0.28rem;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.55);
+  border: 0;
+  border-radius: 9.99rem;
+  background: #f3f3f3;
+  font-size: 0.18rem;
+  line-height: 0.28rem;
+  cursor: pointer;
+}
+
+.showcase-setting-info-intro {
+  margin: 0.08rem 0 0.12rem;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem/0.2rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.showcase-setting-info-list > li {
+  padding: 0.12rem;
+  border-radius: 0.1rem;
+  background: #f8f8f8;
+}
+
+.showcase-setting-info-list > li > strong {
+  display: block;
+  font: 700 0.14rem/0.22rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-list > li > small {
+  display: block;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.11rem/0.18rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-list > li > p {
+  margin: 0.06rem 0 0;
+  font: 400 0.13rem/0.2rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-list > li > ul {
+  margin: 0.06rem 0 0;
+  padding-left: 0.16rem;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem/0.2rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-table-wrap {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.showcase-setting-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 400 0.12rem/0.18rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-setting-info-table th,
+.showcase-setting-info-table td {
+  padding: 0.08rem 0.04rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 0.01rem solid #eef0ee;
+}
+
+/* 列宽按列名定：模型列固定，推荐/速度不换行，其余弹性。 */
+.showcase-setting-info-table th:nth-child(1) { width: 0.64rem; }
+.showcase-setting-info-table [data-column="推荐"] { width: 0.62rem; }
+.showcase-setting-info-table [data-column="速度"] { width: 0.34rem; white-space: nowrap; }
+.showcase-setting-info-table [data-column="输出"] { width: 0.64rem; }
+.showcase-setting-info-table [data-column="克隆能力"] { width: 0.6rem; }
+.showcase-setting-info-table [data-column="场景"],
+.showcase-setting-info-table [data-column="设备"],
+.showcase-setting-info-table [data-column="效果"] { width: 27%; }
+
+.showcase-setting-info-table thead th {
+  color: rgba(10, 15, 10, 0.45);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.showcase-setting-info-table tbody th {
+  font: 700 0.12rem/0.18rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+  overflow-wrap: anywhere;
+}
+
+.showcase-setting-info-table tbody tr.is-recommended th,
+.showcase-setting-info-table tbody tr.is-recommended td:first-of-type {
+  color: #365337;
+}
+
+.showcase-setting-info-table tbody tr:last-child th,
+.showcase-setting-info-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- 全屏（手机/平板竖屏）内容区偏移随容器宽度缩放 ----------
+   顶栏/语言轨已用 cqw 定位（428 基准），内容区若仍用 px 会在更宽的竖屏上与顶栏重叠。
+   基准：198/238（单人）、170/235（双人）→ 46.2617/55.6075、39.7196/54.9065 cqw。 */
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  /* 只缩放顶部偏移；底部安全区跟随录音控件（rem/dvh 定位），保持 191/1.74rem 不变。 */
+  .showcase-multilingual-transcript {
+    top: calc(1.9800rem + env(safe-area-inset-top));
+  }
+
+  .showcase-multilingual-transcript.showcase-multilingual-transcript--completed {
+    top: calc(2.3800rem + env(safe-area-inset-top));
+  }
+
+  .showcase-duo-transcript {
+    top: calc(1.7000rem + env(safe-area-inset-top));
+  }
+
+  .showcase-duo-transcript.showcase-multilingual-transcript--completed {
+    top: calc(2.3500rem + env(safe-area-inset-top));
+  }
+}
+
+/* ---------- 结束页补译：新语言页签的「生成 X 语译文」按钮 / 进度 ---------- */
+.showcase-backfill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  margin: 0.04rem 0 0.18rem;
+}
+
+.showcase-backfill-note {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.12rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 与设置面板次按钮同款：高 36、白底 #dfe1df 描边胶囊。 */
+.showcase-backfill-button {
+  height: 0.36rem;
+  padding: 0 0.16rem;
+  color: #0a0f0a;
+  border: 0.01rem solid #dfe1df;
+  border-radius: 99.99rem;
+  background: #fff;
+  font: 400 0.14rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+.showcase-backfill-button:hover:not(:disabled) {
+  background: #f1f5f2;
+}
+
+.showcase-backfill-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 补译 toast：结束页内容区顶部居中，3 秒自动消失。 */
+.showcase-backfill-toast {
+  position: sticky;
+  top: 0.08rem;
+  z-index: 5;
+  align-self: center;
+  margin: 0 auto 0.12rem;
+  padding: 0.08rem 0.16rem;
+  color: #fff;
+  border-radius: 99.99rem;
+  background: rgba(10, 15, 10, 0.82);
+  font: 400 0.13rem/0.2rem "Songti SC", "Noto Serif SC Variable", serif;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.12);
+  width: fit-content;
+}
+
+/* ---------- 结束页（消费者模式）：返回主页、隐藏语言设置、页签「+」 ---------- */
+/* 录音页与结束页复用同一尺寸和箭头的「返回」控件。 */
+.showcase-multilingual-device .showcase-back {
+  pointer-events: auto;
+  position: absolute;
+  top: calc(0.2800rem + env(safe-area-inset-top));
+  left: 0.3400rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.06rem;
+  min-height: 0.26rem;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.16rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.showcase-multilingual-device .showcase-back span {
+  width: 0.2rem;
+  height: 0.2rem;
+  font-size: 0;
+  line-height: 0;
+  background: url("/showcase/chevron-left.svg") center / contain no-repeat;
+}
+
+.showcase-multilingual-device .showcase-back:hover {
+  color: #0a0f0a;
+}
+
+/* 录音页三项顶部控件共用一条中线：返回、输入波纹和菜单。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-back {
+  top: calc(max(15px, 0.15rem) + env(safe-area-inset-top));
+}
+
+/* 结束页：输入/输出语言选择器不显示（语言列表保留在 DOM 里但不可见）。 */
+.showcase-language-rail.showcase-language-rail--finished {
+  top: calc(0.8rem + env(safe-area-inset-top));
+  gap: 0.12rem;
+}
+
+.showcase-language-rail--finished .showcase-language-picker-trigger,
+.showcase-language-rail--finished .showcase-language-direction,
+.showcase-language-rail--finished .showcase-language-picker--source {
+  display: none;
+}
+
+.showcase-language-rail--finished > .showcase-duo-language-select {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.showcase-language-rail--finished .showcase-language-picker--target {
+  position: static;
+}
+
+.showcase-language-rail--finished .showcase-target-language-list {
+  top: calc(100% + 0.08rem);
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+}
+
+.showcase-multilingual-transcript--finished .realtime-showcase-transcript-track {
+  padding-bottom: 0.16rem;
+}
+
+/* 结束页头部只剩右上菜单：控件容器不再拦截页签区域的点击。 */
+.realtime-showcase-header.is-finished .realtime-showcase-controls {
+  pointer-events: none;
+}
+
+.realtime-showcase-header.is-finished .realtime-showcase-settings-wrap {
+  pointer-events: auto;
+}
+
+.showcase-language-rail--finished .showcase-language-picker--target .showcase-target-language-list {
+  left: 0;
+  right: 0;
+  width: auto;
+  margin: 0;
+}
+
+/* 结束页概要：页签上方两行——标题 Poppins 500 16/24，说明 12/18 45%。 */
+.showcase-finished-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.02rem;
+  margin-bottom: 0.04rem;
+}
+
+.showcase-finished-summary strong {
+  color: #0a0f0a;
+  font: 500 0.16rem/0.24rem Poppins, "Songti SC", "Noto Serif SC Variable", sans-serif;
+}
+
+.showcase-finished-summary span {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.12rem/0.18rem Poppins, "Songti SC", "Noto Serif SC Variable", sans-serif;
+}
+
+/* Same header footprint as the old summary, with space for a two-line content title. */
+.showcase-language-rail--finished .showcase-finished-summary.showcase-history-summary {
+  gap: 0.05rem;
+}
+
+.showcase-finished-summary.showcase-history-summary strong {
+  display: -webkit-box;
+  height: 0.48rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  font-size: 0.2rem;
+  line-height: 0.24rem;
+}
+
+.showcase-finished-summary.showcase-history-summary span {
+  display: block;
+  height: 0.24rem;
+  line-height: 0.24rem;
+}
+
+.realtime-showcase-header.is-finished .showcase-session-share > button {
+  color: rgba(10, 15, 10, 0.55);
+}
+
+/* ---------- 历史详情：结束页视图底部的折叠栏（会话音频 / 会话设置） ---------- */
+.showcase-finished-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  margin-top: 0.28rem;
+  padding-top: 0.16rem;
+  border-top: 0.01rem solid #eef0ee;
+}
+
+.showcase-finished-extras details {
+  border: 0;
+  border-radius: 0.12rem;
+  background: #f8f8f8;
+  padding: 0 0.14rem;
+}
+
+.showcase-finished-extras details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.1rem 0;
+  color: #0a0f0a;
+  font: 400 0.14rem/0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-finished-extras details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.showcase-finished-extras details > summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 0.16rem;
+  color: rgba(10, 15, 10, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.showcase-finished-extras details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.showcase-finished-extras details > :not(summary) {
+  margin-bottom: 0.12rem;
+}
+
+.showcase-finished-extras .consumer-history-audio label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.04rem;
+  margin-bottom: 0.1rem;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem/0.18rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-finished-extras .consumer-history-audio audio {
+  width: 100%;
+}
+
+/* 分享页（/s/{token}）结束页视图底部说明：AIGC 标识 / 有效期 / 免费体验入口。 */
+.shared-session-finished-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.04rem 0 0.08rem;
+}
+.shared-session-finished-notes p { margin: 0; }
+.shared-session-finished-notes .shared-session-aigc {
+  font-size: 0.13rem;
+  line-height: 0.2rem;
+  color: var(--showcase-muted, rgba(37, 42, 37, 0.62));
+}
+.shared-session-finished-notes .shared-session-expiry {
+  font-size: 0.13rem;
+  line-height: 0.2rem;
+  color: var(--showcase-muted, rgba(37, 42, 37, 0.62));
+}
+.shared-session-finished-notes .shared-session-cta { margin: 0.08rem auto 0; }
+
+.showcase-sentence-playback-state { display: inline-flex; align-items: center; gap: 0.04rem; font-size: 0.12rem; white-space: nowrap; vertical-align: middle; }
+
+/* ====================================================================================
+   9:16 rem 重写 —— Figma「数博会演示」727:4831（单麦首页）/ 727:4984（双麦首页）/
+   727:4841（语言下拉）/ 727:4886、727:4929（单人设置面板）/ 727:4997（双人设置面板）。
+   1rem = 稿上 100px（styles/root-scale.css）；桌面手机框 5.21×9.26rem，竖屏手机撑满视口。
+   录音/结束态沿用上方规则，仅欢迎态元素在此按稿重写。
+   ==================================================================================== */
+
+.showcase-multilingual-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: #eef2f0;
+}
+
+.showcase-multilingual-device {
+  width: 5.21rem;
+  height: 9.26rem;
+  min-height: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border-radius: 0.24rem;
+  background: #fff;
+  box-shadow: 0 0.24rem 0.7rem rgba(29, 61, 48, 0.17);
+}
+
+/* 竖屏手机/平板：撑满视口（媒体查询与 root-scale.css 一致）。 */
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  .showcase-multilingual-page {
+    padding: 0;
+  }
+
+  .showcase-multilingual-device {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* 山峦背景 image 109385：稿上顶部白条 Frame 2147225883 高 198（双麦 240）盖住图的上沿，
+   图本身 600×1200 按框宽铺满（521 → 521×1042）且相对框顶上移 0.46rem。这里不给 header 上白底
+   （语言行在 header 之外、层级更低，白底会把它盖掉），而是让背景层从白条下沿开始：
+   cover 时 77.7% 的纵向锚点在 9:16 下正好等于图顶 -0.46rem；更高的屏幕仍保持铺满不露白。 */
+.showcase-multilingual-device .realtime-showcase-landscape {
+  top: calc(1.98rem + env(safe-area-inset-top));
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("/showcase/mountain-background.png") center 77.7% / cover no-repeat;
+}
+
+.showcase-multilingual-device--duo .realtime-showcase-landscape {
+  top: calc(2.4rem + env(safe-area-inset-top));
+  /* 727:4984：图顶仍在 -46（框高 686：240 - 0.803 × (1042 - 686) = -46）。 */
+  background-position: center 80.3%;
+}
+
+/* ---------- 顶部 header：只容纳品牌标、菜单与模式切换；语言行是独立的绝对定位层 ---------- */
+.showcase-multilingual-device .realtime-showcase-header {
+  z-index: 30;
+  height: calc(0.96rem + env(safe-area-inset-top));
+}
+
+.showcase-multilingual-device .realtime-showcase-header.is-settings-open {
+  z-index: 30;
+}
+
+/* 品牌标志组：left 34、top 28、38.46×24（与登录页一致）。 */
+.showcase-multilingual-device .realtime-showcase-brand {
+  top: calc(0.28rem + env(safe-area-inset-top));
+  left: 0.34rem;
+  width: 0.3846rem;
+  height: 0.24rem;
+}
+
+/* 控件行：y 80、左右 24、高 46（模式切换所在行）。 */
+.showcase-multilingual-device .realtime-showcase-controls {
+  top: calc(0.8rem + env(safe-area-inset-top));
+  right: 0.24rem;
+  left: 0.24rem;
+  width: auto;
+  height: 0.46rem;
+  transform: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-controls {
+  top: calc(0.16rem + env(safe-area-inset-top));
+}
+
+/* 菜单键 40×40：稿上位于状态栏内 (457, 8)，与控件行脱离，按绝对定位放到 header 顶部。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--welcome,
+  .realtime-showcase-device--finished,
+  .realtime-showcase-device--error
+) .realtime-showcase-settings-wrap {
+  position: absolute;
+  top: -0.72rem;
+  right: 0;
+  transform: none;
+}
+
+/* 欢迎页 Logo 的中心是 0.40rem；40 高的菜单键从 0.20rem 开始。 */
+.showcase-multilingual-device.realtime-showcase-device--welcome .realtime-showcase-settings-wrap {
+  top: -0.60rem;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-settings-wrap {
+  transform: none;
+}
+
+.showcase-multilingual-device .realtime-showcase-menu {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+.showcase-multilingual-device .realtime-showcase-menu img {
+  width: 0.24rem;
+  height: 0.24rem;
+}
+
+/* ---------- 模式切换 Figma 273:1056 ---------- */
+.showcase-mode-switch {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.06rem;
+  height: 0.46rem;
+  padding: 0.06rem;
+  border-radius: 99.99rem;
+  background: #f3f3f3;
+}
+
+.showcase-mode-switch button {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.04rem;
+  height: 0.34rem;
+  min-width: 0;
+  padding: 0.06rem 0.12rem;
+  color: rgba(10, 15, 10, 0.45);
+  border: 0;
+  border-radius: 99.99rem;
+  background: transparent;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.showcase-mode-switch button.is-active {
+  color: #f8faf8;
+  background: #365337;
+}
+
+/* 稿 273:1078 / 273:1936：激活段与「单麦多语」段内边距 16，未激活的「双麦多语」段内边距 12。 */
+.showcase-mode-switch button:first-child,
+.showcase-mode-switch button.is-active {
+  padding-inline: 0.16rem;
+}
+
+.showcase-mode-switch button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
+.showcase-mode-icon {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  background: currentColor;
+  mask: center / 0.2rem 0.2rem no-repeat;
+}
+
+.showcase-mode-icon--solo {
+  mask-image: url("/showcase/mode-mic-active.svg");
+}
+
+.showcase-mode-icon--duo {
+  mask-image: url("/showcase/mode-duo.svg");
+}
+
+/* ---------- 语言行 Frame 2147225869：y 138，左 24 右 32，高 36 ---------- */
+.showcase-language-rail {
+  position: absolute;
+  z-index: 7;
+  top: calc(1.38rem + env(safe-area-inset-top));
+  right: 0.32rem;
+  left: 0.24rem;
+  width: auto;
+  height: 0.36rem;
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+  transform: none;
+}
+
+.showcase-language-rail > .showcase-duo-language-select {
+  width: 100%;
+}
+
+.showcase-language-rail.showcase-language-rail--completed {
+  height: auto;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+
+/* 双麦：甲/乙两行各 36，行距 6，内容再向内收 23（x = 47）。 */
+.showcase-duo-rail {
+  z-index: 7;
+  top: calc(1.38rem + env(safe-area-inset-top));
+  height: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(2, 0.36rem);
+  gap: 0.06rem;
+  padding: 0 0 0 0.23rem;
+}
+
+.showcase-duo-rail.showcase-language-rail--completed {
+  grid-template-rows: auto;
+  gap: 0;
+}
+
+.showcase-duo-rail.showcase-language-rail--completed .showcase-duo-language-select {
+  display: none;
+}
+
+.showcase-duo-rail.showcase-language-rail--completed .showcase-completed-language-switch {
+  grid-column: 1;
+}
+
+.showcase-duo-transcript.showcase-multilingual-transcript--completed {
+  top: calc(2.35rem + env(safe-area-inset-top));
+}
+
+.showcase-duo-language-select {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.showcase-duo-language-select.is-open {
+  z-index: 13;
+}
+
+.showcase-duo-language-side {
+  flex: none;
+  width: 0.16rem;
+  display: grid;
+  place-items: center;
+  color: #0a0f0a;
+  font: 700 0.16rem / 0.21rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-language-direction {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  color: transparent;
+  background: url("/showcase/language-direction.svg") center / 0.2rem 0.2rem no-repeat;
+  font-size: 0;
+}
+
+.showcase-language-picker {
+  position: relative;
+  flex: none;
+  min-width: 0;
+}
+
+.showcase-language-picker.is-open {
+  z-index: 14;
+}
+
+/* 选择器胶囊：白底 0.01rem #e6e9e6，内边距 6/16，文字 Songti 12/22，chevron 16，展开时旋转 180。 */
+.showcase-language-picker-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+  height: 0.36rem;
+  min-width: 0;
+  padding: 0.06rem 0.16rem;
+  color: #0a0f0a;
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 99.99rem;
+  background: #fff;
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.showcase-language-picker-trigger strong {
+  flex: none;
+  overflow: visible;
+  font-weight: 400;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.showcase-language-picker-trigger img {
+  flex: none;
+  width: 0.16rem;
+  height: 0.16rem;
+  transition: transform 0.18s ease;
+}
+
+.showcase-language-picker.is-open .showcase-language-picker-trigger img {
+  transform: rotate(180deg);
+}
+
+.showcase-language-picker-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+/* 下拉浮层 Figma 727:4851 / 727:4859：距触发器 5，白底 p12 gap6 r12，双层阴影。 */
+.showcase-duo-language-list {
+  position: absolute;
+  z-index: 12;
+  top: calc(100% + 0.05rem);
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.06rem;
+  padding: 0.12rem;
+  border: 0;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(0, 0, 0, 0.12), 0 0.03rem 0.06rem -0.04rem rgba(0, 0, 0, 0.18);
+}
+
+.showcase-source-language-list {
+  width: 1.46rem;
+}
+
+.showcase-target-language-list {
+  left: -0.04rem; /* 稿 727:4859：浮层 x 150，比触发器（154）左出 0.04rem */
+  width: 1.46rem;
+  max-height: 3.36rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.showcase-duo-language-list button {
+  width: 100%;
+  min-width: 0;
+  min-height: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.16rem;
+  padding: 0.04rem 0.12rem;
+  color: #0a0f0a;
+  border: 0;
+  border-radius: 0.06rem;
+  background: transparent;
+  font: 700 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* 输入语言：选中行 7% 品牌绿底 + 0.12rem 对勾；其余行 22 高、25% 墨色、常规字重。 */
+.showcase-source-language-list button.is-selected {
+  background: rgba(54, 83, 55, 0.07);
+}
+
+.showcase-source-language-list button:not(.is-selected) {
+  min-height: 0.22rem;
+  padding: 0 0.12rem;
+  color: rgba(10, 15, 10, 0.25);
+  font-weight: 400;
+}
+
+.showcase-source-language-list i {
+  flex: none;
+  width: 0.12rem;
+  height: 0.12rem;
+  background: url("/showcase/check-12.svg") center / contain no-repeat;
+  opacity: 0;
+}
+
+.showcase-source-language-list button.is-selected i {
+  opacity: 1;
+}
+
+/* 输出语言：短标签 Bold 12 + 母语名 Bold 10/45%，右侧 0.12rem 方形勾选框；悬停/键盘行 7% 品牌绿底。 */
+@media (hover: hover) {
+  .showcase-duo-language-list button:hover:not(:disabled) {
+    background: rgba(54, 83, 55, 0.07);
+  }
+}
+
+.showcase-duo-language-list button:focus-visible {
+  outline: none;
+  background: rgba(54, 83, 55, 0.07);
+}
+
+.showcase-duo-language-list button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.showcase-duo-language-list button > span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+}
+
+.showcase-duo-language-list button > span > b {
+  font-weight: 700;
+}
+
+.showcase-duo-language-list button > span > em {
+  overflow: hidden;
+  color: rgba(10, 15, 10, 0.45);
+  font-size: 0.1rem;
+  font-style: normal;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.showcase-target-language-list i {
+  flex: none;
+  width: 0.12rem;
+  height: 0.12rem;
+  border: 0;
+  background: url("/showcase/checkbox-12-off.svg") center / contain no-repeat;
+  font-size: 0;
+}
+
+.showcase-target-language-list button.is-selected i {
+  background-image: url("/showcase/checkbox-12-on.svg");
+}
+
+/* ---------- 欢迎文案：单麦、双麦共用标题与说明 ---------- */
+.showcase-multilingual-welcome {
+  top: calc(2.75rem + env(safe-area-inset-top));
+  right: 0.36rem;
+  left: 0.36rem;
+  width: auto;
+  transform: none;
+}
+
+.showcase-multilingual-welcome > p {
+  height: auto;
+  color: #0a0f0a;
+  font-size: 0.48rem;
+  font-weight: 700;
+  line-height: 0.64rem;
+  white-space: nowrap;
+}
+
+.showcase-multilingual-welcome > p em {
+  color: #3a9d3e;
+  font-style: normal;
+}
+
+.showcase-multilingual-welcome > strong {
+  width: 3.32rem;
+  height: 0.48rem;
+  margin-top: 0.2rem;
+  font-size: 0.32rem;
+  line-height: 0.56rem;
+  white-space: nowrap;
+}
+
+.showcase-multilingual-welcome > span {
+  width: 100%;
+  height: auto;
+  margin-top: 0.12rem;
+  color: #0a0f0a;
+  font: 400 0.14rem / 0.22rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  white-space: nowrap;
+}
+
+/* 消费者首页：语言选择紧随英文说明，随欢迎文案一起响应屏幕高度。 */
+.showcase-home-language {
+  width: 100%;
+  margin-top: 0.24rem;
+}
+
+.showcase-home-language .showcase-language-rail {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  width: 100%;
+}
+
+/* ---------- 录音键 Button：72×72，bottom 90，rgba(255,255,255,.28) + 0.01rem rgba(255,255,255,.24) ---------- */
+.showcase-multilingual-device .realtime-showcase-session-control {
+  bottom: calc(0.9rem + env(safe-area-inset-bottom));
+  width: 0.72rem;
+  height: 0.72rem;
+}
+
+.showcase-multilingual-device .realtime-showcase-session-control img {
+  width: 0.28rem;
+  height: 0.28rem;
+}
+
+.showcase-multilingual-device.realtime-showcase-device--welcome .realtime-showcase-session-control {
+  border: 0.01rem solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.showcase-multilingual-device .realtime-showcase-stop {
+  width: 0.13rem;
+  height: 0.13rem;
+  border-radius: 0.03rem;
+}
+
+.showcase-multilingual-device .realtime-showcase-spinner {
+  width: 0.19rem;
+  height: 0.19rem;
+}
+
+.showcase-session-actions {
+  bottom: calc(0.68rem + env(safe-area-inset-bottom));
+}
+
+/* 双麦欢迎页底部提示 Frame 2147225896：贴底 90 高，Songti 14/22 反白居中。 */
+/* 欢迎态提示：单麦沿用双麦稿（727:4999）的底部提示带——0/836 高 90、Songti 14/22 #f8faf8 居中、无底无框。 */
+.realtime-showcase-device--welcome .showcase-multilingual-notices--duo,
+.realtime-showcase-device--welcome .showcase-multilingual-notices--solo {
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0rem);
+  left: 0;
+  height: 0.9rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.realtime-showcase-device--welcome .showcase-multilingual-notices--duo .realtime-showcase-notice,
+.realtime-showcase-device--welcome .showcase-multilingual-notices--solo .realtime-showcase-notice {
+  padding: 0;
+  color: #f8faf8;
+  border: 0;
+  background: transparent;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-align: center;
+  backdrop-filter: none;
+}
+
+/* ---------- 设置面板 Figma 727:4903：left 166、top 61、w 338、p 16、r 12、双层阴影 ---------- */
+.showcase-multilingual-settings {
+  z-index: 31;
+  top: 0.53rem;
+  right: -0.07rem;
+  width: 3.38rem;
+  max-height: min(8rem, calc(100dvh - 1.21rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  padding: 0.16rem;
+  overflow-y: auto;
+  color: #0a0f0a;
+  border: 0;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(0, 0, 0, 0.12), 0 0.03rem 0.06rem -0.04rem rgba(0, 0, 0, 0.18);
+  backdrop-filter: none;
+  scrollbar-width: thin;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-settings {
+  top: 0.38rem;
+}
+
+.showcase-multilingual-settings .realtime-showcase-settings-title {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.06rem;
+  margin: 0;
+}
+
+.showcase-multilingual-settings .realtime-showcase-settings-title strong {
+  color: #0a0f0a;
+  font: 700 0.16rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-settings .realtime-showcase-settings-title span,
+.showcase-multilingual-settings .realtime-showcase-settings-note {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.25);
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-panel-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.showcase-panel-fields:empty {
+  display: none;
+}
+
+.showcase-output-device-hint {
+  margin: -0.06rem 0 0 1.12rem;
+  color: rgba(10, 15, 10, 0.55);
+  font-size: 0.12rem;
+  line-height: 1.5;
+}
+
+.showcase-language-settings,
+.showcase-language-settings label {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+}
+
+.showcase-language-settings textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.1rem;
+  border: 1px solid rgba(10, 15, 10, 0.18);
+  border-radius: 0.08rem;
+  background: #fff;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.13rem;
+  line-height: 1.5;
+  max-height: 1.8rem;
+  overflow-y: auto;
+  resize: vertical;
+}
+
+.showcase-language-settings label > span,
+.showcase-hotword-custom > summary {
+  font-size: 0.13rem;
+}
+
+.showcase-hotword-custom {
+  border: 1px solid rgba(10, 15, 10, 0.12);
+  border-radius: 0.08rem;
+  padding: 0.1rem;
+}
+
+.showcase-hotword-custom > summary {
+  cursor: pointer;
+}
+
+.showcase-hotword-custom[open] > summary {
+  margin-bottom: 0.1rem;
+}
+
+/* 字段行：标签 86 宽 + 控件占满，行高 36。 */
+.showcase-multilingual-settings .realtime-showcase-setting-select {
+  display: grid;
+  grid-template-columns: 0.86rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.1rem;
+  min-height: 0.36rem;
+  margin: 0;
+}
+
+.showcase-multilingual-settings .realtime-showcase-setting-select > span {
+  display: flex;
+  align-items: center;
+  gap: 0.04rem;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox {
+  width: 100%;
+  min-width: 0;
+  height: 0.36rem;
+  color: #0a0f0a;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox--latin,
+.showcase-multilingual-settings .realtime-showcase-device-combobox--latin .realtime-showcase-combobox-list [role="option"] {
+  font-family: "HarmonyOS Sans SC", Poppins, -apple-system, "PingFang SC", sans-serif;
+}
+
+/* 控件胶囊：白底 0.01rem #e6e9e6，内边距 6/16，右侧 16 箭头。 */
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-trigger {
+  height: 0.36rem;
+  margin: 0;
+  padding: 0.06rem 0.16rem;
+  color: #0a0f0a;
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 99.99rem;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+  font: inherit;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-trigger > img {
+  width: 0.16rem;
+  height: 0.16rem;
+  margin-left: 0.08rem;
+}
+
+/* 下拉列表 Figma 727:4977：白底 p6 gap6 r12，行 34 高 r12；选中 #f1f5f2 底 + 16 对勾，未选 45% 墨色。 */
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list {
+  top: 0.38rem; /* 稿 727:4977：列表 y 120 = 控件 y 82 + 38 */
+  max-height: 2.2rem;
+  gap: 0.06rem;
+  padding: 0.06rem;
+  color: rgba(10, 15, 10, 0.45);
+  border: 0;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.16rem 0.3rem rgba(4, 15, 36, 0.1);
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"] {
+  height: 0.34rem;
+  min-height: 0.34rem;
+  padding: 0.06rem 0.12rem;
+  color: rgba(10, 15, 10, 0.45);
+  border-radius: 0.12rem;
+  /* 不用 font 简写，保留 --latin 下拉（模型名）的字体族。 */
+  font-family: "Songti SC", "Noto Serif SC Variable", serif;
+  font-size: 0.14rem;
+  font-weight: 400;
+  line-height: 0.22rem;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"] img {
+  width: 0.16rem;
+  height: 0.16rem;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"].is-selected {
+  color: #0a0f0a;
+  background: #f1f5f2;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"].is-active:not(.is-selected) {
+  color: #0a0f0a;
+  background: #f8f8f8;
+  box-shadow: none;
+}
+
+.showcase-multilingual-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"].is-disabled {
+  opacity: 0.55;
+}
+
+/* 只读「输入语言」胶囊：占位「自动识别」25% 墨色。 */
+.showcase-panel-static {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 0.36rem;
+  padding: 0.06rem 0.16rem;
+  color: #0a0f0a;
+  border: 0.01rem solid #e6e9e6;
+  border-radius: 99.99rem;
+  background: #fff;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-panel-static > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.showcase-panel-static.is-placeholder {
+  color: rgba(10, 15, 10, 0.25);
+}
+
+.showcase-panel-divider {
+  width: 100%;
+  height: 0;
+  margin: 0 0 -0.01rem; /* 稿上分割线是 0 高矢量：0.01rem 描边不占位，后续元素间距仍按 16 计 */
+  border: 0;
+  border-top: 0.01rem solid #e6e9e6;
+}
+
+/* 开关行 Figma 727:4964：标题 Bold 14 + 说明 12/55%，右侧 40×20 开关。 */
+.showcase-multilingual-settings .realtime-showcase-setting-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.1rem;
+  min-height: 0.44rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.showcase-multilingual-settings .realtime-showcase-setting-row > span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.showcase-multilingual-settings .realtime-showcase-setting-row strong {
+  color: #0a0f0a;
+  font: 700 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-settings .realtime-showcase-setting-row small {
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch {
+  position: relative;
+  flex: none;
+  width: 0.4rem;
+  height: 0.2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 99.99rem;
+  background: #dfe1df;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch.is-on,
+.showcase-multilingual-settings .realtime-showcase-switch[aria-checked="true"] {
+  background: #456746;
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch > span {
+  position: absolute;
+  top: 0.0143rem;
+  left: 0.0143rem;
+  width: 0.1714rem;
+  height: 0.1714rem;
+  border-radius: 50%;
+  background: #fff;
+  transform: none;
+  transition: transform 0.16s ease;
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch[aria-checked="true"] > span {
+  transform: translateX(0.2rem);
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 稿外的高级设置折叠区：默认收起，展开后按字段行排版。 */
+.showcase-multilingual-settings .realtime-showcase-advanced-audio {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.showcase-multilingual-settings .realtime-showcase-advanced-audio > summary {
+  color: #0a0f0a;
+  font: 700 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+.showcase-multilingual-settings .realtime-showcase-advanced-audio__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin-top: 0.12rem;
+}
+
+.showcase-multilingual-settings .realtime-showcase-advanced-audio__content > .realtime-showcase-setting-row {
+  margin: 0;
+  padding: 0;
+}
+
+/* 页脚 Figma 727:4921：额度 + 查看历史记录，分割线，通栏「设置」。 */
+.showcase-panel-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.showcase-multilingual-settings .showcase-account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.16rem;
+  margin: 0;
+}
+
+.showcase-multilingual-settings .showcase-quota-note {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-settings .showcase-quota-note b {
+  color: #568157;
+  font-weight: 900;
+}
+
+.showcase-multilingual-settings .showcase-history-link {
+  flex: none;
+  color: #568157;
+  font: 700 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-decoration: none;
+}
+
+.showcase-multilingual-settings .showcase-settings-entry {
+  display: block;
+  width: 100%;
+  height: 0.36rem;
+  padding: 0.06rem 0;
+  color: #0a0f0a;
+  border: 0.01rem solid #dfe1df;
+  border-radius: 99.99rem;
+  background: #fff;
+  font: 400 0.14rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.showcase-multilingual-settings .live-share-menu {
+  width: 100%;
+  height: 0.36rem;
+  padding: 0.06rem 0;
+  color: #f8faf8;
+  border: 0;
+  border-radius: 99.99rem;
+  background: #365337;
+  font: 700 0.14rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  cursor: pointer;
+}
+
+/* ====================================================================================
+   录音态 —— Figma 727:4475「多段」：逐句列表（原文 + 时间戳 / 译文）、最新一句大卡片 + 语言 chips、
+   底部白色操作条（静音 / 暂停 64 / 完成 48）、提示卡（注意图标 + 文案 + 关闭）。
+   ==================================================================================== */
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript {
+  bottom: calc(1.36rem + env(safe-area-inset-bottom));
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript .realtime-showcase-transcript-track {
+  gap: 0.24rem;
+  padding: 0.12rem 0.18rem 0 0.32rem;
+}
+
+/* 过去的句子：原文 Poppins 14/22；译文 Songti 20/22，图标空间由译文行预留。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) {
+  position: relative;
+  gap: 0.06rem !important;
+  padding-right: 0;
+}
+
+/* 优先级要压过 `.realtime-showcase-transcript time` 的通用样式。 */
+.realtime-showcase-transcript time.showcase-row-time--live {
+  position: absolute;
+  top: 0.03rem;
+  right: 0;
+  color: rgba(10, 15, 10, 0.25);
+  font: 400 0.12rem / 0.16rem Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary strong {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 0;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.2rem / 0.26rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 译文行下方留 2px（稿 967:6894 pb-2），只加在按钮上，避免 strong 重复叠加。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary {
+  padding-bottom: 0.02rem;
+}
+
+/* 正在念的那句（967:6872）：Songti Black 20 #3a9d3e，左侧音量图标 20，下方 1px #3a9d3e 线。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary.is-playing {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  border-bottom: 0.01rem solid #3a9d3e;
+  border-radius: 0;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary.is-playing::before {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  content: "";
+  background: url("/showcase/volume-speaking.svg") center / contain no-repeat;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary.is-playing,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary.is-playing strong,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row:not(.showcase-multilingual-row--featured) .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment {
+  color: #3a9d3e;
+  font-weight: 900;
+}
+
+/* 最新段落与历史段落保持同一字号，阅读位置由高亮区分。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured {
+  gap: 0.12rem !important;
+  margin-right: 0.14rem;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.14rem / 0.22rem Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-translation-list.is-solo.is-featured {
+  gap: 0.12rem;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary .showcase-translation-badge {
+  display: none;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary {
+  min-height: 0;
+}
+
+.showcase-translation-list.is-solo.is-featured .showcase-translation-line.is-primary strong,
+.showcase-translation-list.is-solo.is-featured.is-primary-preview .showcase-translation-line.is-primary strong {
+  color: #0a0f0a;
+  font: 400 0.2rem / 0.26rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 语言 chips（958:6835）：高 24，内边距 4/16，间距 8；选中 #365337 反白，其余 6% 黑底。 */
+.showcase-row-languages {
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+  margin-top: 0.04rem;
+}
+
+.showcase-row-languages button {
+  height: 0.24rem;
+  padding: 0.04rem 0.16rem;
+  color: #000;
+  border: 0;
+  border-radius: 0.99rem;
+  background: rgba(0, 0, 0, 0.06);
+  font: 400 0.14rem / 0.16rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.showcase-row-languages button.is-active {
+  color: #f8faf8;
+  background: #365337;
+  filter: drop-shadow(0 0 0.0265rem rgba(86, 129, 87, 0.2));
+}
+
+.showcase-row-languages button:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.02rem;
+}
+
+/* 底部操作条（967:6932）：白底 112 高，内边距 24/36；左 静音（图标 + 文字）、中 暂停 64 圆、右 完成 48 绿圆。 */
+.showcase-multilingual-device .showcase-session-actions {
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0rem);
+  left: 0;
+  width: auto;
+  height: 1.12rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.24rem 0.36rem;
+  background: #fff;
+  transform: none;
+}
+
+.showcase-multilingual-device .showcase-session-action {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.16rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-device .showcase-session-action-icon--volume {
+  width: 0.2rem;
+  height: 0.2rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.showcase-multilingual-device .showcase-session-action-icon--volume img {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.showcase-multilingual-device .showcase-session-action--primary {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.84rem;
+  justify-content: center;
+}
+
+.showcase-multilingual-device .showcase-session-action--primary .showcase-session-action-icon {
+  width: 0.64rem;
+  height: 0.64rem;
+  color: #0a0f0a;
+  border: 0;
+  background: #f5f6f5;
+  box-shadow: none;
+}
+
+.showcase-multilingual-device .showcase-session-action-icon--pause {
+  grid-template-columns: repeat(2, 0.04rem);
+  gap: 0.08rem;
+}
+
+.showcase-multilingual-device .showcase-session-action-icon--pause::before,
+.showcase-multilingual-device .showcase-session-action-icon--pause::after {
+  width: 0.04rem;
+  height: 0.16rem;
+  border-radius: 0.02rem;
+}
+
+.showcase-multilingual-device .showcase-session-action--complete .showcase-session-action-icon {
+  width: 0.48rem;
+  height: 0.48rem;
+  border: 0;
+  background: #568157;
+  box-shadow: 0 0.01rem 0.086rem rgba(0, 0, 0, 0.03);
+}
+
+.showcase-multilingual-device .showcase-session-action--complete .showcase-session-action-icon img {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+/* 稿上暂停/完成没有文字标签，只保留可访问名。 */
+.showcase-multilingual-device .showcase-session-action--primary > span:not(.showcase-session-action-icon),
+.showcase-multilingual-device .showcase-session-action--complete > span:not(.showcase-session-action-icon) {
+  position: absolute;
+  width: 0.01rem;
+  height: 0.01rem;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.showcase-multilingual-device .showcase-session-action--guest-placeholder {
+  width: 0.48rem;
+}
+
+/* 提示卡（971:7464）：录音/连接/处理态显示为白卡；欢迎态沿用上方的纯文字/胶囊样式。 */
+.realtime-showcase-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.realtime-showcase-notice-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}
+
+.realtime-showcase-notice-action {
+  cursor: pointer;
+}
+
+.realtime-showcase-notice-icon,
+.realtime-showcase-notice-close {
+  display: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-notices {
+  right: 0.18rem;
+  bottom: calc(1.3rem + env(safe-area-inset-bottom));
+  left: 0.2rem;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-notice {
+  padding: 0.16rem 0.24rem;
+  color: #0a0f0a;
+  border: 0;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12);
+  font: 400 0.16rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-align: left;
+  backdrop-filter: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-notice-icon {
+  display: block;
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-notice-close {
+  display: block;
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  padding: 0;
+  border: 0;
+  background: url("/showcase/close.svg") center / contain no-repeat;
+  cursor: pointer;
+}
+
+/* 结束前最后 10 秒的提醒：压在其他提示之上一档，避免与错误/额度提示重叠；
+   用 danger 色系加重，文案逐秒变化（role="status" aria-live="assertive"）。 */
+.showcase-multilingual-notices--ending {
+  z-index: 5;
+  bottom: 2.6rem;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-notices--ending {
+  bottom: calc(2.1rem + env(safe-area-inset-bottom));
+}
+
+.showcase-multilingual-notices--ending .realtime-showcase-notice {
+  padding: 0.16rem 0.24rem;
+  color: #6d3c34;
+  border: 0;
+  border-radius: 0.12rem;
+  background: rgba(255, 250, 248, 0.97);
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.12), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.16);
+  font: 600 0.16rem / 0.22rem "Poppins", system-ui, sans-serif;
+  text-align: center;
+  backdrop-filter: none;
+}
+
+/* ====================================================================================
+   结束页 —— Figma 727:4741「多段」：头部（本次同传 + 时长 + 模式 / 输出语言行 / 语言页签）、
+   逐句行（原文 Songti 14 45%、译文 Poppins Medium 14、脚注 点赞点踩 + 时间）、完整音频卡、
+   顶部操作栏（返回 / 分享）。
+   ==================================================================================== */
+
+.showcase-multilingual-device .showcase-language-rail--finished {
+  top: calc(0.95rem + env(safe-area-inset-top));
+  right: 0;
+  left: 0;
+  gap: 0;
+}
+
+.showcase-language-rail--finished .showcase-finished-summary {
+  gap: 0.12rem;
+  margin: 0 0 0.34rem;
+  padding: 0 0.24rem;
+}
+
+.showcase-finished-summary strong {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+  height: 0.34rem;
+  color: #0a0f0a;
+  font: 900 0.24rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+}
+
+.showcase-finished-summary strong b {
+  color: #568157;
+  font: 400 0.3rem / 0.38rem Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-finished-summary span {
+  display: flex;
+  align-items: center;
+  height: 0.31rem;
+  overflow: hidden;
+  color: rgba(10, 15, 10, 0.45);
+  font: 700 0.16rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 语言页签 938:5446：四等分，pt 6 pb 12 px 16，底线 1px；选中 #365337 底线 + 品牌绿加粗 + 微光。 */
+.showcase-language-rail--finished .showcase-completed-language-switch {
+  padding: 0 0.24rem;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-group button {
+  min-height: 0.35rem;
+  padding: 0.06rem 0.16rem 0.12rem;
+  color: rgba(0, 0, 0, 0.45);
+  font: 400 0.14rem / 0.16rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-group button.is-active {
+  flex: 1 1 0;
+  color: #456746;
+  border-color: #365337;
+  font-weight: 700;
+  /* 稿上的 0 0 5.3 光晕加在透明框上，只随文字与下划线出现；box-shadow 会画成整块灰底，
+     drop-shadow 滤镜又会在小数宽度的页签边缘留下合成缝，二者都不用（光晕在细线上不可见）。 */
+  box-shadow: none;
+  filter: none;
+}
+
+/* 译文区从顶部操作栏和概要、语言页签之后开始。 */
+.showcase-multilingual-transcript.showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished {
+  top: calc(2.41rem + env(safe-area-inset-top));
+  bottom: calc(0.18rem + env(safe-area-inset-bottom));
+  mask-image: none;
+}
+
+.showcase-multilingual-transcript--finished .realtime-showcase-transcript-track {
+  gap: 0.24rem;
+  padding: 0 0.24rem 0.18rem;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row {
+  gap: 0.08rem !important;
+  padding: 0;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row > .realtime-showcase-source {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-transcript--finished .showcase-translation-list {
+  gap: 0;
+}
+
+.showcase-multilingual-transcript--finished .showcase-translation-line.is-primary,
+.showcase-multilingual-transcript--finished .showcase-translation-line.is-primary strong {
+  min-height: 0;
+  padding: 0;
+  color: #0a0f0a;
+  font: 500 0.14rem / 0.22rem Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript--finished .showcase-row-footer {
+  margin-top: 0.04rem;
+}
+
+.showcase-multilingual-transcript--finished .showcase-row-footer > time {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem "PingFang SC", Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript--finished .showcase-finished-extras {
+  gap: 0.24rem;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* 结束页操作栏与首页品牌标处于同一顶部高度；返回和分享居中对齐。 */
+.showcase-multilingual-device .realtime-showcase-header.is-finished {
+  height: calc(0.8rem + env(safe-area-inset-top));
+  pointer-events: none;
+}
+
+.showcase-multilingual-device .realtime-showcase-header.is-finished::after {
+  display: none;
+}
+
+.showcase-multilingual-device .realtime-showcase-header.is-finished .showcase-back {
+  top: calc(0.28rem + env(safe-area-inset-top));
+  bottom: auto;
+  left: 0.36rem;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* 分享与返回处于顶部同一水平中线。 */
+.showcase-multilingual-device .realtime-showcase-header.is-finished .showcase-session-share {
+  top: calc(0.28rem + env(safe-area-inset-top));
+  right: 0.36rem;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.realtime-showcase-header.is-finished .showcase-session-share > button {
+  height: 0.26rem;
+  gap: 0.06rem;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.16rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.realtime-showcase-header.is-finished .showcase-session-share > button img {
+  width: 0.16rem;
+  height: 0.16rem;
+  opacity: 1;
+}
+
+/* 分享提示从顶部按钮向下展开。 */
+.realtime-showcase-header.is-finished .showcase-session-share-toast {
+  top: calc(100% + 0.08rem);
+  right: 0;
+  bottom: auto;
+  left: auto;
+  transform: none;
+}
+
+/* 结束页逐句行：稿上只有图标没有「可播放 / 播放完整译文」文字；原文行只在播放中显示图标。 */
+.showcase-multilingual-transcript--finished .showcase-sentence-playback-state > span {
+  display: none;
+}
+
+.showcase-multilingual-transcript--finished .showcase-source-playback .showcase-sentence-playback-state:not(:has(.is-playing)) {
+  display: none;
+}
+
+/* ====================================================================================
+   双麦 —— Figma 938:6312（录音：乙上甲下两面板）/ 967:6967（录音中的设置抽屉）/
+   938:5168（结束页：甲乙角标行）/ 971:7849（只读分享页：底部「免费体验」CTA）。
+   ==================================================================================== */
+
+/* ---------- 录音态：两面板各占一半，各自滚动 ---------- */
+.showcase-multilingual-device--duo .showcase-duo-transcript.showcase-duo-transcript--split {
+  top: 0;
+  right: 0;
+  bottom: calc(1.12rem + env(safe-area-inset-bottom));
+  left: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  mask-image: none;
+}
+
+.showcase-duo-panel {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  color: #0a0f0a;
+}
+
+.showcase-duo-panel--b {
+  color: #f8faf8;
+  background: #365337;
+}
+
+.showcase-duo-panel--a {
+  border: 0.01rem solid #e6e9e6;
+  background: #f5f6f5;
+}
+
+.showcase-duo-panel-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.24rem;
+  border-bottom: 0.01rem solid #e6e9e6;
+}
+
+.showcase-duo-panel--b .showcase-duo-panel-head {
+  border-bottom-color: rgba(230, 233, 230, 0.2);
+}
+
+.showcase-duo-panel-side {
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+  font: 900 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-panel-side b {
+  width: 0.28rem;
+  height: 0.28rem;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 0.04rem;
+  background: #365337;
+  font: 900 0.16rem / 0.2333rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-panel--b .showcase-duo-panel-side b {
+  color: #000;
+  background: #fff;
+}
+
+.showcase-duo-panel-languages {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+}
+
+.showcase-duo-panel-languages i {
+  width: 0.2rem;
+  height: 0.2rem;
+  background: url("/showcase/language-direction.svg") center / contain no-repeat;
+}
+
+.showcase-duo-panel--b .showcase-duo-panel-languages {
+  color: rgba(248, 250, 248, 0.45);
+}
+
+.showcase-duo-panel--b .showcase-duo-panel-languages i {
+  background-image: url("/showcase/swap-white.svg");
+}
+
+.showcase-duo-panel-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.showcase-duo-panel-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 语言按钮独立于滚动区和分段卡片，甲乙各自固定在面板底部。 */
+.showcase-duo-panel-language-switch {
+  flex: none;
+  margin: 0;
+  padding: 0.12rem 0.24rem 0.16rem;
+}
+
+/* 提高优先级，压过录音态通用轨道内边距（.12/.18/0/.32）。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel .realtime-showcase-transcript-track {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: 0.2rem 0.2rem 0.28rem;
+}
+
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--a .realtime-showcase-transcript-track {
+  padding: 0.2rem 0.24rem 0.28rem;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble {
+  position: relative;
+  width: 100%;
+  align-self: stretch;
+  gap: 0.06rem !important;
+  padding: 0;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble:not(.showcase-duo-bubble--featured) .showcase-duo-bubble-body {
+  padding-right: 0.5rem;
+}
+
+.showcase-duo-transcript--split .realtime-showcase-listening {
+  color: inherit;
+  opacity: 0.45;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 过去的句子：原文 14/22 45%，右上时间 Poppins 12/16 25%，译文 20/22 55%（乙面板 72% 白）。 */
+.showcase-duo-transcript--split .showcase-duo-bubble > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary,
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary strong {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 0;
+  padding: 0;
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.2rem / 0.26rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary {
+  padding-bottom: 0.02rem;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-badge {
+  display: none;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  border-bottom: 0.01rem solid #3a9d3e;
+  border-radius: 0;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing::before {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  content: "";
+  background: url("/showcase/volume-speaking.svg") center / contain no-repeat;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing,
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing strong,
+.showcase-duo-transcript--split .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment {
+  color: #3a9d3e;
+  font-weight: 900;
+}
+
+/* 乙面板（深绿）：文字反白。 */
+.showcase-duo-panel--b .showcase-duo-bubble > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(248, 250, 248, 0.45);
+}
+
+.realtime-showcase-transcript .showcase-duo-panel--b time.showcase-row-time--live {
+  color: rgba(248, 250, 248, 0.25);
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary,
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary strong {
+  color: rgba(248, 250, 248, 0.72);
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing {
+  border-bottom-color: #f8faf8;
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing::before {
+  background-image: url("/showcase/volume-white.svg");
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing,
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing strong,
+.showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment {
+  color: #f8faf8;
+  font-weight: 600;
+}
+
+/* 双麦最新段落沿用历史段落字号，保留乙侧白字。 */
+.showcase-duo-transcript--split .showcase-duo-bubble--featured {
+  gap: 0.12rem !important;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble--featured .showcase-duo-bubble-body {
+  gap: 0.12rem;
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble--featured > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.55);
+  font: 400 0.14rem / 0.22rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble--featured > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.showcase-duo-transcript--split .showcase-duo-bubble--featured .showcase-translation-line.is-primary,
+.showcase-duo-transcript--split .showcase-duo-bubble--featured .showcase-translation-line.is-primary strong {
+  width: 100%;
+  padding: 0;
+  color: #0a0f0a;
+  font: 400 0.2rem / 0.26rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-panel--b .showcase-duo-bubble--featured .showcase-translation-line.is-primary,
+.showcase-duo-panel--b .showcase-duo-bubble--featured .showcase-translation-line.is-primary strong {
+  color: #fff;
+}
+
+.showcase-duo-panel--b .showcase-row-languages button {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.showcase-duo-panel--b .showcase-row-languages button.is-active {
+  color: #0a0f0a;
+  background: #fff;
+}
+
+/* 会话中隐藏品牌标；菜单仍固定在设备卡片右上角。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-brand {
+  display: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-settings-wrap {
+  position: absolute;
+  top: calc(max(15px, 0.15rem) - 0.24rem);
+  right: 0;
+  /* 菜单键在抽屉打开时改为绝对定位的把手，包裹层要保住 50×44 的盒子，抽屉与把手都以它定位。 */
+  width: 0.5rem;
+  height: 0.44rem;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-menu {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.1rem;
+  padding: 0;
+  border-radius: 99.99rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 录音中的设置抽屉（967:7087）：贴右侧通高 338 宽；左侧 24×115 的收起把手只作提示，点它等于点面板外，会收起。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-settings {
+  top: calc(-0.08rem - env(safe-area-inset-top));
+  right: -0.24rem;
+  height: 9.26rem;
+  max-height: none;
+  border-radius: 0.12rem 0 0 0.12rem;
+}
+
+/* 抽屉打开时（967:7125），菜单键本身变成抽屉左侧 24×115 的收起把手（x 165 / y 358），点击即收起。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-settings-wrap:has(> .showcase-multilingual-settings) .realtime-showcase-menu {
+  position: absolute;
+  top: 3.5rem;
+  /* 与 3.38rem 抽屉的左边缘相接，抵消它的 -0.24rem right；不继承菜单键的左外距。 */
+  left: auto;
+  right: 3.14rem;
+  margin-left: 0;
+  z-index: 32;
+  width: 0.24rem;
+  height: 1.15rem;
+  padding: 0;
+  border-radius: 0.12rem 0 0 0.12rem;
+  background: #fff url("/showcase/chevron-right.svg") 0.04rem 0.45rem / 0.16rem 0.16rem no-repeat;
+  /* 白底上也要看得出是一块把手：沿用抽屉的双层阴影（967:7087）。 */
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12);
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-settings-wrap:has(> .showcase-multilingual-settings) .realtime-showcase-menu img {
+  display: none;
+}
+
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  .showcase-multilingual-device:is(
+    .realtime-showcase-device--connecting,
+    .realtime-showcase-device--recording,
+    .realtime-showcase-device--processing
+  ) .showcase-multilingual-settings {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
+/* ---------- 结束页（938:5168）：左侧 28×28 角标（甲 #365337 / 乙 #424f98），正文列 gap 12 ---------- */
+.showcase-multilingual-transcript--completed .showcase-duo-bubble {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.12rem !important;
+  padding: 0;
+}
+
+.showcase-duo-bubble-badge {
+  flex: none;
+  width: 0.28rem;
+  height: 0.28rem;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 0.04rem;
+  background: #365337;
+  font: 900 0.16rem / 0.2333rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-duo-bubble--b .showcase-duo-bubble-badge {
+  background: #424f98;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble-body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble > .showcase-duo-bubble-body > .realtime-showcase-source {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-list {
+  gap: 0;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-line.is-primary,
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-line.is-primary strong {
+  min-height: 0;
+  padding: 0;
+  color: #0a0f0a;
+  border-radius: 0;
+  background: transparent;
+  font: 500 0.14rem / 0.22rem Poppins, "Noto Sans SC Variable", sans-serif;
+  white-space: normal;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-badge {
+  display: none;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-row-footer {
+  margin-top: 0.04rem;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-row-footer > time {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.14rem / 0.22rem "PingFang SC", Poppins, "Noto Sans SC Variable", sans-serif;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-sentence-playback-state > span {
+  display: none;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-source-playback .showcase-sentence-playback-state:not(:has(.is-playing)) {
+  display: none;
+}
+
+/* 结束页页签：双人两组（甲 / 乙）各自一行，侧标在行首。 */
+.showcase-language-rail--finished .showcase-completed-language-side {
+  flex: none;
+  width: 0.28rem;
+  height: 0.28rem;
+  display: grid;
+  place-items: center;
+  margin-right: 0.12rem;
+  color: #fff;
+  border-radius: 0.04rem;
+  background: #365337;
+  font: 900 0.16rem / 0.2333rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-group + .showcase-completed-language-group .showcase-completed-language-side {
+  background: #424f98;
+}
+
+/* ---------- 只读分享页（971:7849）：无底部白条；「免费体验」CTA 吸底 ---------- */
+.showcase-multilingual-device:has(> .showcase-finished-footer) {
+  --showcase-share-footer-height: calc(1.43rem + env(safe-area-inset-bottom));
+}
+
+.showcase-multilingual-device .realtime-showcase-header.is-finished.is-readonly::after {
+  display: none;
+}
+
+.showcase-finished-footer {
+  position: absolute;
+  z-index: 34;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--showcase-share-footer-height);
+  box-sizing: border-box;
+  padding: 0.16rem 0.24rem calc(0.71rem + env(safe-area-inset-bottom));
+  background: transparent;
+}
+
+.showcase-finished-footer .shared-session-finished-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08rem;
+  padding: 0;
+}
+
+.showcase-finished-footer .shared-session-finished-notes p {
+  margin: 0;
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-finished-footer .shared-session-cta {
+  width: 100%;
+  max-width: 4.67rem;
+  height: 0.56rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.08rem;
+  margin: 0;
+  padding: 0 0.24rem;
+  color: #f8faf8;
+  border-radius: 99.99rem;
+  background: #365337;
+  font: 900 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  text-decoration: none;
+}
+
+.showcase-finished-footer .shared-session-cta::before {
+  width: 0.2rem;
+  height: 0.2rem;
+  content: "";
+  background: url("/showcase/cta-voice.svg") center / contain no-repeat;
+}
+
+/* 双麦录音态：设计稿（938:6312）没有山景与品牌标，两块面板从设备顶铺到底部白条。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-landscape,
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-motion-stage {
+  display: none;
+}
+
+/* 双麦结束页：甲 / 乙 两组页签各占一行（设计稿只画了一行，这里为保留双侧各自切换而叠成两行），正文相应下移。 */
+.showcase-language-rail--finished .showcase-completed-language-switch:has(.showcase-completed-language-side) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.04rem;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-switch:has(.showcase-completed-language-side) .showcase-completed-language-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished:has(.showcase-duo-bubble) {
+  top: calc(2.21rem + env(safe-area-inset-top));
+}
+
+/* 只读分享页：正文独立滚动，底部入口不参与音频卡片的布局。 */
+.showcase-multilingual-device .realtime-showcase-header.is-readonly ~ .showcase-multilingual-transcript--finished {
+  z-index: 31;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 结束页双麦行（938:5168）：译文的播放图标不跟在文字后面，而是放在页脚时间右侧（20×20，间距 12）。
+   图标仍是译文按钮的一部分，点击行为不变；有图标的行页脚右侧留出 32。 */
+.showcase-multilingual-transcript--completed .showcase-duo-bubble-body {
+  position: relative;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-line.is-primary {
+  overflow: visible;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-line .showcase-sentence-playback-state {
+  position: absolute;
+  right: 0;
+  bottom: 0.01rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin: 0;
+  background: url("/showcase/volume-side-a.svg") center / contain no-repeat;
+}
+
+/* 图标颜色跟说话人一致：甲 #365337、乙 #424f98。 */
+.showcase-multilingual-transcript--completed .showcase-duo-bubble--b .showcase-translation-line .showcase-sentence-playback-state {
+  background-image: url("/showcase/volume-side-b.svg");
+}
+
+/* 原有播放/暂停 svg 保留在 DOM 里（状态类 is-playing 仍挂在它上面），铺满 20×20 但透明，视觉用上面的音量图标。 */
+.showcase-multilingual-transcript--completed .showcase-duo-bubble .showcase-translation-line .showcase-sentence-playback-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}
+
+.showcase-multilingual-transcript--completed .showcase-duo-bubble:has(.showcase-translation-line .showcase-sentence-playback-state) .showcase-row-footer {
+  padding-right: 0.32rem;
+}
+
+/* 分享页底部仅保留动态波纹，避免局部静态山景叠加形成色差接缝。 */
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly) .realtime-showcase-landscape {
+  display: none;
+}
+
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly) .realtime-showcase-motion-stage {
+  z-index: 30;
+  bottom: calc(-0.9298rem + env(safe-area-inset-bottom));
+  left: 50%;
+  width: 6.9947rem;
+  height: 2.2898rem;
+  overflow: visible;
+  transform: translateX(-50%);
+  mask: none;
+}
+
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly) .realtime-showcase-motion-window {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  mask: url("/showcase/motion-mask-finished.svg") 0 0 / 100% 100% no-repeat;
+}
+
+/* 分栏面板里过去的句子：译文常规字重（938:6386 宋体 Regular 20 / 938:6339 Poppins Regular），压过录音态的 500。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-bubble--history .showcase-translation-line.is-primary:not(.is-playing) strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-bubble--history .showcase-translation-line.is-primary:not(.is-playing) .showcase-translation-playback-fragment {
+  font-weight: 400;
+}
+
+/* 乙面板（深绿底）译文反白：压过录音态按未读 / 已读状态着色的规则。
+   过去的句子 72% 白（938:6334），最新一句纯白（938:6780），播放中的片段 #f8faf8（938:6345）。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary .showcase-translation-playback-fragment {
+  color: rgba(248, 250, 248, 0.72);
+}
+
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble--featured .showcase-translation-line.is-primary strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble--featured .showcase-translation-line.is-primary .showcase-translation-playback-fragment {
+  color: #fff;
+}
+
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment.is-playing {
+  color: #f8faf8;
+}
+
+/* 乙面板里念完 / 被跳过的片段回到 72% 白（保留已读提示，深绿底上没有灰色可用）。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary .showcase-translation-playback-fragment:is(.is-played, .is-skipped) {
+  color: rgba(248, 250, 248, 0.72);
+}
+
+/* 乙面板播放中的句子：SemiBold（938:6345），优先级高于大卡片的常规字重。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment.is-playing {
+  font-weight: 600;
+}
+
+/* 甲面板播放中的句子：黑体 900（938:6802）。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--a .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--a .showcase-duo-bubble .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment.is-playing {
+  font-weight: 900;
+}
+
+/* 单麦会话的顶部控件最下沿为 56：字幕从其下方 10px 开始。
+   顶缘的渐隐只作用于滚动内容，避免旧句在操作栏下方被硬切成半行。 */
+.showcase-multilingual-device--solo:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript {
+  top: calc(0.66rem + env(safe-area-inset-top));
+  bottom: calc(1.12rem + env(safe-area-inset-bottom));
+  mask-image: linear-gradient(to bottom, transparent, #000 0.18rem, #000 100%);
+}
+
+.showcase-multilingual-device--solo:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript .realtime-showcase-transcript-track {
+  gap: 0.24rem;
+  padding: 0.12rem 0.18rem 0.24rem 0.32rem;
+}
+
+/* 录音态 header 只剩菜单键：本体不再拦截译文区的点击。 */
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-header {
+  pointer-events: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .realtime-showcase-settings-wrap {
+  pointer-events: auto;
+}
+
+/* 最新一句：语言 chips 排在译文之后（958:6835 在 958:6832 下方）。 */
+.showcase-translation-list .showcase-row-languages {
+  order: 1;
+}
+
+/* 最新一句译文还没到时（占位「X翻译中…」），只显示原文，不显示占位译文与 chips。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row--featured, .showcase-duo-bubble--featured) .showcase-translation-line.is-primary.is-pending-translation,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row--featured, .showcase-duo-bubble--featured) .showcase-translation-list:has(> .is-pending-translation) .showcase-row-languages {
+  display: none;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-row--featured:has(.showcase-translation-line.is-primary.is-pending-translation) > .realtime-showcase-source,
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-duo-bubble--featured:has(.showcase-translation-line.is-primary.is-pending-translation) > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(10, 15, 10, 0.45);
+  font: 400 0.16rem / 0.24rem Poppins, "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-multilingual-device:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-duo-panel--b .showcase-duo-bubble--featured:has(.showcase-translation-line.is-primary.is-pending-translation) > .showcase-duo-bubble-body > .realtime-showcase-source {
+  color: rgba(248, 250, 248, 0.45);
+}
+
+/* 727:4929：开关圆点无阴影；display-only 的「声音克隆」开关不半透明；菜单键打开时无灰底。 */
+.showcase-multilingual-settings .realtime-showcase-switch > span {
+  box-shadow: none;
+}
+
+.showcase-multilingual-settings .realtime-showcase-switch:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.showcase-multilingual-device .realtime-showcase-menu.is-open {
+  background-color: transparent;
+}
+
+/* 模型下拉（--latin）选项字体：HarmonyOS Sans SC / Poppins（727:4929），放在通用选项规则之后。 */
+.showcase-multilingual-settings .realtime-showcase-device-combobox--latin .realtime-showcase-combobox-list [role="option"] {
+  font-family: "HarmonyOS Sans SC", Poppins, -apple-system, "PingFang SC", sans-serif;
+}
+
+/* ====================================================================================
+   结束页 / 分享页 / 双麦 —— 按 Figma 核对后的修正（727:4741 / 938:5168 / 971:7849 / 967:7086 / 938:6312）。
+   ==================================================================================== */
+
+/* 727:4741：最后一行到「完整音频」卡片 24；底部附加区域的卡片和操作按钮之间留 16。 */
+.showcase-multilingual-transcript--finished .showcase-finished-extras {
+  gap: 0.16rem;
+}
+
+.showcase-multilingual-transcript--finished .showcase-finished-extras .session-audio-downloads {
+  margin-top: 0;
+}
+
+/* 727:4741：译文区下沿到底部白条（814），内容底部留 9。 */
+.showcase-multilingual-device .showcase-multilingual-transcript.showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished {
+  bottom: calc(1.12rem + env(safe-area-inset-bottom));
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript--finished .realtime-showcase-transcript-track {
+  padding-bottom: 0.09rem;
+}
+
+/* 727:4741 页脚：点赞点踩 16×16、间距 12，页脚高 22。 */
+.showcase-multilingual-transcript--finished .showcase-row-footer {
+  height: 0.22rem;
+}
+
+.showcase-multilingual-transcript--finished .sentence-feedback,
+.showcase-multilingual-transcript--finished .sentence-feedback-buttons {
+  gap: 0.12rem;
+}
+
+.showcase-multilingual-transcript--finished .sentence-feedback-thumb {
+  width: 0.16rem;
+  height: 0.16rem;
+  padding: 0;
+}
+
+.showcase-multilingual-transcript--finished .sentence-feedback-thumb svg,
+.showcase-multilingual-transcript--finished .sentence-feedback-thumb img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 727:4741 单麦结束页：译文播放图标放在页脚时间右侧（20×20，右缘 497，与时间间距 12），与双麦行一致。 */
+.showcase-multilingual-transcript--finished .showcase-multilingual-row {
+  position: relative;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row .showcase-translation-line.is-primary {
+  overflow: visible;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row .showcase-translation-line .showcase-sentence-playback-state {
+  position: absolute;
+  right: 0;
+  bottom: 0.01rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin: 0;
+  opacity: 1;
+  background: url("/showcase/volume-side-a.svg") center / contain no-repeat;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row .showcase-translation-line .showcase-sentence-playback-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}
+
+.showcase-multilingual-transcript--finished .showcase-multilingual-row:has(.showcase-translation-line .showcase-sentence-playback-state) .showcase-row-footer {
+  padding-right: 0.32rem;
+}
+
+/* 938:5168 双麦结束页：页签一行四格（无甲/乙角标），头部与页签左起 24，正文从 182 开始。 */
+.showcase-multilingual-device .showcase-duo-rail.showcase-language-rail--completed {
+  padding-left: 0;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-switch:has(.showcase-completed-language-side) {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-switch:has(.showcase-completed-language-side) .showcase-completed-language-group {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+}
+
+.showcase-language-rail--finished .showcase-completed-language-side {
+  display: none;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished:has(.showcase-duo-bubble) {
+  top: calc(2.41rem + env(safe-area-inset-top));
+}
+
+/* 只读分享页没有返回/分享操作栏，保留原来的概要与正文起点。 */
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly) .showcase-language-rail--finished {
+  top: calc(0.36rem + env(safe-area-inset-top));
+}
+
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly) .showcase-multilingual-transcript.showcase-multilingual-transcript--finished {
+  top: calc(1.82rem + env(safe-area-inset-top));
+}
+
+/* 967:7086 抽屉阴影：0 6 16 rgba(4,15,36,.08) + 0 3 6 -4 rgba(4,15,36,.12)。 */
+.showcase-multilingual-device .showcase-multilingual-settings {
+  box-shadow: 0 0.06rem 0.16rem rgba(4, 15, 36, 0.08), 0 0.03rem 0.06rem -0.04rem rgba(4, 15, 36, 0.12);
+}
+
+/* 给底部渐隐留出滚动余量，最后一个播放器可完整滚出渐隐区。 */
+.showcase-multilingual-device .realtime-showcase-header.is-readonly ~ .showcase-multilingual-transcript--finished .realtime-showcase-transcript-track {
+  flex-shrink: 0;
+  padding-bottom: 0.44rem;
+}
+
+.showcase-finished-footer .shared-session-expiry {
+  display: none;
+}
+
+/* 938:6780 乙面板最新一句：Poppins 24/27。 */
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--b .showcase-duo-bubble--featured .showcase-translation-line.is-primary strong {
+  line-height: 0.27rem;
+}
+
+/* 给 CTA（56）及上下间距（16 + 71）留出独立区域，播放器不会从按钮下方穿过。 */
+.showcase-multilingual-device .realtime-showcase-header.is-readonly ~ .showcase-multilingual-transcript.showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished {
+  bottom: var(--showcase-share-footer-height);
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 0.32rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 0.32rem), transparent 100%);
+}
+
+/* 727:4475 / 938:6386：录音态里过去的句子（非最新、非播放中）译文一律 55% 灰，不再按「未读」显示墨色；
+   最新一句保持墨色，播放中保持 #3a9d3e。乙面板沿用 72% 白。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--history .showcase-translation-line.is-primary:not(.is-playing) strong,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--history .showcase-translation-line.is-primary:not(.is-playing) .showcase-translation-playback-fragment,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--a .showcase-duo-bubble--history .showcase-translation-line.is-primary:not(.is-playing) strong,
+.showcase-multilingual-device--duo .showcase-duo-transcript--split .showcase-duo-panel--a .showcase-duo-bubble--history .showcase-translation-line.is-primary:not(.is-playing) .showcase-translation-playback-fragment {
+  color: rgba(10, 15, 10, 0.55);
+}
+
+/* 结束页页签选中态只显示短标（938:5210「英」），语言全称视觉隐藏。 */
+.showcase-completed-language-group button .showcase-completed-language-name {
+  display: none;
+}
+
+/* Figma 1079:2993 / 1079:3137：双麦结束与分享页按甲/乙独立选择查看语言。 */
+.showcase-completed-duo-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.12rem 0.57rem;
+  padding: 0 0.23rem 0.12rem;
+  border-bottom: 1px solid #e6e9e6;
+  background: #fff;
+  color: #0a0f0a;
+  font-family: "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-completed-duo-group,
+.showcase-completed-duo-direction {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.showcase-completed-duo-side {
+  flex-shrink: 0;
+  font-size: 0.16rem;
+  font-weight: 700;
+  line-height: 0.36rem;
+}
+
+.showcase-completed-duo-direction { gap: 0.06rem; }
+
+.showcase-completed-duo-source {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 0.28rem;
+  padding: 0.02rem 0.16rem;
+  border: 1px solid #f1f5f2;
+  border-radius: 999px;
+  background: #f1f5f2;
+  font-size: 0.12rem;
+  line-height: 0.22rem;
+  white-space: nowrap;
+}
+
+.showcase-completed-duo-arrow { width: 0.2rem; height: 0.2rem; }
+
+.showcase-completed-duo-target {
+  width: 0.74rem;
+  height: 0.28rem;
+  color: #0a0f0a;
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.showcase-completed-duo-target .realtime-showcase-combobox-trigger {
+  justify-content: space-between;
+  gap: 0.12rem;
+  height: 0.28rem;
+  margin: 0;
+  padding: 0.02rem 0.16rem;
+  border: 1px solid #e6e9e6;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.showcase-completed-duo-target.is-open .realtime-showcase-combobox-trigger,
+.showcase-completed-duo-target .realtime-showcase-combobox-trigger:focus-visible {
+  border-color: #9ab39a;
+}
+
+.showcase-completed-duo-target .realtime-showcase-combobox-trigger > img {
+  flex-shrink: 0;
+  width: 0.16rem;
+  height: 0.16rem;
+}
+
+.showcase-completed-duo-target .realtime-showcase-combobox-trigger > img.is-open { transform: rotate(180deg); }
+
+.showcase-completed-duo-target .realtime-showcase-combobox-list {
+  top: calc(100% + 0.04rem);
+  width: max-content;
+  min-width: 1.25rem;
+  max-width: 1.75rem;
+  max-height: 2.6rem;
+  gap: 0.06rem;
+  padding: 0.12rem;
+  border-radius: 0.12rem;
+  background: #fff;
+  box-shadow: 0 0.03rem 0.06rem -0.04rem rgba(0, 0, 0, 0.18), 0 0.06rem 0.16rem rgba(0, 0, 0, 0.12);
+}
+
+.showcase-completed-duo-target .realtime-showcase-combobox-list [role="option"] {
+  gap: 0.06rem;
+  margin: 0;
+  padding: 0.04rem 0.12rem;
+  border-radius: 0.06rem;
+  color: #0a0f0a;
+  font-weight: 700;
+}
+
+.showcase-completed-duo-target .realtime-showcase-combobox-list [role="option"].is-selected { background: rgba(54, 83, 55, 0.07); }
+.showcase-completed-duo-target .realtime-showcase-combobox-list [role="option"] > img { width: 0.12rem; height: 0.12rem; }
+.showcase-completed-duo-option-label { display: flex; align-items: center; gap: 0.06rem; white-space: nowrap; }
+.showcase-completed-duo-option-label small { font-size: 0.1rem; color: rgba(10, 15, 10, 0.45); }
+.showcase-completed-duo-group:last-child .realtime-showcase-combobox-list { right: 0; left: auto; }
+
+.showcase-language-rail--finished:has(.showcase-completed-duo-switch) .showcase-finished-summary { margin-bottom: 0.24rem; }
+.showcase-language-rail--finished:has(.showcase-completed-duo-switch) { z-index: 32; }
+/* 标题、场景说明和双人语言行之后再开始正文；只读分享页省去顶部操作栏。 */
+.showcase-multilingual-device:has(.showcase-completed-duo-switch) .showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished { top: calc(2.60rem + env(safe-area-inset-top)); }
+.showcase-multilingual-device:has(> .realtime-showcase-header.is-readonly):has(.showcase-completed-duo-switch) .showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished { top: calc(2.01rem + env(safe-area-inset-top)); }
+
+/* 首页空闲态背景（727:4831 / 727:4984，2026-09-16 版）：设备底色 #f8faf9；山景 image 109385 铺满整帧
+   （521×1042，顶 -46 / 底 -70），页头与语言行不再有白底，直接压在图上。 */
+.showcase-multilingual-device.realtime-showcase-device--welcome {
+  background: #f8faf9;
+}
+
+.showcase-multilingual-device.realtime-showcase-device--welcome .realtime-showcase-landscape {
+  top: -0.46rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  /* 9:16 时 cover 按宽铺成 521×1042、底部裁掉 70，与稿一致；更高的竖屏（如浏览器窄高窗口）也始终铺到底。 */
+  background: url("/showcase/mountain-background.png") center top / cover no-repeat;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* 727:4475：正在播报的句子一律 #3a9d3e 黑体 + 下划线 + 音量图标，最新一句的大卡片也一样（24 号）。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured .showcase-translation-line.is-primary.is-playing {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  width: fit-content;
+  max-width: 100%;
+  padding-bottom: 0.02rem;
+  border-bottom: 0.01rem solid #3a9d3e;
+  border-radius: 0;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured .showcase-translation-line.is-primary.is-playing::before {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  content: "";
+  background: url("/showcase/volume-speaking.svg") center / contain no-repeat;
+}
+
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured .showcase-translation-line.is-primary.is-playing,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured .showcase-translation-line.is-primary.is-playing strong,
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-multilingual-row--featured .showcase-translation-line.is-primary.is-playing .showcase-translation-playback-fragment {
+  color: #3a9d3e;
+  font-weight: 900;
+}
+
+/* 727:4475：语言 chips 固定停靠在译文区底部（左 32、底部白条上方 24，即卡片里 chips 的位置）；
+   轨道底部为 chips 留出 24 + 16 + 24。 */
+.showcase-multilingual-device .showcase-row-languages--docked {
+  position: absolute;
+  right: 0.32rem;
+  bottom: calc(1.35rem + env(safe-area-inset-bottom));
+  left: 0.32rem;
+  z-index: 5;
+}
+
+.showcase-multilingual-device--solo:is(
+  .realtime-showcase-device--connecting,
+  .realtime-showcase-device--recording,
+  .realtime-showcase-device--processing
+) .showcase-multilingual-transcript .realtime-showcase-transcript-track {
+  padding-bottom: 0.72rem;
+}
+
+/* 录音态始终在右侧预留图标列；TTS 切换只改变片段颜色，不改变文字布局。 */
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary,
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary.is-playing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 0.2rem;
+  column-gap: 0.1rem;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  justify-content: start;
+  padding-bottom: 0.02rem;
+  border: 0;
+  border-radius: 0;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary::before,
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary.is-playing::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin-top: 0.01rem;
+  visibility: hidden;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary strong {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  overflow: visible;
+  font: 400 0.2rem / 0.26rem "Songti SC", "Noto Serif SC Variable", serif;
+  font-weight: 400 !important;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary strong:lang(zh) {
+  font-size: 0.22rem;
+  line-height: 0.28rem;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary strong:lang(en) {
+  font-size: 0.24rem;
+  line-height: 0.3rem;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary .showcase-translation-playback-fragment {
+  font: inherit !important;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .showcase-translation-line.is-primary.is-playing::before {
+  visibility: visible;
+  color: #3a9d3e;
+}
+
+/* 统一将历史/最新行的灰色正文改为黑色；双麦乙侧保留白字，只有实际播放片段标绿。
+   结束页仍沿用点击回放的绿色，回放结束后也恢复黑色。 */
+.showcase-multilingual-device .showcase-multilingual-transcript .realtime-showcase-source:not(.is-playing):not(.showcase-duo-panel--b *),
+.showcase-multilingual-device .showcase-multilingual-transcript .showcase-translation-line:not(.is-playing):not(.showcase-duo-panel--b *),
+.showcase-multilingual-device .showcase-multilingual-transcript .showcase-translation-line:not(.is-playing) :is(strong, .showcase-translation-playback-fragment):not(.showcase-duo-panel--b *),
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-translation-line, .showcase-translation-line strong, .showcase-translation-playback-fragment):not(.showcase-duo-panel--b *) {
+  color: #0a0f0a !important;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line .showcase-translation-playback-fragment.is-playing {
+  color: #3a9d3e !important;
+}
+
+/* ====================================================================================
+   结束页播放态：原文与译文点击播放的效果一致 —— 文字 #568157，喇叭都在页脚右侧同一位置并带脉冲动效；
+   页脚不再显示时间。单麦行与双麦行相同。
+   ==================================================================================== */
+.showcase-multilingual-transcript--finished .showcase-row-footer > time {
+  display: none;
+}
+
+@keyframes showcase-speaker-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.88); }
+}
+
+/* 原文播放中：文字同色；它自己的喇叭放到页脚右侧（与译文喇叭同位），译文的静态喇叭先隐藏。 */
+.showcase-multilingual-transcript--finished .showcase-source-playback.is-playing,
+.showcase-multilingual-transcript--finished .showcase-source-playback.is-playing .realtime-showcase-typewriter {
+  color: #568157;
+}
+
+.showcase-multilingual-transcript--finished :is(.showcase-multilingual-row, .showcase-duo-bubble-body) .showcase-source-playback .showcase-sentence-playback-state:has(.is-playing) {
+  position: absolute;
+  right: 0;
+  bottom: 0.01rem;
+  display: block;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin: 0;
+  opacity: 1;
+  background: url("/showcase/volume-side-a.svg") center / contain no-repeat;
+}
+
+.showcase-multilingual-transcript--finished .showcase-duo-bubble--b .showcase-source-playback .showcase-sentence-playback-state:has(.is-playing) {
+  background-image: url("/showcase/volume-side-b.svg");
+}
+
+.showcase-multilingual-transcript--finished .showcase-source-playback .showcase-sentence-playback-state:has(.is-playing) .showcase-sentence-playback-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}
+
+.showcase-multilingual-transcript--finished :is(.showcase-multilingual-row, .showcase-duo-bubble):has(.showcase-source-playback.is-playing) .showcase-translation-line .showcase-sentence-playback-state {
+  visibility: hidden;
+}
+
+/* 播放中的喇叭脉冲：结束页页脚喇叭（原文 / 译文）与录音态右侧喇叭。 */
+.showcase-multilingual-transcript--finished .showcase-sentence-playback-state:has(.is-playing),
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing::before {
+  animation: showcase-speaker-pulse 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-multilingual-transcript--finished .showcase-sentence-playback-state:has(.is-playing),
+  .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing::before {
+    animation: none;
+  }
+}
+
+/* 喇叭动效：声波 0 → 1 → 2 道循环（每档 1/3 周期），图形用遮罩、颜色用背景色，任何配色下通用。 */
+@keyframes showcase-speaker-waves {
+  0%, 100% { -webkit-mask-image: url("/showcase/speaker-wave-0.svg"); mask-image: url("/showcase/speaker-wave-0.svg"); }
+  33.33% { -webkit-mask-image: url("/showcase/speaker-wave-1.svg"); mask-image: url("/showcase/speaker-wave-1.svg"); }
+  66.67% { -webkit-mask-image: url("/showcase/speaker-wave-2.svg"); mask-image: url("/showcase/speaker-wave-2.svg"); }
+}
+
+/* 录音态右侧喇叭：与正在播放的 TTS 片段同为绿色。 */
+.showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing::before {
+  background: currentColor;
+  -webkit-mask: url("/showcase/speaker-wave-2.svg") center / contain no-repeat;
+  mask: url("/showcase/speaker-wave-2.svg") center / contain no-repeat;
+  animation: showcase-speaker-waves 1.2s linear infinite;
+  transform: none;
+}
+
+/* 结束页页脚喇叭（译文 / 原文）：甲 #365337、乙 #424f98。 */
+.showcase-multilingual-transcript--finished .showcase-sentence-playback-state:has(.is-playing) {
+  background: #365337;
+  -webkit-mask: url("/showcase/speaker-wave-2.svg") center / contain no-repeat;
+  mask: url("/showcase/speaker-wave-2.svg") center / contain no-repeat;
+  animation: showcase-speaker-waves 1.2s linear infinite;
+  transform: none;
+}
+
+.showcase-multilingual-transcript--finished .showcase-duo-bubble--b .showcase-sentence-playback-state:has(.is-playing) {
+  background: #424f98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-line.is-primary.is-playing::before,
+  .showcase-multilingual-transcript--finished .showcase-sentence-playback-state:has(.is-playing) {
+    animation: none;
+  }
+}
+
+/* 原文与译文使用相同的右侧喇叭留白，播放切换不改变正文宽度。 */
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) :is(.showcase-multilingual-row, .showcase-duo-bubble) .realtime-showcase-source {
+  box-sizing: border-box;
+  padding-inline-end: 0.3rem;
+  font-size: 0.16rem;
+  line-height: 0.24rem;
+}
+
+/* 整段模式保留短暂的音频交接高亮；不改变真实播放片段和分段状态。 */
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-list.is-paragraph-highlight .showcase-translation-line :is(strong, .showcase-translation-playback-fragment) {
+  transition: color 150ms ease-out;
+}
+
+.showcase-multilingual-device .showcase-multilingual-transcript:not(.showcase-multilingual-transcript--completed) .showcase-translation-list.is-paragraph-highlight .showcase-translation-line.is-playing :is(strong, .showcase-translation-playback-fragment) {
+  color: #3a9d3e !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-translation-list.is-paragraph-highlight .showcase-translation-line :is(strong, .showcase-translation-playback-fragment) {
+    transition: none !important;
+  }
+}
+
+/* Short phone screens in landscape still use the entire viewport. Keep the start control visible. */
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse) {
+  .showcase-multilingual-device.realtime-showcase-device--welcome .realtime-showcase-landscape {
+    background: linear-gradient(to bottom, #fff 0%, #fff 35%, rgba(255, 255, 255, 0.86) 62%, transparent 100%),
+      url("/showcase/mountain-background.png") center bottom / cover no-repeat;
+  }
+  .showcase-multilingual-welcome {
+    top: calc(2.0rem + env(safe-area-inset-top));
+  }
+  .showcase-multilingual-device.realtime-showcase-device--welcome .realtime-showcase-session-control {
+    right: calc(0.36rem + env(safe-area-inset-right));
+    bottom: calc(0.4rem + env(safe-area-inset-bottom));
+    left: auto;
+    transform: none;
+    background: #365337;
+  }
+}
+
+.showcase-target-language-list.is-single-select i,
+.showcase-target-language-list.is-single-select button.is-selected i {
+  position: relative;
+  border: 1px solid #aab5af;
+  border-radius: 50%;
+  background: #fff;
+}
+.showcase-target-language-list.is-single-select button.is-selected i {
+  border-color: #365337;
+  background: #365337;
+}
+.showcase-target-language-list.is-single-select button.is-selected i::after {
+  content: '';
+  position: absolute;
+  inset: 0.035rem;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.showcase-monitor-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.showcase-monitor-volume input {
+  flex: 1;
+  min-width: 0;
+  accent-color: #365337;
+}
+.showcase-monitor-volume span {
+  min-width: 3em;
+  text-align: right;
+  font-size: 0.12rem;
+  font-variant-numeric: tabular-nums;
+}

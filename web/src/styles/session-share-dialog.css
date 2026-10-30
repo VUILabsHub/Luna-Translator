@@ -1,0 +1,24 @@
+.session-share-overlay{position:fixed;inset:0;z-index:1000;background:rgba(10,15,10,.35);display:flex;align-items:center;justify-content:center;padding:0.2rem}
+.session-share-dialog{position:relative;width:min(4.2rem,100%);max-height:90dvh;overflow:auto;padding:0.3rem 0.24rem 0.22rem;border-radius:0.2rem;background:#fff;color:#0a0f0a;text-align:center;font-family:Poppins,"Songti SC","Noto Serif SC Variable",serif;box-shadow:0 0.12rem 0.48rem #0a0f0a18}
+.session-share-dialog h2{font-size:0.2rem;font-weight:500;margin:0 0 0.12rem}.session-share-dialog p{font-size:0.13rem;line-height:1.7;color:#667066;margin:0.12rem 0}.session-share-dialog button,.session-share-options a{border:0.01rem solid #dfe1df;background:#fff;color:#365337;border-radius:0.12rem;padding:0.1rem 0.12rem;font:inherit;font-size:0.13rem;cursor:pointer;text-decoration:none;min-height:0.44rem}.session-share-dialog .session-share-close{position:absolute;right:0.08rem;top:0.06rem;border:0;font-size:0.24rem;padding:0.04rem 0.12rem}.session-share-qr{display:block;width:min(2.4rem,100%);aspect-ratio:1;margin:0.12rem auto}.session-share-url{display:block;overflow-wrap:anywhere;font-size:0.12rem;color:#568157}.session-share-options{display:flex;gap:0.08rem;justify-content:center;flex-wrap:wrap;margin-top:0.2rem}.session-share-dialog .session-share-finish{color:#6d3c34}.session-share-dialog [role=status]{display:block;margin-top:0.08rem;font-size:0.12rem;color:#568157}.showcase-multilingual-settings .live-share-menu{display:block;box-sizing:border-box;width:100%;height:0.36rem;padding:0.06rem 0;color:#0a0f0a;border:0.01rem solid #dfe1df;border-radius:99.99rem;background:#fff;font:400 0.14rem/0.24rem "Songti SC","Noto Serif SC Variable",serif;text-align:center;text-decoration:none;cursor:pointer}.showcase-multilingual-settings .live-share-menu:disabled{opacity:.55;cursor:wait}.showcase-multilingual-settings .live-share-menu:focus-visible{outline:0.02rem solid #365337;outline-offset:0.03rem}.live-share-menu-error{font-size:0.12rem;color:#6d3c34}
+/* Guest controls retain the original three-column footprint. Only the volume
+   position is interactive; recording/finish positions remain empty. */
+.showcase-session-action--guest-placeholder{visibility:hidden;pointer-events:none}
+
+.showcase-session-actions > button[hidden]{display:none}
+
+.session-share-dialog button:disabled{opacity:.45;cursor:default}
+.session-share-dialog.is-revoked p{color:#999f99}
+.session-share-dialog.is-revoked .session-share-url{color:#999f99;text-decoration:line-through}
+.session-share-revoked-qr{display:flex;align-items:center;justify-content:center;border-radius:.12rem;background:#f2f4f2;color:#8b948b;font-size:.16rem}
+/* Record sharing stays legible even when the showcase's root rem shrinks on phones. */
+.session-share-dialog.canary-record-share-panel{box-sizing:border-box;width:min(420px,100%);padding:28px 20px 20px;border-radius:20px;font-size:14px}
+.canary-record-share-panel h2{font-size:20px;line-height:1.4;margin:4px 24px 12px}
+.canary-record-share-panel p{font-size:13px;line-height:1.7;margin:12px 0}
+.canary-record-share-panel .session-share-qr{width:min(240px,100%);margin:12px auto}
+.canary-record-share-panel .session-share-revoked-qr{font-size:16px;border-radius:12px}
+.canary-record-share-panel .session-share-url{font-size:12px;line-height:1.6}
+.canary-record-share-panel .session-share-options{gap:8px;margin-top:20px}
+.canary-record-share-panel button,.canary-record-share-panel .session-share-options a{font-size:13px;line-height:1.4;min-height:44px;padding:10px 12px;border-radius:12px}
+.canary-record-share-panel .session-share-close{right:4px;top:4px;min-width:44px;font-size:24px;padding:4px 12px}
+.canary-record-share-panel [role=status]{margin-top:8px;font-size:12px;line-height:1.6}

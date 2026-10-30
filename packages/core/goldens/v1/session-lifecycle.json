@@ -1,0 +1,116 @@
+{
+  "contract": "realtime-text-sync",
+  "version": 1,
+  "reducer": "sessionCompletion",
+  "note": "protocol-09：契约 §2.3 的 session_ending / session_closed / asr_error 生命周期。回放 @simultrans/core/sessionCompletion 的 reduceSessionCompletionEvent（会话层 useMultilingualSession 消费的就是它），初始状态 emptySessionCompletionState()。",
+  "cases": [
+    {
+      "id": "S1",
+      "rule": "L1",
+      "title": "限时结束：session_ending 的 reason 就是本场结束原因，且属于正常收尾（不出告警）",
+      "events": [
+        { "type": "session_ending", "reason": "session_time_limit" },
+        { "type": "session_closed", "reason": "session_time_limit" }
+      ],
+      "expected": { "reason": "session_time_limit", "warning": "" }
+    },
+    {
+      "id": "S2",
+      "rule": "L1",
+      "title": "先到的原因是事实源头：session_ending 已宣告后，关闭帧折算出的原因不得覆盖",
+      "events": [
+        { "type": "session_ending", "reason": "session_time_limit" },
+        { "type": "session_closed", "reason": "client_disconnected" }
+      ],
+      "expected": { "reason": "session_time_limit", "warning": "" }
+    },
+    {
+      "id": "S3",
+      "rule": "L2",
+      "title": "异常关闭：记 client_disconnected，并把结束说明挂成告警",
+      "events": [
+        { "type": "session_closed", "reason": "client_disconnected" }
+      ],
+      "expected": {
+        "reason": "client_disconnected",
+        "warning": "客户端连接中断，本次同传已结束。"
+      }
+    },
+    {
+      "id": "S4",
+      "rule": "L2",
+      "title": "闭集外的关闭原因（closeWSWithError 把错误 code 当 reason）收敛到异常侧",
+      "events": [
+        { "type": "session_closed", "reason": "ws_ticket_invalid" }
+      ],
+      "expected": {
+        "reason": "client_disconnected",
+        "warning": "客户端连接中断，本次同传已结束。"
+      }
+    },
+    {
+      "id": "S5",
+      "rule": "L2",
+      "title": "没带 reason 的关闭帧按客户端正常收尾，不编造异常",
+      "events": [
+        { "type": "session_closed" }
+      ],
+      "expected": { "reason": "client_stopped", "warning": "" }
+    },
+    {
+      "id": "S6",
+      "rule": "L3",
+      "title": "asr_error 折出的告警只提示，不写结束原因；异常关闭不覆盖已有告警",
+      "events": [
+        { "type": "warning", "warning": "源 ASR 已停止，译文继续" },
+        { "type": "session_closed", "reason": "provider_failed" }
+      ],
+      "expected": { "reason": "provider_failed", "warning": "源 ASR 已停止，译文继续" }
+    },
+    {
+      "id": "S7",
+      "rule": "L3",
+      "title": "重连中的告警在原文恢复后撤掉",
+      "events": [
+        { "type": "warning", "warning": "ASR 会话中断，正在自动重连（2/5）" },
+        { "type": "source_done", "utteranceId": "u1", "text": "恢复了。" }
+      ],
+      "expected": { "reason": "", "warning": "" }
+    },
+    {
+      "id": "S8",
+      "rule": "L3",
+      "title": "重试用尽后的告警不可恢复：译文继续，提示条常驻",
+      "events": [
+        { "type": "warning", "warning": "源 ASR 已停止，译文继续" },
+        { "type": "source_update", "utteranceId": "u1", "text": "   " },
+        { "type": "translation_done", "utteranceId": "u1", "text": "Still going." }
+      ],
+      "expected": { "reason": "", "warning": "源 ASR 已停止，译文继续" }
+    },
+    {
+      "id": "S10",
+      "rule": "L2",
+      "title": "duo-x6：额度耗尽进了闭集，关闭帧的 quota_exhausted 保留自己（仍属异常侧）",
+      "events": [
+        { "type": "session_closed", "reason": "quota_exhausted" }
+      ],
+      "expected": {
+        "reason": "quota_exhausted",
+        "warning": "今日额度已用尽，本次同传已结束。"
+      }
+    },
+    {
+      "id": "S9",
+      "rule": "L1",
+      "title": "会话进行中的普通事件不改结束态",
+      "events": [
+        { "type": "bridge_ready" },
+        { "type": "source_done", "utteranceId": "u1", "text": "你好。" },
+        { "type": "translation_done", "utteranceId": "u1", "text": "Hi." },
+        { "type": "state", "state": "finished" }
+      ],
+      "expected": { "reason": "", "warning": "" }
+    }
+  ]
+}

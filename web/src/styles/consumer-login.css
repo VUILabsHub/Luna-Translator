@@ -1,0 +1,486 @@
+/* Consumer web 登录页 — 像素级对照 Figma「数博会演示」918:3550 及其状态稿
+ * （921:3897 / 921:4001 / 921:4051 / 967:7150，组件 921:3826 / 921:3873 /
+ * 921:3878 / 971:8024）。设计稿画板 521×926，即 9:16。
+ *
+ * 自适应策略：全站 rem（见 styles/root-scale.css）：1rem = 设计稿 100px，
+ * 根字号随设备层宽度变化，稿上的 N px 直接写成 N/100 rem，任意宽度下整页等比缩放。
+ * 默认样式即桌面/横屏的 9:16 手机框（5.21rem 宽）居中；手机竖屏用与
+ * root-scale.css 相同的媒体查询切成撑满视口。描边 0.01rem（稿上 1px）。
+ *
+ * 布局是流式的：内容列用 padding-top 落在稿上 y=160，设备层 min-height 撑到视口，
+ * 内容更高（矮视口、弹出键盘、提示行出现）时设备层跟着长高、页面可滚动，
+ * 不会被裁掉。只有顶部白条和标志是绝对定位的装饰层。 */
+
+.consumer-login-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #eef2f0; /* 桌面外框底色，与首页一致 */
+  color: #0a0f0a;
+  font-family: "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 设备层：默认是 9:16 手机框。根字号 = 设备层宽 / 5.21，所以 5.21rem 正好是框宽。 */
+.consumer-login-device {
+  position: relative;
+  flex: none;
+  width: 5.21rem;
+  min-height: 9.26rem;
+  overflow: hidden;
+  border-radius: 0.24rem;
+  box-shadow: 0 0.24rem 0.7rem rgba(29, 61, 48, 0.17);
+  /* 600×1200 山峦图按宽铺满：521 宽时正好 521×1042，与画板 image 109386 同尺寸。 */
+  background: #fff url("/showcase/mountain-background.png") top center / cover no-repeat;
+}
+
+/* 手机/平板竖屏：设备层撑满视口。媒体查询与 root-scale.css 完全一致。 */
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  .consumer-login-page {
+    padding: 0;
+  }
+
+  .consumer-login-device {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* 顶部白条（Frame 2147225883，521×80）：状态栏 56 + 底部留白 24。 */
+.consumer-login-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(0.8rem + env(safe-area-inset-top, 0rem));
+  background: #fff;
+}
+
+/* VUILabs 标志组（图层 1）：left 34、top 28，整组 38.46×24。 */
+.consumer-login-vui {
+  position: absolute;
+  top: calc(0.28rem + env(safe-area-inset-top, 0rem));
+  left: 0.34rem;
+  width: 0.3846rem;
+  height: 0.24rem;
+}
+
+.consumer-login-vui img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* 内容列（Frame 2147225803）：top 160，左右内边距 36，纵向间距 24。
+   流式布局：用 padding-top 落到 y=160；底部留 0.36rem 让最后一行不贴边。 */
+.consumer-login-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.24rem;
+  width: 100%;
+  margin: 0;
+  padding: calc(1.6rem + env(safe-area-inset-top, 0rem)) 0.36rem calc(0.36rem + env(safe-area-inset-bottom, 0rem));
+  border: 0;
+}
+
+/* 上半组：品牌文案 + 输入区，间距 20。 */
+.consumer-login-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.consumer-login-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  width: 100%;
+}
+
+.consumer-login-brand-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.02rem;
+}
+
+/* 「您好,」Songti Light 24 / 行高 56，文本框固定 49 高。 */
+.consumer-login-hello {
+  margin: 0;
+  height: 0.49rem;
+  font: 300 0.24rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+/* 「一种声音，通行世界」Songti Regular 32 / 行高 56，文本框 48 高垂直居中。 */
+.consumer-login-title {
+  display: flex;
+  align-items: center;
+  height: 0.48rem;
+  margin: 0;
+  font: 400 0.32rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+/* 「One Voice, Every Language」Poppins Regular 14/22，三级文字色 45%。 */
+.consumer-login-sub {
+  margin: 0;
+  font: 400 0.14rem / 0.22rem Poppins, -apple-system, "PingFang SC",
+    "Noto Sans SC Variable", sans-serif;
+  color: rgba(10, 15, 10, 0.45);
+  white-space: nowrap;
+}
+
+/* 输入区（Frame 2147225944）：两行胶囊，间距 12。 */
+.consumer-login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  width: 100%;
+}
+
+/* 胶囊输入框（组件 921:3873 / 921:3878）：#eef0ee 底 + 同色 0.01rem 描边，高 58，
+   左右内边距 24。Hover 底色 #f1f5f2；聚焦底色 #f1f5f2 + #568157 描边。 */
+.consumer-login-field {
+  display: flex;
+  align-items: center;
+  gap: 0.16rem;
+  box-sizing: border-box;
+  height: 0.58rem;
+  padding: 0 0.24rem;
+  border: 0.01rem solid #eef0ee;
+  border-radius: 99.99rem;
+  background: #eef0ee;
+  cursor: text;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+@media (hover: hover) {
+  /* 稿上手机号框的 Hover 变体（921:3873）不变色，只有验证码框（921:3878）变 #f1f5f2。 */
+  .consumer-login-field:not(.consumer-login-phone):hover {
+    background: #f1f5f2;
+  }
+}
+
+.consumer-login-field:focus-within {
+  border-color: #568157;
+  background: #f1f5f2;
+}
+
+.consumer-login-phone {
+  width: 100%;
+}
+
+/* 固定 +86 前缀：Songti Bold 16/24 默认文字色。 */
+.consumer-login-phone-prefix {
+  flex: none;
+  font: 700 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+}
+
+.consumer-login-input {
+  flex: 1;
+  min-width: 0;
+  height: 0.24rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font: 400 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  outline: none;
+  appearance: none;
+}
+
+/* base.css 的 input:focus-visible 蓝色描边（0,1,1）会盖过类选择器；聚焦态由胶囊描边表达。 */
+.consumer-login-field .consumer-login-input:focus,
+.consumer-login-field .consumer-login-input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.consumer-login-input::placeholder {
+  color: rgba(10, 15, 10, 0.45);
+  opacity: 1;
+}
+
+.consumer-login-code-row {
+  display: flex;
+  gap: 0.12rem;
+  width: 100%;
+}
+
+.consumer-login-code {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 「获取验证码」（组件 971:8024）：透明底 + #568157 0.01rem 描边，高 58，宽 130（文案更长时按内边距 24 撑开），
+   Songti Regular 16/24 品牌绿。Hover 描边 #9ab39a、文字 #789a79；禁用（倒计时/在途）沿用 hover 的弱化色。 */
+.consumer-login-send {
+  flex: none;
+  box-sizing: border-box;
+  width: 1.3rem;
+  min-width: 0;
+  height: 0.58rem;
+  padding: 0 0.12rem;
+  border: 0.01rem solid #568157;
+  border-radius: 99.99rem;
+  background: transparent;
+  font: 400 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #568157;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+@media (hover: hover) {
+  .consumer-login-send:hover:not(:disabled) {
+    border-color: #9ab39a;
+    color: #789a79;
+  }
+}
+
+.consumer-login-send:disabled {
+  border-color: #9ab39a;
+  color: #789a79;
+  cursor: not-allowed;
+}
+
+/* 提示行（921:4046 / 921:4098）：紧贴验证码行下方，最小高 28、Songti Regular 16/24，
+   文字起点与输入框内文字对齐（24 内边距 + 1 描边）。允许换行：后端限流文案会原样
+   进入这里，不能被省略号截断。
+   语气色：info（验证码已发送 / 测试环境验证码）用 #365337，白底对比度约 8:1，
+   稿上 25% 墨色的引导提示对必读信息太淡；error 用稿上的 #ff4040。 */
+.consumer-login-hint,
+.consumer-login-notice {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0.28rem;
+  margin: 0;
+  padding: 0 0.25rem;
+  font: 400 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #365337;
+  overflow-wrap: anywhere;
+}
+
+.consumer-login-hint.is-error,
+.consumer-login-notice {
+  color: #ff4040;
+}
+
+/* 校验引导（如「请输入11位手机号」，921:4001）：稿上的 25% 墨色。 */
+.consumer-login-hint.is-guide {
+  color: rgba(10, 15, 10, 0.25);
+}
+
+/* 下半组：主按钮 + 协议行，间距 12。 */
+.consumer-login-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  width: 100%;
+}
+
+/* 「登录 / 注册」（组件 921:3826）：全宽胶囊，内边距 16/24 → 高 56，Songti Bold 16/24 反白 #f8faf8。
+   默认 #365337；失效（未取码/未填码）#bbcdbc；Hover 在 #365337 上叠 20% 黑。 */
+.consumer-login-cta {
+  width: 100%;
+  height: 0.56rem;
+  padding: 0 0.24rem;
+  border: 0;
+  border-radius: 99.99rem;
+  background: #365337;
+  font: 700 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #f8faf8;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.consumer-login-cta.is-idle {
+  background: #bbcdbc;
+}
+
+@media (hover: hover) {
+  .consumer-login-cta:not(.is-idle):hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) #365337;
+  }
+}
+
+/* 键盘焦点环统一用品牌绿；链接选择器写成 (0,2,1) 以盖过 base.css 的 a:focus-visible 蓝环。 */
+.consumer-login-send:focus-visible,
+.consumer-login-cta:focus-visible,
+.consumer-login-consent-cancel:focus-visible,
+.consumer-login-consent-confirm:focus-visible,
+.consumer-login-consent-text a:focus-visible,
+.consumer-login-consent-body a:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.03rem;
+}
+
+/* 协议行（Frame 2147226441）：20×20 勾选图标 + 6 间距 + Songti Regular 16/24 黑字，整行居中。 */
+.consumer-login-consent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 原生 checkbox 只保留可访问性与键盘操作，视觉由 Figma 的「正负选」图标承担。 */
+.consumer-login-consent input[type="checkbox"] {
+  position: absolute;
+  width: 0.01rem;
+  height: 0.01rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.consumer-login-checkbox {
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+  background: url("/showcase/checkbox-off.svg") center / contain no-repeat;
+}
+
+.consumer-login-consent input[type="checkbox"]:checked + .consumer-login-checkbox {
+  background-image: url("/showcase/checkbox-on.svg");
+}
+
+.consumer-login-consent input[type="checkbox"]:focus-visible + .consumer-login-checkbox {
+  border-radius: 0.04rem;
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.02rem;
+}
+
+.consumer-login-consent-text {
+  display: flex;
+  align-items: center;
+  height: 0.28rem;
+  font: 400 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #000;
+  white-space: nowrap;
+}
+
+.consumer-login-consent-text a {
+  font-weight: 700;
+  color: #568157;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+
+/* 协议确认弹窗（967:7150）：14% 黑遮罩盖住整个设备层；白卡 top 287、宽 466、圆角 24、内边距 24。
+   设备层比视口高时遮罩随之覆盖全部内容；打开时焦点落到「同意并继续」，浏览器会把卡片滚进视口。 */
+.consumer-login-consent-dialog {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.consumer-login-consent-card {
+  position: absolute;
+  top: 2.87rem;
+  left: 50%;
+  box-sizing: border-box;
+  width: 4.66rem;
+  padding: 0.24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+  border-radius: 0.24rem;
+  background: #fff;
+  transform: translateX(-50%);
+}
+
+.consumer-login-consent-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+/* 标题 Songti Bold 24 / 行高 56，文本框 32 高垂直居中。 */
+.consumer-login-consent-title {
+  display: flex;
+  align-items: center;
+  height: 0.32rem;
+  margin: 0;
+  font: 700 0.24rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+.consumer-login-consent-body {
+  margin: 0;
+  font: 400 0.14rem / 0.28rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.55);
+}
+
+.consumer-login-consent-body a {
+  color: #568157;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.consumer-login-consent-actions {
+  display: flex;
+  gap: 0.1rem;
+  width: 100%;
+}
+
+/* 两个等宽胶囊按钮，内边距 16/24 → 高 56，Songti Bold 16/24。 */
+.consumer-login-consent-cancel,
+.consumer-login-consent-confirm {
+  flex: 1 1 50%;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 0.56rem;
+  padding: 0 0.24rem;
+  border-radius: 99.99rem;
+  font: 700 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.consumer-login-consent-cancel {
+  border: 0.01rem solid #568157;
+  background: #fff;
+  color: #0a0f0a;
+}
+
+.consumer-login-consent-confirm {
+  border: 0;
+  background: #365337;
+  color: #f8faf8;
+}
+
+@media (hover: hover) {
+  .consumer-login-consent-confirm:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) #365337;
+  }
+}

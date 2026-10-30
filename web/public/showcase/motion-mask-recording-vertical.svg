@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" width="428" height="147" viewBox="0 0 428 147" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="428" height="147" fill="url(#verticalFade)"/>
+  <defs>
+    <linearGradient id="verticalFade" x1="214" y1="0" x2="214" y2="150.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0.131709" stop-color="#D9D9D9" stop-opacity="0"/>
+      <stop offset="0.29225" stop-color="#737373"/>
+      <stop offset="0.664567" stop-color="#737373"/>
+      <stop offset="0.872929" stop-color="#737373" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

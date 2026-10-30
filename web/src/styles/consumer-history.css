@@ -1,0 +1,256 @@
+/* C 端历史记录列表页 — 像素级对照 Figma 971:7559（页框/顶栏见 styles/consumer-page.css）。
+ * 内容列 top 103、左右 48：「历史记录」Songti Black 36/56（框高 56）；gap 36；
+ * 组（Frame 2147226475/2147226476）gap 12：组标题 Songti Bold 16/56（框高 31）墨色 55%；
+ * 卡片（Frame 2147226380）425×94 gap 12。全部按 1rem = 设计稿 100px 书写。
+ * 详情页就绪后由 FinishedSessionView 渲染，这里只补底部「删除此记录」按钮样式。 */
+
+/* 「历史记录」/「同传记录」标题：Songti Black 36 / 行高 56，文本框 56 高。 */
+.consumer-history-title {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: 0.56rem;
+  margin: 0;
+  font: 900 0.36rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+/* 组容器（Frame 2147226484）：标题下 36，组间 12。 */
+.consumer-history-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin-top: 0.36rem;
+}
+
+.consumer-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+/* 组标题「今天」「更早记录」：Songti Bold 16 / 行高 56，文本框 31 高，墨色 55%。 */
+.consumer-history-section-title {
+  display: flex;
+  align-items: center;
+  height: 0.31rem;
+  margin: 0;
+  font: 700 0.16rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.55);
+  white-space: nowrap;
+}
+
+.consumer-history-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.consumer-history-entry {
+  margin: 0;
+  padding: 0;
+}
+
+/* 卡片（Frame 2147226380）：#f8f8f8 底 + 0.01rem #e6e9e6 描边，圆角 7.381，高 94，
+   内边距 16（减去描边 0.01rem 使内容盒仍为 62 高：行1 24 + gap 16 + 行2 22）。
+   整张卡片是链接；hover 底色 #e6ece6。 */
+.consumer-history-entry-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-height: 1.1rem;
+  gap: 0.08rem;
+  padding: calc(0.16rem - 0.01rem);
+  /* 稿上是 0.308px 的细描边，按 1px 线 31% 覆盖率还原。 */
+  border: 0.01rem solid rgba(230, 233, 230, 0.31);
+  border-radius: 0.0738rem;
+  background: #f8f8f8;
+  color: #0a0f0a;
+  text-decoration: none;
+  transition: background-color 0.16s ease;
+}
+
+@media (hover: hover) {
+  .consumer-history-entry-link:hover {
+    background: #e6ece6;
+  }
+}
+
+.consumer-history-entry-link:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.02rem;
+}
+
+/* 行1（Frame 2147226397，高 24）：时间 Poppins SemiBold 14/22 墨色；时长 Poppins 16/24 黑 45%。 */
+.consumer-history-entry-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.12rem;
+  height: 0.24rem;
+}
+
+.consumer-history-entry-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+  color: #0a0f0a;
+  font: 700 0.18rem / 0.26rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.consumer-history-entry-time {
+  font: 600 0.14rem / 0.22rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+.consumer-history-entry-duration {
+  font: 400 0.16rem / 0.24rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  color: rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
+/* 行2（Frame 2147226396，高 22）：模式 icon 20 + 文案 Songti 14/22 墨色 45%（gap 6）；
+   目标语言母语名 Poppins 14/22 墨色 55%，用「 / 」连接。 */
+.consumer-history-entry-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.12rem;
+  height: 0.22rem;
+}
+
+.consumer-history-entry-mode {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 0.06rem;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.45);
+  white-space: nowrap;
+}
+
+.consumer-history-entry-mode img {
+  display: block;
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.consumer-history-entry-languages {
+  min-width: 0;
+  overflow: hidden;
+  font: 400 0.14rem / 0.22rem Poppins, -apple-system, "PingFang SC", "Noto Sans SC Variable", sans-serif;
+  color: rgba(10, 15, 10, 0.55);
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 空态 / 加载 / 出错：设计稿未含，用 Songti 14/22 墨色 45% 居中，落在标题下 36 处。 */
+.consumer-history-blank,
+.consumer-history-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.06rem;
+  margin-top: 0.36rem;
+  padding: 0.24rem 0;
+  text-align: center;
+}
+
+.consumer-history-blank p,
+.consumer-history-state p {
+  margin: 0;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.45);
+  overflow-wrap: anywhere;
+}
+
+.consumer-history-state.is-error p {
+  color: #0a0f0a;
+}
+
+/* 次按钮（重新加载 / 删除此记录）：白底 0.01rem #dfe1df 胶囊，Songti 14/24 墨色，高 36。 */
+.consumer-history-retry,
+.consumer-history-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 0.76rem;
+  height: 0.36rem;
+  margin: 0;
+  padding: 0 0.16rem;
+  border: 0.01rem solid #dfe1df;
+  border-radius: 99.99rem;
+  background: #fff;
+  font: 400 0.14rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.consumer-history-retry {
+  margin-top: 0.1rem;
+}
+
+@media (hover: hover) {
+  .consumer-history-retry:hover,
+  .consumer-history-delete:hover {
+    background: #f1f5f2;
+  }
+}
+
+.consumer-history-retry:focus-visible,
+.consumer-history-delete:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.03rem;
+}
+
+.consumer-history-delete:disabled {
+  color: rgba(10, 15, 10, 0.45);
+  cursor: default;
+}
+
+/* 详情页底部「删除此记录」：挂在 FinishedSessionView 的 extra 槽（.showcase-finished-extras）里，
+   跟随该容器的像素尺寸，这里只定按钮自身与错误提示。 */
+.showcase-finished-extras .consumer-history-delete {
+  align-self: flex-start;
+  min-width: 0.76rem;
+  height: 0.36rem;
+  padding: 0 0.16rem;
+  font-size: 0.14rem;
+  line-height: 0.24rem;
+}
+
+.consumer-history-delete-error {
+  margin: 0;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #ff4040;
+}
+
+.consumer-history-notice {
+  margin: 0 0 0.12rem;
+  color: #ff4040;
+  font: 400 0.14rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+.consumer-history-rejoinable{margin-bottom:24px}
+.consumer-history-entry-link.consumer-history-rejoin-button{box-sizing:border-box;width:100%;border:0;text-align:left;font:inherit;cursor:pointer}
+.consumer-history-rejoin-button:disabled{opacity:.6;cursor:wait}
+.consumer-history-rejoin-button:focus-visible{outline:2px solid #365337;outline-offset:3px}
+.consumer-history-rejoin-description{font-size:14px;line-height:22px;color:#657366}
+.consumer-history-rejoin-action{font-size:14px;line-height:22px;color:#365337;font-weight:600}
+.consumer-history-rejoin-notice{font-size:14px;line-height:22px;color:#657366}
+.consumer-history-rejoinable .consumer-history-entry-title{font-size:16px;line-height:24px}
+.consumer-history-rejoinable .consumer-history-entry-languages{font-size:14px;line-height:22px}
+.consumer-history-rejoinable .consumer-history-entry-foot{height:auto;min-height:22px}

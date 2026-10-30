@@ -1,0 +1,176 @@
+/* responsive: 跨页 @media 块（必须晚于全部基础规则加载） */
+@media (min-width: 981px) and (max-height: 900px) {
+  .audio-device-settings { margin-top: 20px; padding-top: 20px; }
+  .latency-metrics { margin-top: 10px; }
+  .session-stability { margin-top: 8px; }
+}
+
+@media (min-width: 981px) and (max-width: 1120px) {
+  .workspace { grid-template-columns: 300px minmax(0, 1fr); grid-template-rows: max(822px, calc(100vh - var(--topbar-height))) auto; }
+  .results-panel { min-height: 620px; }
+  .transcript { padding-inline: 18px; }
+  .lyric-line--timed { grid-template-columns: 1fr; align-items: start; gap: 5px; }
+  .diagnostics-panel__content { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1760px) {
+  .audio-latency-analysis__charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 980px) {
+  :root { --topbar-height: 68px; }
+  .app-shell { display: block; }
+  .topbar { padding: 0 22px; }
+  .workspace { display: grid; grid-template-columns: 280px minmax(0, 1fr); grid-template-rows: max(822px, calc(100vh - var(--topbar-height))) auto; }
+  .results-panel { min-height: 620px; }
+  .transcript { padding-inline: 16px; }
+  .lyric-line--timed { grid-template-columns: 1fr; align-items: start; gap: 5px; }
+  .diagnostics-panel__content { grid-template-columns: 1fr; }
+  .diagnostics-panel__content--wide-timelines .diagnostics-panel__side { grid-template-columns: 1fr; }
+  .diagnostics-panel__content--wide-timelines .session-stability { width: 100%; justify-self: stretch; justify-content: space-between; }
+  .latency-statistics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audio-latency-analysis__charts { grid-template-columns: 1fr; }
+  .audio-latency-analysis__detail { grid-template-columns: 1fr 1fr; }
+  .audio-latency-analysis__detail button { justify-self: start; }
+  .history-panel { padding: 30px 22px; }
+  .footer-bar { min-height: 58px; }
+  .comparison-main { padding: 38px 22px 56px; }
+  .comparison-intro { display: block; }
+  .comparison-summary { margin-top: 28px; border-left: 0; }
+  .comparison-summary div:first-child { padding-left: 0; }
+  .latency-filters { grid-template-columns: 1fr 1fr; }
+  .latency-time-filter { grid-column: 1 / -1; }
+  .latency-filter-summary { grid-column: 1 / -1; padding: 10px 0 0; border-top: 1px solid #dde3ec; border-left: 0; }
+  .latency-chart-grid { grid-template-columns: 1fr; }
+  .benchmark-main { padding: 38px 22px 60px; }
+  .benchmark-intro { display: block; }
+  .benchmark-principle { margin-top: 25px; }
+  .benchmark-form-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .metric-definition-tooltip { width: calc(100vw - 24px); }
+  .wordmark { gap: 7px; font-size: 24px; }
+  .wordmark-logo { width: 32px; height: 32px; }
+  .topbar { grid-template-columns: auto auto; justify-content: space-between; }
+  .topnav { gap: 2px; }
+  .topnav a { padding: 8px 7px; font-size: 11px; }
+  .workspace { display: block; }
+  /* 移动端面板已竖向堆叠，收起入口无意义：隐藏，保持原布局 */
+  .settings-collapse-toggle { display: none; }
+  .settings-panel { height: auto; max-height: none; overflow: visible; border-right: 0; border-bottom: 1px solid var(--line); padding: 28px 22px; }
+  .settings-panel h2 { margin-bottom: 24px; }
+  .language-pair-fields { grid-template-columns: 1fr; align-items: stretch; gap: 10px; }
+  .language-pair-fields .field > span { min-height: 0; }
+  .language-pair-fields .swap-button { margin: 0 auto; transform: rotate(90deg); }
+  .rtc-aec-mode { grid-template-columns: 1fr; }
+  .results-panel { min-height: 680px; }
+  .results-copy { padding: 28px 22px 104px; grid-template-columns: 1fr; }
+  .bilingual-transcript__heading { align-items: flex-start; flex-direction: column; gap: 6px; padding: 10px 12px; }
+  .bilingual-transcript__heading .session-audio-player { width: 100%; }
+  .session-audio-player .player-row audio { min-width: 0; }
+  .session-audio-player .download-button { display: none; }
+  .bilingual-transcript .lyric-line { padding: 10px 12px; }
+  .transcript { padding: 18px 4px; }
+  .session-control-capsule { bottom: 18px; }
+  .session-audio-notices { right: 22px; left: 22px; }
+  .diagnostics-panel { padding: 22px; }
+  .diagnostics-panel__header { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .diagnostics-panel__content { grid-template-columns: 1fr; }
+  .diagnostics-panel__content--wide-timelines .diagnostics-panel__side { grid-template-columns: 1fr; }
+  .diagnostics-panel__content--wide-timelines .session-stability { display: grid; grid-template-columns: 1fr 1fr; justify-self: stretch; padding: 0; }
+  .diagnostics-panel__content--wide-timelines .session-stability > div { justify-content: center; }
+  .audio-output { padding: 20px 22px 25px; }
+  .audio-title { gap: 10px; }
+  .trace-popover { width: calc(100cqw - 44px); }
+  .latency-kpis { grid-template-columns: 1fr 1fr; }
+  .latency-kpis--primary { grid-template-columns: 1fr; }
+  .latency-kpis > div:nth-child(odd) { border-left: 0; }
+  .latency-kpis > div:nth-child(n+3) { border-top: 1px solid #dce6f5; }
+  .latency-kpis > div:last-child { border-radius: 0 0 8px 0; }
+  .latency-kpis--primary > div { border-left: 0; }
+  .latency-kpis--primary > div:nth-child(n+2) { border-top: 1px solid #dce6f5; }
+  .latency-detail-grid--key-stages { grid-template-columns: 1fr; }
+  .latency-detail-grid--key-stages .metric-summary { border-left: 0; }
+  .latency-detail-grid--key-stages .metric-summary:nth-child(n+2) { border-top: 1px solid #e1e6ef; }
+  .latency-timeline-card { padding: 12px; }
+  .latency-timeline-card .trace-bars__header { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .latency-detail-grid--bridge { grid-template-columns: 1fr; }
+  .latency-statistics-grid { grid-template-columns: 1fr; }
+  .audio-latency-analysis { padding: 13px 12px; }
+  .audio-latency-analysis__header { flex-direction: column; gap: 8px; }
+  .audio-latency-analysis__controls { grid-template-columns: 1fr; }
+  .audio-latency-analysis__view-actions { flex-wrap: wrap; }
+  .audio-latency-analysis__charts { grid-template-columns: 1fr; }
+  .audio-latency-analysis__sample-count { display: flex; justify-content: flex-start; gap: 6px; padding: 0; }
+  .audio-latency-analysis__sample-count > span { margin: 0; }
+  .audio-latency-analysis__summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audio-latency-analysis__summary > div:nth-child(odd) { border-left: 0; }
+  .audio-latency-analysis__summary > div:nth-child(n+3) { border-top: 1px solid #e2e4ed; }
+  .audio-latency-analysis__summary > div:last-child { grid-column: 1 / -1; }
+  .audio-latency-analysis__chart { min-width: 620px; }
+  .audio-latency-analysis__insight { grid-template-columns: 1fr; }
+  .audio-latency-analysis__insight small { grid-column: 1; }
+  .audio-latency-analysis__detail { grid-template-columns: 1fr; }
+  .latency-detail-grid--bridge .metric-summary:nth-child(n) { border-top: 1px solid #e1e6ef; border-left: 0; }
+  .latency-detail-grid--bridge .metric-summary:first-child { border-top: 0; }
+  .trace-bars__legend { grid-template-columns: 1fr; }
+  .session-stability { grid-template-columns: 1fr 1fr; }
+  .session-stability > div:nth-child(3) { border-left: 0; border-top: 1px solid #e1e6ef; }
+  .session-stability > div:nth-child(4) { border-top: 1px solid #e1e6ef; }
+  .history-panel { padding: 28px 22px; }
+  .history-header { align-items: flex-start; flex-direction: column; }
+  .history-header p { max-width: 220px; line-height: 1.5; }
+  .history-actions { justify-content: flex-start; }
+  .history-toolbar { grid-template-columns: 1fr; align-items: stretch; }
+  .history-filter-summary { justify-content: space-between; }
+  .history-dialogue { grid-template-columns: 1fr; }
+  .history-audio__player { grid-template-columns: 1fr 34px; }
+  .history-audio__player > span { grid-column: 1 / -1; }
+  .history-audio__media { grid-template-columns: 1fr; }
+  .history-metrics { grid-template-columns: 1fr 1fr; }
+  .history-metrics--key-latency { grid-template-columns: 1fr; }
+  .history-archive-summary { align-items: stretch; flex-direction: column; }
+  .history-archive-actions { flex-wrap: wrap; }
+  .history-log-grid { grid-template-columns: minmax(0, 1fr); }
+  .history-log-list li { grid-template-columns: minmax(100px, 1fr) minmax(80px, .7fr); }
+  .history-archive-table > div { grid-template-columns: minmax(130px, 1fr) 72px; }
+  .history-archive-table > div > span { grid-column: 1 / -1; grid-row: 2; }
+  .batch-input-audio { grid-template-columns: 1fr; }
+  .batch-trace-row { grid-template-columns: 86px minmax(0, 1fr) 45px; gap: 8px; }
+  .batch-provider-results { padding: 12px; }
+  .batch-provider-result { padding: 12px; }
+  .batch-provider-summary { grid-template-columns: 1fr 1fr; }
+  .footer-bar { padding: 18px 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-bar span + span { padding: 0; border: 0; }
+  .comparison-main { padding: 30px 18px 48px; }
+  .comparison-intro { margin-bottom: 32px; }
+  .comparison-intro h1 { font-size: 32px; letter-spacing: -1px; }
+  .comparison-summary { overflow-x: auto; }
+  .comparison-summary div { min-width: 96px; padding: 0 16px; }
+  .comparison-section__header { display: block; }
+  .comparison-section__header > span { display: block; margin-top: 10px; }
+  .comparison-table-wrap { width: calc(100vw - 36px); }
+  .latency-filters { grid-template-columns: 1fr; }
+  .latency-time-filter { grid-column: auto; }
+  .latency-time-filter__inputs { grid-template-columns: 1fr; }
+  .latency-time-filter__inputs i { display: none; }
+  .latency-filter-summary { padding: 10px 0 0; border-top: 1px solid #dde3ec; border-left: 0; }
+  .latency-chart-panel__header { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .latency-source-summary { width: 100%; align-items: flex-start; flex-direction: column; }
+  .latency-chart-panel, .latency-stats-wrap { width: calc(100vw - 36px); }
+  .latency-chart-stage, .latency-chart { width: 620px; }
+  .benchmark-main { padding: 29px 18px 50px; }
+  .benchmark-intro h1 { font-size: 31px; letter-spacing: -1px; }
+  .benchmark-principle { padding-left: 15px; }
+  .benchmark-section-heading { display: block; }
+  .benchmark-section-heading > strong, .benchmark-section-heading > span { display: block; margin-top: 10px; }
+  .benchmark-form-grid { gap: 18px; }
+  .batch-settings { grid-template-columns: 1fr; }
+  .batch-toggle { grid-column: 1; }
+  .file-button { margin-top: 13px; }
+  .benchmark-runner { display: block; padding: 18px; }
+  .benchmark-runner button { width: 100%; margin-top: 15px; }
+  .result-actions { margin-top: 13px; flex-wrap: wrap; }
+  .batch-table-wrap { width: calc(100vw - 36px); }
+}

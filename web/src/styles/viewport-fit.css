@@ -1,0 +1,25 @@
+/* 会议页 /meeting 与分享页 /s/<token>：手机上整屏装进「真实可见高度」。
+ *
+ * <html class="app-fit-viewport"> 与 --app-height（= window.innerHeight，随 resize 更新）由
+ * lib/viewportHeight.ts 在 main.tsx 渲染前写好。微信内置浏览器的可见高度比 100vh 小、且随它自己的
+ * 标题栏/底栏变化，旧内核不认识 dvh，所以这里在手机断点下把页面链上的 100vh / 100dvh 都换成
+ * --app-height（各页面 CSS 里 100vh → 100dvh 的回退保持不变，JS 未运行时退回 100vh）：
+ *   - body / .global-shell / .global-main 的 min-height 100vh（ui-shared）不再比可见区域高，
+ *     文档本身没有可滚动的余量，不会把设备层连同底部工具栏一起推出屏幕；
+ *   - 设备层（会议页 .meeting-device、分享页 ShowcaseFrame 同一个 .showcase-multilingual-device）
+ *     高度 = 可见高度，底部工具栏（各自已带 env(safe-area-inset-bottom) 留白）始终贴着可见区域底边。
+ * 选择器带 html.app-fit-viewport 前缀，优先级高于 showcase*.css 的设备层规则，与引入顺序无关。
+ * 不用 -webkit-fill-available：它对嵌套元素按父级（高度不定）解析，且被这里的 var() 一行完全覆盖。 */
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  html.app-fit-viewport body,
+  html.app-fit-viewport .global-shell.is-showcase,
+  html.app-fit-viewport .global-shell.is-showcase > .global-main,
+  html.app-fit-viewport .realtime-showcase-page,
+  html.app-fit-viewport .shared-session-page {
+    min-height: var(--app-height, 100vh);
+  }
+
+  html.app-fit-viewport .realtime-showcase-device.showcase-multilingual-device {
+    height: var(--app-height, 100vh);
+  }
+}

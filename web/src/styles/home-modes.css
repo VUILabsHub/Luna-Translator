@@ -1,0 +1,31 @@
+.home-mode-switch { display:flex; width:100%; min-width:0; min-height:52px; box-sizing:border-box; gap:3px; padding:4px; border-radius:999px; background:#edf1e9; font-family:"Songti SC","Noto Serif SC Variable",serif }
+.home-mode-switch > button { flex:1 1 0; display:flex; align-items:center; justify-content:center; gap:4px; min-width:0; min-height:44px; box-sizing:border-box; padding:6px 4px; border:0; border-radius:999px; background:transparent; color:#687262; font-family:inherit; font-size:14px; line-height:20px; white-space:nowrap; cursor:pointer }
+.home-mode-switch > button[data-mode=solo] { flex-grow:2.5 }
+.home-mode-switch > button[aria-selected=true] { background:#365337; color:#fff }
+.home-mode-switch > button:disabled { opacity:.45; cursor:not-allowed }
+.home-mode-switch > button:focus-visible { outline:3px solid #91b998; outline-offset:2px }
+.home-mode-switch > button > svg { flex:none }
+.home-mode-switch > button > span { min-width:0 }
+.showcase-home-modes { position:absolute; z-index:5; top:calc(.95rem + env(safe-area-inset-top)); left:.24rem; right:.24rem }
+.showcase-has-home-modes .realtime-showcase-header,
+.showcase-has-home-modes .realtime-showcase-controls { pointer-events:none }
+.showcase-has-home-modes .realtime-showcase-header > a,
+.showcase-has-home-modes .realtime-showcase-header > button,
+.showcase-has-home-modes .realtime-showcase-settings-wrap,
+.showcase-has-home-modes .showcase-session-share { pointer-events:auto }
+.showcase-has-home-modes .showcase-scene-hint { display:block; margin-top:.16rem; color:#66765c; font:400 .13rem/1.7 "Noto Sans SC Variable",sans-serif; white-space:normal }
+.meeting-home-modes { flex:none; padding:10px 20px 0 }
+.showcase-scene-share { position:absolute; z-index:5; top:calc(.76rem + env(safe-area-inset-top)); left:.24rem; right:.24rem; display:flex; align-items:center; gap:10px; font-size:.12rem }
+.showcase-scene-share button { min-height:36px; border:1px solid #cfdcc8; border-radius:10px; background:#edf3e8; color:#365337; padding:6px 16px; font:inherit }
+.showcase-scene--speak .showcase-multilingual-transcript { top:calc(1.24rem + env(safe-area-inset-top)) }
+.showcase-scene--conversation .home-conversation-transcript { position:absolute; top:calc(.8rem + env(safe-area-inset-top)); bottom:calc(1.7rem + env(safe-area-inset-bottom)); left:.24rem; right:.24rem; width:auto; height:auto }
+.showcase-scene--conversation .showcase-home-language .showcase-language-rail { height:auto; align-items:stretch }
+@media (max-height:620px) {
+  .showcase-has-home-modes.realtime-showcase-device--welcome .showcase-multilingual-welcome { top:calc(1.85rem + env(safe-area-inset-top)) }
+  .showcase-has-home-modes .showcase-scene-hint { margin-top:.1rem; font-size:.12rem }
+}
+@media (max-width:400px) {
+  .home-mode-switch { gap:2px }
+  .home-mode-switch > button { gap:3px; padding-inline:3px; font-size:12px }
+  .home-mode-switch > button > svg { width:14px; height:14px }
+}

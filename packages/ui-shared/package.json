@@ -1,0 +1,27 @@
+{
+  "name": "@simultrans/ui-shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared Web API clients, realtime session hooks, audio and history utilities.",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@simultrans/core": "*",
+    "@volcengine/rtc": "4.69.1",
+    "livekit-client": "^2.21.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "fake-indexeddb": "6.2.5",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "4.1.12"
+  },
+  "license": "Apache-2.0"
+}

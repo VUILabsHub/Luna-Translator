@@ -1,0 +1,17 @@
+.canary-home-scan { position:absolute; top:calc(4px + env(safe-area-inset-top)); right:56px; width:44px; height:44px; display:grid; place-items:center; padding:0; border:0; border-radius:50%; background:transparent; cursor:pointer; }
+.canary-home-scan img { width:20px; height:20px; }
+.canary-home-scan:disabled { opacity:.48; cursor:default; }
+.canary-home-scan:focus-visible { outline:2px solid #568157; outline-offset:2px; }
+.home-meeting-scanner { pointer-events:auto; width:min(402px,calc(100vw - 24px)); max-width:none; max-height:calc(100dvh - 24px); padding:0; border:1px solid #e6e9e6; border-radius:20px; background:white; color:#0a0f0a; box-sizing:border-box; overflow:auto; font:400 16px/24px 'Noto Serif SC Variable',serif; }
+.home-meeting-scanner::backdrop { background:#0006; }
+.home-meeting-scanner-content { padding:20px; display:flex; flex-direction:column; gap:16px; }
+.home-meeting-scanner header { display:flex; align-items:center; justify-content:space-between; }
+.home-meeting-scanner h2 { margin:0; font-size:18px; }
+.home-meeting-scanner header button { min-width:44px; min-height:44px; border:0; background:transparent; color:inherit; font-size:26px; cursor:pointer; }
+.home-meeting-scanner form { display:flex; flex-direction:column; gap:12px; }
+.home-meeting-scanner input { box-sizing:border-box; width:100%; min-height:44px; border:1px solid #dfe5df; border-radius:24px; padding:10px 16px; background:white; color:inherit; font:inherit; font-size:16px; }
+.home-meeting-scanner form button, .home-meeting-scanner-camera { min-height:44px; padding:10px 16px; border:1px solid #365337; border-radius:24px; background:#365337; color:white; font:inherit; cursor:pointer; }
+.home-meeting-scanner-camera { background:white; color:#365337; }
+.home-meeting-scanner-camera:disabled { opacity:.48; cursor:default; }
+.home-meeting-scanner video { width:100%; max-height:30dvh; object-fit:contain; background:#f3f5f3; border-radius:12px; }
+.home-meeting-scanner p { margin:0; font-size:12px; line-height:18px; color:#68736b; }

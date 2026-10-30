@@ -1,0 +1,354 @@
+/* Canary uses the current iOS point sizes, not the legacy 521px canvas rem.
+   Sources: mobile/src/theme.ts (figmaType / font), SettingsSheet.tsx,
+   HomeWorkspaceControls.tsx, MeetingScreen.tsx and ConversationSplit.tsx.
+   Keep the three reading-size preferences separate from interface controls. */
+:is(.canary-workspace, .canary-meeting.meeting-page, .app-settings-drawer, .canary-general-settings, .showcase-language-picker-menu.is-canary) {
+  --canary-font-serif: "Noto Serif SC Variable", "Songti SC", STSong, serif;
+  --canary-font-sans: Poppins, "Noto Sans SC Variable", -apple-system, "PingFang SC", system-ui, sans-serif;
+  --canary-font-system: -apple-system, "PingFang SC", "Noto Sans SC Variable", system-ui, sans-serif;
+  --canary-type-sm: 12px;
+  --canary-line-sm: 18px;
+  --canary-type-base: 14px;
+  --canary-line-base: 21px;
+  --canary-type-l: 16px;
+  --canary-line-l: 24px;
+  --canary-type-xl: 18px;
+  --canary-line-xl: 27px;
+  --canary-type-xxl: 20px;
+  --canary-line-xxl: 30px;
+  --canary-type-title: 24px;
+  --canary-line-title: 32px;
+  --canary-source-size-ratio: 1;
+  --canary-source-line-ratio: 1;
+  --canary-primary-size-ratio: 1;
+  --canary-primary-line-ratio: 1;
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* UI labels use the same bundled Chinese serif as iOS; Latin numbers retain
+   Poppins. Do not change icon fonts or native checkbox/range appearance. */
+:is(.canary-workspace, .canary-meeting, .app-settings-drawer, .canary-general-settings) :is(button, input, select, textarea) {
+  font-family: var(--canary-font-serif);
+}
+
+:is(.canary-workspace, .canary-meeting) .canary-profile-avatar {
+  font-family: var(--canary-font-sans);
+}
+
+.canary-workspace .canary-home-empty p {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-title);
+  line-height: var(--canary-line-title);
+  font-weight: 400;
+}
+
+.canary-workspace .canary-quick-start {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-xxl);
+  line-height: 29px;
+  font-weight: 700;
+}
+
+.canary-workspace .canary-mode-popover > button {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+  font-weight: 600;
+}
+
+.canary-workspace :is(.canary-session-heading, .speak-invitation-heading) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-xl);
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.canary-workspace .canary-home-languages .showcase-language-picker-trigger strong {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: 20px;
+  font-weight: 400;
+}
+
+/* A shared drawer title / label / value hierarchy for all three modes. */
+.app-settings-drawer .app-settings-drawer-heading,
+.app-settings-drawer .app-settings-drawer-heading :is(h2, strong) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-l);
+  line-height: var(--canary-line-l);
+  font-weight: 600;
+}
+
+.app-settings-drawer :is(.realtime-showcase-setting-select, .realtime-showcase-setting-select > span, .realtime-showcase-device-combobox, .realtime-showcase-combobox-trigger, .realtime-showcase-combobox-list [role="option"], .conversation-settings-row, .conversation-settings-volume, .conversation-settings-link, .meeting-sidebar-device, .meeting-sidebar-device strong, .meeting-sidebar-languages .meeting-field, .meeting-sidebar-display legend, .meeting-original-setting, .meeting-text-button, .meeting-volume-setting, .meeting-sidebar-more > summary, .meeting-sidebar-footer > button, .showcase-history-link, .showcase-settings-entry, .showcase-quota-note) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+  font-weight: 400;
+}
+
+.app-settings-drawer .showcase-multilingual-settings .realtime-showcase-device-combobox :is(.realtime-showcase-combobox-trigger, .realtime-showcase-combobox-list [role="option"]) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+}
+
+.app-settings-drawer :is(.conversation-settings-side legend, .showcase-history-link) {
+  font-weight: 600;
+}
+
+.app-settings-drawer .showcase-quick-audio-slider {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+}
+
+.app-settings-drawer .showcase-quick-audio-slider > span {
+  font-family: var(--canary-font-sans);
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+}
+
+.app-settings-drawer .showcase-quick-audio-slider > .showcase-quick-noise-labels {
+  font-family: var(--canary-font-serif);
+}
+
+.app-settings-drawer :is(.realtime-showcase-setting-row strong, .meeting-voice-clone label) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+  font-weight: 400;
+}
+
+.app-settings-drawer :is(.realtime-showcase-settings-note, .realtime-showcase-setting-row small, .showcase-output-device-hint, .conversation-settings-note, .meeting-device-note, .meeting-sidebar-notice, .meeting-voice-clone p, .meeting-playback-diagnostics) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+  font-weight: 400;
+}
+
+.app-settings-drawer :is(time, output, .meeting-volume-setting:has(input[max="100"]) > span, .conversation-settings-volume:has(input[max="100"]) > span) {
+  font-family: var(--canary-font-sans);
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.app-settings-drawer .showcase-quota-note b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.app-settings-drawer .showcase-language-picker-trigger,
+.app-settings-drawer .showcase-language-picker-trigger strong {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+  font-weight: 400;
+}
+
+/* Language menus are portals outside the portrait App / native modal. */
+.showcase-language-picker-menu.is-canary > button[role="option"],
+.showcase-language-picker-menu.is-canary > button[role="option"] > span > :is(b, em) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-l);
+  line-height: var(--canary-line-l);
+  font-weight: 400;
+}
+
+.showcase-language-picker-menu.is-canary > p {
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+}
+
+/* Meeting lobby: the compact 12px language capsules and 14px form fields are
+   distinct from the 16px primary action in the iOS entry screen. */
+.canary-meeting.meeting-page :is(.meeting-mode-badge, .meeting-entry-tabs button, .meeting-entry-card > .meeting-field, .meeting-entry-card > .meeting-field input, .canary-meeting-start, .meeting-header-leave, .meeting-code-invite) {
+  font-family: var(--canary-font-serif);
+}
+
+.canary-meeting.meeting-page .canary-meeting-languages .showcase-language-picker-trigger {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-sm);
+  line-height: 22px;
+}
+
+.canary-meeting.meeting-page :is(.meeting-description, .meeting-muted-note, .meeting-voice-clone p, .meeting-field small, .meeting-entry-card > p, .meeting-status) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+}
+
+.canary-meeting.meeting-page .meeting-voice-clone label {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: 22px;
+  font-weight: 600;
+}
+
+/* Keep existing reading-size choices in physical pixels. They must not shrink
+   when the desktop portrait shell or a narrow phone changes its rem scale. */
+.showcase-multilingual-device.canary-workspace {
+  --showcase-source-font-size: 14px;
+  --showcase-source-line-height: 22px;
+  --showcase-secondary-font-size: 14px;
+  --showcase-secondary-line-height: 22px;
+  --showcase-primary-font-size: 16px;
+  --showcase-primary-line-height: 24px;
+  --showcase-meta-font-size: 14px;
+  --showcase-meta-line-height: 22px;
+  --showcase-time-font-size: 14px;
+  --showcase-time-line-height: 22px;
+}
+
+.showcase-multilingual-device.canary-workspace.showcase-font-size--small {
+  --canary-source-size-ratio: calc(12 / 14);
+  --canary-source-line-ratio: calc(20 / 22);
+  --canary-primary-size-ratio: calc(14 / 16);
+  --canary-primary-line-ratio: calc(22 / 24);
+  --showcase-source-font-size: 12px;
+  --showcase-source-line-height: 20px;
+  --showcase-secondary-font-size: 12px;
+  --showcase-secondary-line-height: 20px;
+  --showcase-primary-font-size: 14px;
+  --showcase-primary-line-height: 22px;
+  --showcase-meta-font-size: 12px;
+  --showcase-meta-line-height: 18px;
+  --showcase-time-font-size: 10px;
+  --showcase-time-line-height: 16px;
+}
+
+.showcase-multilingual-device.canary-workspace.showcase-font-size--large {
+  --canary-source-size-ratio: calc(16 / 14);
+  --canary-source-line-ratio: calc(24 / 22);
+  --canary-primary-size-ratio: calc(18 / 16);
+  --canary-primary-line-ratio: calc(28 / 24);
+  --showcase-source-font-size: 16px;
+  --showcase-source-line-height: 24px;
+  --showcase-secondary-font-size: 16px;
+  --showcase-secondary-line-height: 24px;
+  --showcase-primary-font-size: 18px;
+  --showcase-primary-line-height: 28px;
+  --showcase-meta-font-size: 14px;
+  --showcase-meta-line-height: 21px;
+  --showcase-time-font-size: 13px;
+  --showcase-time-line-height: 19px;
+}
+
+.canary-workspace .home-conversation-transcript {
+  font-family: var(--canary-font-serif);
+}
+
+/* ConversationSplit.tsx uses primary-role 14/21 history and 20/30 latest,
+   source-role 12/18 for the other text. Each side keeps its own display mode. */
+.showcase-multilingual-device.canary-workspace .home-conversation-original {
+  font-size: calc(12px * var(--canary-source-size-ratio));
+  line-height: calc(18px * var(--canary-source-line-ratio));
+  font-weight: var(--canary-caption-weight, 400);
+}
+
+.showcase-multilingual-device.canary-workspace .home-conversation-translation {
+  font-size: calc(14px * var(--canary-primary-size-ratio));
+  line-height: calc(21px * var(--canary-primary-line-ratio));
+  font-weight: var(--canary-caption-weight, 600);
+}
+
+.showcase-multilingual-device.canary-workspace .home-conversation-row.is-latest .home-conversation-translation {
+  font-size: calc(20px * var(--canary-primary-size-ratio));
+  line-height: calc(30px * var(--canary-primary-line-ratio));
+  font-weight: var(--canary-caption-weight, 600);
+}
+
+/* MeetingScreen.tsx v2 keeps the latest and history at the same size so a row
+   does not shrink as the next speaker starts. Secondary and source roles share
+   the native 12/14 -> 16/14 preference ratios, with independent line ratios. */
+.canary-meeting.meeting-page[data-showcase-text-size="small"] {
+  --canary-source-size-ratio: calc(12 / 14);
+  --canary-source-line-ratio: calc(20 / 22);
+}
+
+.canary-meeting.meeting-page[data-showcase-text-size="large"] {
+  --canary-source-size-ratio: calc(16 / 14);
+  --canary-source-line-ratio: calc(24 / 22);
+}
+
+.canary-meeting.meeting-page .meeting-caption > p,
+.canary-meeting.meeting-page .meeting-caption:last-child > p:not(.meeting-caption-original) {
+  font-size: calc(18px * var(--canary-source-size-ratio));
+  line-height: calc(27px * var(--canary-source-line-ratio));
+  font-weight: var(--canary-caption-weight, 400);
+}
+
+.canary-meeting.meeting-page .meeting-caption > p.meeting-caption-original {
+  font-size: calc(14px * var(--canary-source-size-ratio));
+  line-height: calc(21px * var(--canary-source-line-ratio));
+  font-weight: var(--canary-caption-weight, 400);
+}
+
+.canary-workspace :is(.home-conversation-empty, .home-conversation-panel-header button) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-base);
+  line-height: var(--canary-line-base);
+}
+
+.canary-workspace :is(.home-conversation-pending, .home-conversation-rotate, .home-conversation-panel-header small, .realtime-showcase-notice) {
+  font-family: var(--canary-font-serif);
+  font-size: var(--canary-type-sm);
+  line-height: var(--canary-line-sm);
+}
+
+/* Preserve the family belonging to a caption's actual language. Original rows
+   without language metadata inherit the Chinese serif; do not guess from text. */
+.canary-workspace :is(.home-conversation-original, .home-conversation-translation, .home-conversation-panel-header span):lang(ja) {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+.canary-workspace .showcase-translation-line.canary-script strong,
+.canary-workspace .realtime-showcase-source,
+.canary-meeting .meeting-caption > p {
+  font-family: var(--canary-font-serif);
+}
+
+:is(.canary-workspace .showcase-translation-line.canary-script strong, .canary-workspace .realtime-showcase-source, .canary-workspace .home-conversation-original, .canary-workspace .home-conversation-translation, .canary-meeting .meeting-caption > p):is(:lang(zh), :lang(ja)) {
+  --canary-caption-weight: 600;
+  font-weight: 600;
+}
+
+:is(.canary-workspace .showcase-translation-line.canary-script strong, .canary-workspace .realtime-showcase-source, .canary-workspace .home-conversation-original, .canary-workspace .home-conversation-translation, .canary-workspace .home-conversation-panel-header span, .canary-meeting .meeting-caption > p):is(:lang(en), :lang(de), :lang(fr), :lang(es), :lang(pt), :lang(it), :lang(id), :lang(ms), :lang(tr), :lang(sw)) {
+  font-family: var(--canary-font-sans);
+}
+
+:is(.canary-workspace .showcase-translation-line.canary-script strong, .canary-workspace .realtime-showcase-source, .canary-meeting .meeting-caption > p):lang(ja) {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+:is(.canary-workspace .showcase-translation-line.canary-script strong, .canary-workspace .realtime-showcase-source, .canary-meeting .meeting-caption > p):is(:lang(ko), :lang(ru), :lang(vi), :lang(ar), :lang(ur), :lang(th)) {
+  font-family: var(--canary-font-system);
+}
+
+.canary-workspace :is(.home-conversation-original, .home-conversation-translation, .home-conversation-panel-header span):is(:lang(ko), :lang(ru), :lang(vi), :lang(ar), :lang(ur), :lang(th)) {
+  font-family: var(--canary-font-system);
+}
+
+/* General Settings already has a Canary-only root; retain its own row sizes and
+   text-size preview while making the Chinese family match the three modes. */
+.canary-general-settings :is(.consumer-settings-header-title, .consumer-settings-profile-name strong, .consumer-settings-row, .consumer-settings-logout, .consumer-settings-font-preview) {
+  font-family: var(--canary-font-serif);
+}
+
+.canary-general-settings .consumer-settings-font-preview p[lang] {
+  font-family: var(--canary-font-sans);
+}
+
+/* A short viewport compacts illustration / spacing, never the interface text. */
+@media (max-height: 600px) {
+  .canary-workspace .canary-home-empty p {
+    font-size: var(--canary-type-l);
+    line-height: var(--canary-line-l);
+  }
+}

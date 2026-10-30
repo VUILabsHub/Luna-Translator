@@ -1,0 +1,3 @@
+/* animations: 全局 @keyframes pulse/wave（被 workspace 的录音按钮与波形引用；keyframes 无级联顺序问题） */
+@keyframes pulse { 50% { box-shadow: 0 0 0 15px rgba(219, 59, 53, .08), 0 15px 34px rgba(219, 59, 53, .22); } }
+@keyframes wave { from { transform: scaleY(.45); } to { transform: scaleY(1.15); } }

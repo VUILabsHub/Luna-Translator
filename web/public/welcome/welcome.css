@@ -1,0 +1,727 @@
+/* Standalone /welcome/ landing page, following the Figma frame 「Frame 2147226655」
+ * (file 「🔤 Luna 翻译」, 2026-10). Light mode only, no SPA bundle. The site CSP has no
+ * font-src, so fonts fall under default-src 'self': self-hosted files work, third-party
+ * font CDNs do not. Desktop measurements are taken from the 1440-wide frame. */
+
+/* Noto Serif SC (SIL OFL 1.1) cut down to the glyphs the serif copy uses: the zh-CN lede,
+ * feature bodies and footer, plus printable ASCII and common punctuation (29 KB). Characters
+ * outside the subset fall back glyph by glyph, so regenerate it after changing that copy.
+ * TEXT is the zh-CN ledeLine1, ledeLine2, *Body, terms, privacy, companySite and globalSite strings from
+ * welcome-i18n.js followed by the footer line; run from the repo root:
+ *   uvx --from fonttools --with brotli pyftsubset mobile/assets/fonts-android/NotoSerifSC-Regular.otf \
+ *     --text="$TEXT" --unicodes=U+0020-007E,U+00A0,U+00A9,U+00B7,U+2013-2014,U+2018-201D,U+3001-3002,U+FF01,U+FF08-FF09,U+FF0C,U+FF1A-FF1B,U+FF1F \
+ *     --layout-features=kern,liga,locl --no-hinting --desubroutinize --flavor=woff2 \
+ *     --output-file=web/public/welcome/assets/noto-serif-sc-400.woff2 */
+@font-face {
+  font-family: "Welcome Serif SC";
+  src: url("/welcome/assets/noto-serif-sc-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The same file for English: Latin letters, lining figures (Georgia's are old-style, which
+ * made the ICP number hard to read) and the footer's CJK, but not the full-width curly quotes. */
+@font-face {
+  font-family: "Welcome Serif Latin";
+  src: url("/welcome/assets/noto-serif-sc-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E, U+00A0, U+00A9, U+2013-2014, U+4E00-9FFF;
+}
+
+:root {
+  --hero-bg: #f6f6f6;
+  --text: #0d0d0d;
+  --text-body: #141414;
+  --text-soft: #333;
+  /* Both pass WCAG AA (4.5:1) on white and match the Figma greys. */
+  --text-muted: #737373;
+  --text-faint: #767676;
+  --brand: #2e6b45;
+  --brand-ink: #3d5a46;
+  --icon-ink: #2f4733;
+  --icon-bg: #ecefec;
+  --pill-line: #d3d5d4;
+  --line: #ececec;
+  --gutter: 48px;
+  /* The frame is 1440 wide: header and footer stay on its gutters on wider screens. */
+  --frame: 1440px;
+  --font-sans: system-ui, -apple-system, "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC",
+    "Source Han Sans SC", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Welcome Serif SC", "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong",
+    "SimSun", serif;
+  color-scheme: light;
+}
+
+/* The subset only has simplified glyphs, so Traditional Chinese keeps the platform serif. */
+html[lang="zh-TW"] {
+  --font-sans: system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Source Han Sans TC",
+    "Microsoft JhengHei", "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "PMingLiU", serif;
+}
+
+html[lang="en"] {
+  --font-serif: "Welcome Serif Latin", "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1;
+}
+
+a:focus-visible,
+.language-pill:has(.language-select:focus-visible) {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--hero-bg);
+  padding-top: env(safe-area-inset-top);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: var(--frame);
+  min-height: 96px;
+  margin: 0 auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 11px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.wordmark {
+  color: var(--text-soft);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.wordmark-short {
+  display: none;
+}
+
+.header-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--pill-line);
+  border-radius: 999px;
+  color: #1c1c1c;
+}
+
+.language-pill:has(.language-select:empty) {
+  display: none;
+}
+
+.language-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 40px;
+  padding: 0 42px 0 21px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.language-select:focus {
+  outline: none;
+}
+
+.language-chevron {
+  position: absolute;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  color: #8b8f8c;
+  pointer-events: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-dark {
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-dark:hover {
+  background: #262626;
+}
+
+.header-cta {
+  min-height: 40px;
+  padding: 0 22px;
+  font-size: 15px;
+}
+
+.btn-brand {
+  min-width: 186px;
+  background:
+    radial-gradient(70% 55% at 52% 112%, rgba(214, 250, 190, 0.95) 0%, rgba(214, 250, 190, 0) 100%),
+    radial-gradient(120% 95% at 50% 128%, rgba(184, 236, 162, 0.95) 0%, rgba(126, 182, 114, 0.6) 30%, rgba(62, 104, 72, 0) 64%),
+    linear-gradient(100deg, #243c2d 0%, #34523d 45%, #4c6d4a 100%);
+  box-shadow: 0 6px 18px rgba(38, 70, 48, 0.18);
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-brand:hover {
+  filter: brightness(1.07);
+}
+
+.btn-light {
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  color: #161616;
+}
+
+.btn-light:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+}
+
+.btn-download {
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Availability message shown only when the APK is unpublished. */
+.btn-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Disabled (APK not published yet): only the label is dimmed, so the 即将提供 line that
+ * explains why stays readable (#666 on the pill is 5.6:1). */
+.btn[aria-disabled="true"] {
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 0 0 1px #e6e6e6;
+  color: #8f8f8f;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn[aria-disabled="true"] .btn-meta {
+  color: #666;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  /* Artwork is sized by height; it shrinks with the viewport so it never runs
+   * under the centred copy and buttons (reaches full 478px at 1440 wide). */
+  --art-h: min(478px, calc(66.5vw - 480px));
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(var(--art-h) + 8px);
+  padding: 80px var(--gutter) 50px;
+  background: var(--hero-bg);
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  color: var(--text);
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+html[lang="en"] .hero h1 {
+  letter-spacing: -0.01em;
+}
+
+.hero-accent {
+  color: var(--brand);
+}
+
+.lede {
+  max-width: 820px;
+  margin-top: 18px;
+  color: var(--text-body);
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-variant-numeric: lining-nums;
+  line-height: 1.4;
+}
+
+.lede-line {
+  display: block;
+}
+
+/* The two-line split is tuned for Chinese; English reads better as one balanced paragraph. */
+html[lang="en"] .lede {
+  text-wrap: balance;
+}
+
+html[lang="en"] .lede-line {
+  display: inline;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 68px;
+}
+
+.cta-row .btn {
+  min-height: 60px;
+  padding: 0 36px;
+  font-size: 17px;
+}
+
+.enterprise-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 38px;
+  padding: 0 8px;
+  color: var(--brand-ink);
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.enterprise-link:hover {
+  color: var(--brand);
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-art img {
+  position: absolute;
+  bottom: 0;
+  width: auto;
+  height: var(--art-h);
+  user-select: none;
+}
+
+.hero-art-left {
+  left: 0;
+}
+
+.hero-art-right {
+  right: 0;
+}
+
+/* ---------- Features ---------- */
+
+.features {
+  padding: 64px max(73px, env(safe-area-inset-right)) 0 max(73px, env(safe-area-inset-left));
+  background: #fff;
+}
+
+/* Each feature spans three shared rows (icon / title / body) through subgrid, so the
+ * bodies line up even when one title wraps. Without subgrid the cards simply stack. */
+.features-grid {
+  --col-gap: clamp(48px, 5.7vw, 82px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 0;
+  max-width: 1294px;
+  margin: 0 auto;
+}
+
+.feature {
+  position: relative;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-content: start;
+  row-gap: 0;
+}
+
+.feature:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: calc(var(--col-gap) / -2);
+  width: 1px;
+  background: var(--line);
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--icon-bg);
+  color: var(--icon-ink);
+}
+
+.feature-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.feature h2 {
+  margin-top: 13px;
+  color: var(--text);
+  font-size: clamp(18px, 1.667vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.feature p {
+  margin-top: 22px;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-variant-numeric: lining-nums;
+  line-height: 1.5;
+}
+
+/* Four columns: the Chinese titles fill their column exactly as in the frame and may
+ * reach a few px into the gap rather than wrap; English titles are smaller instead. */
+@media (min-width: 1180px) {
+  html:not([lang="en"]) .feature h2 {
+    white-space: nowrap;
+  }
+
+  html[lang="en"] .feature h2 {
+    font-size: clamp(18px, 1.39vw, 20px);
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 64px max(var(--gutter), env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(var(--gutter), env(safe-area-inset-left));
+  background: #fff;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 24px;
+  max-width: calc(var(--frame) - 2 * var(--gutter));
+  margin: 0 auto;
+  color: var(--text-faint);
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-variant-numeric: lining-nums;
+  line-height: 1.5;
+}
+
+.footer-links,
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-links {
+  gap: 24px;
+}
+
+.footer-meta {
+  gap: 0 8px;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text-soft);
+}
+
+/* ---------- Narrower desktop: 2 × 2 features ---------- */
+
+@media (max-width: 1179px) {
+  .features {
+    padding-left: max(48px, env(safe-area-inset-left));
+    padding-right: max(48px, env(safe-area-inset-right));
+  }
+
+  .features-grid {
+    --col-gap: 64px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 880px;
+  }
+
+  .feature:nth-child(n + 3) {
+    padding-top: 48px;
+  }
+
+  .feature:nth-child(n + 3)::before {
+    top: 58px;
+  }
+
+  .feature:nth-child(odd)::before {
+    display: none;
+  }
+
+  .feature h2 {
+    font-size: 21px;
+  }
+}
+
+/* ---------- Tablet and phone: artwork moves below the buttons ---------- */
+
+@media (max-width: 1023px) {
+  :root {
+    --gutter: 32px;
+  }
+
+  .header-row {
+    min-height: 80px;
+  }
+
+  .hero {
+    --art-h: clamp(200px, 32vw, 300px);
+    min-height: 0;
+    padding: 64px var(--gutter) 0;
+  }
+
+  .hero-art {
+    position: static;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 32px calc(-1 * var(--gutter)) 0;
+  }
+
+  .hero-art img {
+    position: static;
+    max-width: 48%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+
+  .features {
+    padding-top: 56px;
+  }
+}
+
+/* Figma portrait frame 677:16052; native browser chrome supplies the status bar. */
+.hero-art-mobile,
+.feature-icon-mobile,
+.mobile-downloads {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  :root { --gutter: 24px; }
+  .header-row { min-height: 80px; gap: 8px; }
+  .brand { gap: 12px; }
+  .brand-logo { width: 32px; height: 32px; border-radius: 6px; }
+  .wordmark { font-size: 16px; font-weight: 700; }
+  .header-actions { gap: 12px; }
+  .language-pill { border-color: #bbcdbc; }
+  .language-select { min-height: 40px; padding: 0 36px 0 16px; font-size: 16px; }
+  .language-chevron { right: 16px; }
+  .header-cta { min-height: 40px; padding: 0 12px; font-size: 16px; }
+
+  .hero { min-height: 656px; padding: 80px 26px 146px; }
+  .hero-content { max-width: 460px; }
+  .hero h1 { font-size: clamp(28px, 8.95vw, 36px); font-weight: 700; line-height: 42px; letter-spacing: 0; white-space: nowrap; }
+  .hero-accent { background: linear-gradient(90deg, #59a275 33.654%, #117441 87.019%, #3b8470); background-clip: text; color: transparent; }
+  .lede { margin-top: 16px; font-size: 14px; line-height: 20px; color: #182418; }
+  .lede-line { display: inline; }
+  .lede-line:last-child { display: block; }
+  html[lang="en"] .hero h1 { white-space: normal; line-height: 1.2; }
+  html[lang="en"] .lede-line { display: inline; }
+  .cta-row { flex-direction: column; align-self: center; width: min(238px, 100%); gap: 16px; margin-top: 52px; }
+  .cta-row .btn { width: 100%; min-height: 60px; padding: 6px 12px; font-size: 18px; border-radius: 24px; }
+  .btn-brand { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(90deg, #113b30, #3f653f); }
+  .btn-brand::before, .btn-brand::after { content: ""; position: absolute; z-index: -1; width: 89px; height: 158px; top: -49px; opacity: .7; mix-blend-mode: color-dodge; background-position: center; background-size: cover; }
+  .btn-brand::before { left: 39px; transform: rotate(90deg) scaleY(-1); background-image: url("/welcome/assets/button-light-left.png"); }
+  .btn-brand::after { left: 128px; transform: rotate(90deg); background-image: url("/welcome/assets/button-light-right.png"); }
+  .enterprise-link { margin-top: 5px; font-size: 16px; }
+  .hero-art { display: none; }
+  .hero-art-mobile { position: absolute; display: block; inset: auto 0 0; height: 266.246px; pointer-events: none; }
+  .hero-art-mobile img { position: absolute; bottom: 0; width: auto; height: 226px; max-width: none; }
+  .mobile-art-left { left: 0; }
+  .mobile-art-right { right: 0; }
+
+  .features { padding: 32px max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left)); }
+  .features-grid { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
+  .feature, .feature:nth-child(n + 3) { grid-row: auto; grid-template-columns: 48px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 16px; padding: 16px 8px; }
+  .feature-icon, .feature::before { display: none !important; }
+  .feature-icon-mobile { display: block; grid-row: span 2; }
+  .feature h2 { margin: 0; font-size: 20px; font-weight: 500; line-height: 28px; }
+  .feature p { margin-top: 8px; font-size: 16px; line-height: 23px; }
+  .mobile-downloads { display: grid; grid-template-columns: 107fr 111fr 136fr; gap: 8px; padding: 16px 16px 0; }
+  .mobile-downloads .btn { min-width: 0; min-height: 48px; padding: 6px; font-size: clamp(12px, 3.98vw, 16px); font-weight: 500; white-space: normal; text-align: center; overflow-wrap: anywhere; }
+  html[lang="en"] .mobile-downloads .btn { font-size: 13px; }
+  .mobile-downloads .btn-light { background: #e6ece6; }
+  .site-footer { padding: 20px max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  .footer-row { flex-direction: column; justify-content: center; gap: 12px; text-align: center; }
+  .footer-links { justify-content: center; gap: 0 8px; }
+  .footer-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; }
+  .footer-meta { justify-content: center; }
+  .footer-meta .icp { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* Keep both header controls within narrow phones without hiding the language choice. */
+@media (max-width: 419px) {
+  .header-row { padding-left: 16px; padding-right: 16px; }
+  .brand, .header-actions { gap: 8px; }
+  .language-select { padding-left: 10px; padding-right: 28px; }
+  .language-chevron { right: 8px; }
+}
+@media (max-width: 374px) {
+  .wordmark { font-size: 14px; }
+  .brand { gap: 6px; }
+  .header-actions { gap: 6px; }
+  .header-cta { font-size: 14px; padding: 0 10px; }
+}
+
+/* The long English name only fits from about 480px; below that it reads 「Luna」. */
+@media (max-width: 479px) {
+  html[lang="en"] .wordmark-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+
+  html[lang="en"] .wordmark-short {
+    display: inline;
+  }
+}
+
+/* Under 360px 「Luna翻译」 no longer fits beside the language pill and 立即体验, so the
+ * logo stands alone; the name stays available to screen readers. */
+@media (max-width: 359px) {
+  html:not([lang="en"]) .wordmark {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}
+
+/* Touch screens wider than a phone (tablets, phones in landscape) still need 44px tap
+ * targets and a 16px select, which stops iOS Safari from zooming on focus. */
+@media (pointer: coarse) and (min-width: 640px) {
+  .language-select {
+    font-size: 16px;
+  }
+
+  .language-select,
+  .header-cta {
+    min-height: 44px;
+  }
+
+  .footer-links a,
+  .footer-meta .icp {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

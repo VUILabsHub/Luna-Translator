@@ -1,0 +1,10 @@
+.ai-consent-dialog { box-sizing:border-box; width:min(440px,calc(100vw - 24px)); max-width:none; max-height:calc(100dvh - 24px); overflow:auto; padding:0; border:1px solid #e6e9e6; border-radius:20px; background:#fff; color:#0a0f0a; font:400 14px/22px 'Noto Serif SC Variable',serif; }
+.ai-consent-dialog::backdrop { background:#0006; }
+.ai-consent-content { padding:24px; }
+.ai-consent-content h2 { margin:0 0 16px; font-size:18px; line-height:26px; }
+.ai-consent-content p { margin:12px 0; }
+.ai-consent-content a { color:#365337; }
+.ai-consent-actions { display:flex; gap:12px; margin-top:20px; }
+.ai-consent-actions button { flex:1; min-height:44px; padding:8px; border:1px solid #dce2dd; border-radius:24px; color:#365337; background:#fff; font:inherit; cursor:pointer; }
+.ai-consent-actions .is-primary { color:white; border-color:#365337; background:#365337; }
+.ai-consent-content .ai-consent-error { color:#b63333; }

@@ -1,0 +1,6 @@
+Luna Translator
+Copyright 2026 VUILabsHub and contributors
+
+Application source is licensed under the Apache License, Version 2.0.
+Third-party dependencies and fonts retain the notices and licenses listed in THIRD_PARTY_NOTICES.md.
+Model weights, training data, training code and model inference services are not distributed with this application.

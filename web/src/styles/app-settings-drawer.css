@@ -1,0 +1,265 @@
+/* Native dialogs use the top layer: use measured App bounds for both panel and shade. */
+.app-settings-drawer {
+  position: fixed;
+  inset: auto;
+  left: var(--bounded-dialog-left, 0px);
+  top: var(--bounded-dialog-top, 0px);
+  width: var(--bounded-dialog-width, 0px);
+  height: var(--bounded-dialog-height, 0px);
+  max-width: none;
+  max-height: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: var(--bounded-dialog-radius, 0px);
+  color: #0a0f0a;
+  background: rgba(0, 0, 0, .4);
+  font: 14px/22px 'Noto Sans SC Variable', system-ui, sans-serif;
+}
+
+.app-settings-drawer::backdrop { background: transparent; }
+.app-settings-drawer[open] {
+  display: flex;
+  justify-content: flex-end;
+  animation: app-settings-drawer-fade 180ms ease-out;
+}
+
+.app-settings-drawer-panel {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: min(340px, 100%);
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+.app-settings-drawer[open] > .app-settings-drawer-panel {
+  animation: app-settings-drawer-enter 180ms ease-out;
+}
+
+/* Keep the close action outside the scrolling body, including on short screens. */
+.app-settings-drawer-heading {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 12px max(20px, env(safe-area-inset-left));
+  background: #fff;
+}
+.app-settings-drawer-heading > h2 { margin: 0; font-size: 18px; line-height: 26px; font-weight: 600; }
+.app-settings-drawer .app-settings-drawer-heading > button {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #536459;
+  font: inherit;
+  font-size: 24px;
+  cursor: pointer;
+}
+.app-settings-drawer-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.app-settings-drawer :focus-visible { outline: 3px solid #91b998; outline-offset: 2px; }
+
+@keyframes app-settings-drawer-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes app-settings-drawer-enter { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .app-settings-drawer[open], .app-settings-drawer[open] > .app-settings-drawer-panel { animation: none; }
+}
+
+/* The common fixed header replaces titles from the old popover contents. */
+.app-settings-drawer-body .realtime-showcase-settings-title,
+.app-settings-drawer-body .conversation-settings > h2 { display: none; }
+
+/* Reuse the mode controls, without the former popover's position and rem scale. */
+.app-settings-drawer-body .showcase-panel-fields {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.app-settings-drawer-body .showcase-panel-fields:empty { display: none; }
+.app-settings-drawer-body .realtime-showcase-setting-select {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+}
+.app-settings-drawer-body .realtime-showcase-setting-select > span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  color: rgba(10, 15, 10, .55);
+}
+.app-settings-drawer-body .showcase-output-device-hint {
+  margin: -6px 0 0 96px;
+  overflow-wrap: anywhere;
+}
+
+.app-settings-drawer-body .realtime-showcase-device-combobox {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  color: #0a0f0a;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-trigger {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  color: #0a0f0a;
+  border: 1px solid #e6e9e6;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-trigger > img {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-list {
+  top: 50px;
+  right: 0;
+  left: auto;
+  width: 100%;
+  max-height: max(44px, min(220px, calc(var(--bounded-dialog-height, 100vh) - 160px)));
+  gap: 6px;
+  padding: 6px;
+  box-sizing: border-box;
+  color: rgba(10, 15, 10, .55);
+  border: 1px solid #e6e9e6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 30px rgba(4, 15, 36, .1);
+  backdrop-filter: none;
+  overscroll-behavior: contain;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"] {
+  flex: none;
+  height: auto;
+  min-height: 44px;
+  gap: 8px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"] img {
+  width: 16px;
+  height: 16px;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"].is-selected {
+  color: #0a0f0a;
+  background: #f1f5f2;
+}
+.app-settings-drawer-body .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"].is-active:not(.is-selected) {
+  color: #0a0f0a;
+  background: #f8f8f8;
+  box-shadow: none;
+}
+
+.app-settings-drawer-body .showcase-quick-audio { gap: 12px; }
+.app-settings-drawer-body .showcase-quick-audio-slider { gap: 4px; }
+.app-settings-drawer-body .showcase-quick-audio-slider input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+}
+
+.app-settings-drawer-body .showcase-panel-footer {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  margin-top: auto;
+}
+.app-settings-drawer-body .showcase-account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  min-width: 0;
+  margin: 0;
+}
+.app-settings-drawer-body .showcase-quota-note {
+  flex: 1 1 120px;
+  min-width: 0;
+  margin: 0;
+  color: rgba(10, 15, 10, .55);
+  overflow-wrap: anywhere;
+}
+.app-settings-drawer-body .showcase-quota-note b { color: #568157; }
+.app-settings-drawer-body .showcase-history-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  min-height: 44px;
+  max-width: 100%;
+  margin-left: auto;
+  color: #568157;
+  text-align: right;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.app-settings-drawer-body .showcase-panel-divider {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #e6e9e6;
+}
+.app-settings-drawer-body :is(.showcase-settings-entry, .live-share-menu) {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border: 1px solid #dfe1df;
+  border-radius: 999px;
+  background: #fff;
+  color: #0a0f0a;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.app-settings-drawer-body .live-share-menu {
+  border: 0;
+  background: #365337;
+  color: #f8faf8;
+}

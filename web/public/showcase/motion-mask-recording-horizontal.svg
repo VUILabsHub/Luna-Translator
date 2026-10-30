@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" width="312.925" height="131" viewBox="0 0 312.925 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="312.925" height="131" fill="url(#horizontalFade)"/>
+  <defs>
+    <linearGradient id="horizontalFade" x1="0" y1="65.5" x2="312.925" y2="65.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="0.499223" stop-color="white"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

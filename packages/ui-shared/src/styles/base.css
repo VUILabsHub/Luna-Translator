@@ -1,0 +1,34 @@
+/* base: :root 变量、通配 reset、body、button/select 基础样式、:focus-visible */
+:root {
+  /* deslop-ignore-next-line 33 */
+  font-family: Inter, "SF Pro Display", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+  color: #0b2455;
+  background: #f6f8fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --blue: #075cf0;
+  --blue-dark: #064bd0;
+  --blue-soft: #edf4ff;
+  --navy: #0b2455;
+  --ink: #111827;
+  --muted: #66738e;
+  --ink-3: #5d6c83;
+  --line: #d9e0eb;
+  --soft: #f6f8fc;
+  --ok: #157344;
+  --ok-dot: #27ad59;
+  --warn: #985e00;
+  --danger: #b42318;
+  --topbar-height: 74px;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--topbar-height);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, select { font: inherit; }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible, audio:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }

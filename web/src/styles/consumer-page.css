@@ -1,0 +1,118 @@
+/* C 端二级页共用页框（components/ConsumerPageFrame.tsx）— 像素级对照 Figma
+ * 设置页 971:7289 / 历史页 971:7559 的公共部分：521×926 画板，顶栏 Frame 2147225908
+ * 高 89、内边距 20/36，「返回」控件落在 (36, 31.5)，内容区从 y=103 起、左右 48。
+ *
+ * 缩放：全站 rem（styles/root-scale.css），1rem = 设计稿 100px，稿上 N px 写成 N/100 rem。
+ * 默认样式即桌面/横屏的 9:16 手机框（5.21rem × 9.26rem）居中，内容在框内滚动；
+ * 手机竖屏用与 root-scale.css 相同的媒体查询切成撑满视口、整页滚动。
+ * 描边 0.01rem（稿上 1px）。 */
+
+.consumer-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #eef2f0; /* 桌面外框底色，与登录页一致 */
+  color: #0a0f0a;
+  font-family: "Songti SC", "Noto Serif SC Variable", serif;
+}
+
+/* 设备层：桌面固定 9:16 手机框，列向排布，内容区自行滚动。 */
+.consumer-page-device {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  width: 5.21rem;
+  height: 9.26rem;
+  overflow: hidden;
+  border-radius: 0.24rem;
+  box-shadow: 0 0.24rem 0.7rem rgba(29, 61, 48, 0.17);
+  background: #fff;
+}
+
+/* 顶栏（Frame 2147225908）：高 89，内边距 20/36；返回控件高 26 垂直居中 → y=31.5。 */
+.consumer-page-topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: calc(0.89rem + env(safe-area-inset-top, 0rem));
+  padding: calc(0.2rem + env(safe-area-inset-top, 0rem)) 0.36rem 0.2rem;
+  background: #fff;
+}
+
+/* 「返回」（Frame 2147225933）：chevron-left 20 + 间距 6 + Songti 16/22 墨色 45%，整组高 26。 */
+.consumer-page-back {
+  display: inline-flex;
+  align-items: flex-start;
+  filter: drop-shadow(0 0.01rem 0.043rem rgba(0, 0, 0, 0.03));
+  gap: 0.06rem;
+  height: 0.26rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: 400 0.16rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.45);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.consumer-page-back img {
+  display: block;
+  flex: none;
+  margin-top: 0.03rem;
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.consumer-page-back:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.03rem;
+  border-radius: 0.04rem;
+}
+
+/* 滚动区：桌面框内滚动；内容列至少铺满剩余高度（设置页靠它把「退出登录」压到底部）。 */
+.consumer-page-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+/* 内容列（Frame 2147225830）：top 103 = 顶栏 89 + 14，左右 48，底边距 34 → 内容高 789。 */
+.consumer-page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.14rem 0.48rem calc(0.34rem + env(safe-area-inset-bottom, 0rem));
+}
+
+/* 手机/平板竖屏：设备层撑满视口、整页滚动。媒体查询与 root-scale.css 完全一致。 */
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  .consumer-page {
+    padding: 0;
+  }
+
+  .consumer-page-device {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .consumer-page-scroll {
+    overflow: visible;
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "contract": "realtime-text-sync",
+  "version": 1,
+  "reducer": "playbackMarker",
+  "cases": [
+    {
+      "id": "P1",
+      "rule": "R11",
+      "title": "合法标记：duration 夹取下限 80ms，媒体时钟字段随 planned 范围生效",
+      "event": {
+        "type": "audio_playout_started",
+        "segmentId": "seg-1",
+        "sequence": 3,
+        "durationMs": 40,
+        "mediaClock": "agent_pcm_samples",
+        "rangeState": "planned",
+        "mediaSampleRateHz": 48000,
+        "mediaStartSample": 0,
+        "mediaEndSample": 9600,
+        "firstFrameSequence": 2
+      },
+      "expected": {
+        "providerSegmentId": "seg-1",
+        "sequence": 3,
+        "durationMs": 80,
+        "mediaSampleRateHz": 48000,
+        "mediaStartSample": 0,
+        "mediaEndSample": 9600,
+        "firstFrameSequence": 2
+      }
+    },
+    {
+      "id": "P2",
+      "rule": "R11",
+      "title": "sequence 非正整数则整个标记无效",
+      "event": { "type": "audio_playout_started", "segmentId": "seg-2", "sequence": 0, "durationMs": 500 },
+      "expected": null
+    },
+    {
+      "id": "P3",
+      "rule": "R11",
+      "title": "rangeState 非 planned 时媒体字段整体失效但标记仍成立；duration 夹取上限 30s",
+      "event": {
+        "type": "audio_playout_started",
+        "segmentId": "seg-3",
+        "sequence": 4,
+        "durationMs": 45000,
+        "mediaClock": "agent_pcm_samples",
+        "rangeState": "live",
+        "mediaSampleRateHz": 48000,
+        "mediaStartSample": 0,
+        "mediaEndSample": 9600,
+        "firstFrameSequence": 2
+      },
+      "expected": { "providerSegmentId": "seg-3", "sequence": 4, "durationMs": 30000 }
+    },
+    {
+      "id": "P4",
+      "rule": "R11",
+      "title": "非 audio_playout_started 事件不产生标记",
+      "event": { "type": "translation_done", "segmentId": "x", "sequence": 1, "durationMs": 100 },
+      "expected": null
+    }
+  ]
+}

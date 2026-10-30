@@ -1,0 +1,10 @@
+.git
+**/node_modules
+**/dist
+**/*.test.*
+**/*_test.go
+.env
+.env.*
+**/*.log
+output
+data

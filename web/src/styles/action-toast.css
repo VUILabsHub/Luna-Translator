@@ -1,0 +1,20 @@
+/* Same dark capsule as the existing consumer share feedback, outside clipped cards/dialogs. */
+.action-toast {
+  position: fixed;
+  z-index: 1100;
+  left: 50%;
+  bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px));
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 10px 16px;
+  border-radius: 24px;
+  color: #fff;
+  background: rgba(35, 57, 38, 0.94);
+  box-shadow: 0 8px 24px rgba(29, 61, 48, 0.16);
+  font: 400 14px/1.5 Poppins, "Noto Sans SC Variable", sans-serif;
+  text-align: center;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}

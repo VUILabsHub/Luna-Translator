@@ -1,0 +1,24 @@
+{
+  "name": "luna-translator",
+  "private": true,
+  "description": "Standalone community Web frontend and Go backend for real-time speech translation",
+  "workspaces": [
+    "packages/core",
+    "packages/ui-shared",
+    "web"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace web",
+    "typecheck": "npm run typecheck --workspace web",
+    "test": "npm run test --workspace web"
+  },
+  "license": "Apache-2.0",
+  "version": "0.1.0",
+  "overrides": {
+    "vite": "8.3.5",
+    "source-map-js": "1.2.2"
+  },
+  "devDependencies": {
+    "vite": "8.3.5"
+  }
+}

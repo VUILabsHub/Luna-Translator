@@ -1,0 +1,27 @@
+name: Community checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.10'
+          cache-dependency-path: backend/go.sum
+      - run: npm ci
+      - run: npm run build --workspace web
+      - run: npm exec --workspace web -- vitest run src/lib/consumerHistory.test.ts src/lib/multilingualShowcase.test.ts src/lib/backfillAudio.test.ts src/lib/welcomeI18n.test.ts src/lib/welcomeRouting.test.ts
+      - run: go -C backend test -race ./...
+      - run: python3 scripts/check-public-content.py
+      - run: docker compose config --quiet
+      - run: docker compose up --build -d --wait
+      - run: curl --fail http://localhost:8088/health
+      - if: always()
+        run: docker compose down

@@ -1,0 +1,11 @@
+{
+  "name": "@simultrans/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared text synchronization and audio protocol utilities.",
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "license": "Apache-2.0"
+}

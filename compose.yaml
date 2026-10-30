@@ -1,0 +1,51 @@
+name: luna-translator
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      DATA_DIR: /data
+      HTTPS_PROXY: ${MODEL_HTTPS_PROXY:-}
+      HTTP_PROXY: ${MODEL_HTTP_PROXY:-}
+      NO_PROXY: localhost,127.0.0.1,backend
+      DEMO_MODE: ${DEMO_MODE:-true}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      LUNA_API_KEY: ${LUNA_API_KEY:-}
+      LUNA_WS_URL: ${LUNA_WS_URL:-wss://simultrans.lunalabs.cn/v1/realtime/translate}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      DASHSCOPE_WORKSPACE_ID: ${DASHSCOPE_WORKSPACE_ID:-}
+      DASHSCOPE_REGION: ${DASHSCOPE_REGION:-cn-beijing}
+      DASHSCOPE_ASR_URL: ${DASHSCOPE_ASR_URL:-}
+      DASHSCOPE_EMBEDDING_URL: ${DASHSCOPE_EMBEDDING_URL:-}
+    volumes:
+      - workspace-data:/data
+    healthcheck:
+      test: [CMD, wget, -qO-, http://127.0.0.1:8080/ready]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${PORT:-8088}:8080"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, wget, -qO-, http://127.0.0.1:8080/health]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+volumes:
+  workspace-data:

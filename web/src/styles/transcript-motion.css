@@ -1,0 +1,18 @@
+.replay-motion-row {
+  display: grid;
+  grid-template-rows: 1fr;
+  flex: 0 0 auto;
+  align-self: stretch;
+  min-width: 0;
+}
+.replay-motion-row-inner { min-height: 0; min-width: 0; }
+.replay-row-entering { animation: replay-row-unfold 360ms cubic-bezier(.22,.68,.28,1) both; }
+.replay-row-entering > .replay-motion-row-inner { overflow: hidden; }
+@keyframes replay-row-unfold {
+  from { grid-template-rows: 0fr; opacity: 0; margin-top: calc(-1 * var(--replay-row-gap, 0px)); }
+  to { grid-template-rows: 1fr; opacity: 1; margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .replay-row-entering { animation: none; }
+  .replay-row-entering > .replay-motion-row-inner { overflow: visible; }
+}

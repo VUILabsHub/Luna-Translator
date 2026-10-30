@@ -1,0 +1,36 @@
+{
+  "name": "simultrans-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Community Web frontend for real-time speech translation, history, replay and sharing",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && tsc -p tsconfig.node.json && vite build",
+    "typecheck": "tsc -b && tsc -p tsconfig.node.json",
+    "preview": "vite --host 0.0.0.0",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-sans-sc": "5.3.0",
+    "@fontsource-variable/noto-serif-sc": "5.3.0",
+    "@fontsource/poppins": "5.3.0",
+    "@simultrans/core": "*",
+    "@simultrans/ui-shared": "*",
+    "@vitejs/plugin-react": "6.0.4",
+    "qrcode": "^1.5.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "web-vitals": "5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1",
+    "@types/node": "^26.1.2",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "vitest": "4.1.12"
+  },
+  "license": "Apache-2.0"
+}

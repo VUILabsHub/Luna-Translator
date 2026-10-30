@@ -1,0 +1,328 @@
+/* Canary rollout: the workspace uses the same UI at every viewport width. */
+.canary-login .consumer-login-device { container-type: inline-size; --u: min(calc(100cqw / 402), 1px); --login-height: 9.26rem; background: #fff; min-height: var(--login-height); overflow: hidden; }
+.canary-login .consumer-login-device::before { content: ''; pointer-events: none; position: absolute; bottom: calc(-49 * var(--u)); width: 100%; height: calc(804 * var(--u)); background: url('/showcase/canary-figma/login-mountain.png') center / 100% 100% no-repeat; mask: url('/showcase/canary-figma/login-mask.svg') center / 100% 100% no-repeat; }
+.canary-login .consumer-login-vui { display: none; }
+.canary-login .consumer-login-inner { min-height: var(--login-height); box-sizing: border-box; padding: calc(119 * var(--u) + env(safe-area-inset-top)) calc(16 * var(--u)) calc(36 * var(--u) + env(safe-area-inset-bottom)); gap: calc(24 * var(--u)); }
+.canary-login .consumer-login-top { gap: calc(32 * var(--u)); }
+.canary-login .consumer-login-brand-title { gap: calc(6 * var(--u)); }
+.canary-login .consumer-login-hello { height: auto; font-size: calc(24 * var(--u)); line-height: calc(32 * var(--u)); font-weight: 400; }
+.canary-login .consumer-login-title { height: calc(48 * var(--u)); font-size: calc(32 * var(--u)); line-height: 1.5; }
+.canary-login .consumer-login-sub { margin: 0; font-size: calc(14 * var(--u)); line-height: calc(21 * var(--u)); }
+.canary-login .consumer-login-fields { gap: calc(12 * var(--u)); }
+.canary-login .consumer-login-field { height: calc(48 * var(--u)); padding: 0 calc(24 * var(--u)); border: 1px solid rgba(0,0,0,.24); background: transparent; }
+.canary-login .consumer-login-field:focus-within { background: #f3f5f3; border-color: #568157; }
+.canary-login .consumer-login-phone { height: calc(50 * var(--u)); gap: calc(16 * var(--u)); }
+.canary-login .consumer-login-phone-prefix { padding-right: calc(16 * var(--u)); border-right: 1px solid rgba(0,0,0,.24); font: 400 calc(16 * var(--u))/1 Poppins,sans-serif; }
+.canary-login .consumer-login-input { font-size: 16px; }
+.canary-login .consumer-login-code-row { gap: calc(12 * var(--u)); }
+.canary-login .consumer-login-send { width: calc(128 * var(--u)); height: calc(48 * var(--u)); padding: 0; border-color: rgba(0,0,0,.48); color: rgba(0,0,0,.48); font-size: calc(16 * var(--u)); }
+.canary-login .consumer-login-cta, .canary-login .consumer-login-cta.is-idle { height: calc(48 * var(--u)); background: #3b593c; font-size: calc(16 * var(--u)); }
+.canary-login .consumer-login-bottom { gap: calc(12 * var(--u)); }
+.canary-login .consumer-login-consent { margin: 0; gap: calc(6 * var(--u)); font-size: calc(14 * var(--u)); line-height: calc(24 * var(--u)); }
+.canary-login .consumer-login-guest { display: block; flex: none; width: max-content; max-width: 100%; margin: auto auto 0; min-height: 44px; padding: 8px 0; color: white; border: 0; border-bottom: 1px solid white; background: transparent; font: 400 calc(14 * var(--u))/24px 'Songti SC','Noto Serif SC Variable',serif; cursor: pointer; }
+@media (max-width: 900px), (pointer: coarse) and (hover: none) { .canary-login .consumer-login-device { --login-height: 100dvh; } }
+@media (max-height: 600px) { .canary-login .consumer-login-inner { padding-top: calc(24px + env(safe-area-inset-top)); } }
+
+.showcase-multilingual-device.canary-workspace { container-type: inline-size; --u: calc(100cqw / 402); background: #fff !important; }
+.showcase-multilingual-device.canary-workspace .realtime-showcase-landscape, .showcase-multilingual-device.canary-workspace .realtime-showcase-motion-stage { display: none; }
+/* A compact header followed by a 14px gap, independent of the old 521px canvas. */
+.showcase-multilingual-device.canary-workspace.realtime-showcase-device--welcome > .realtime-showcase-header { height: calc(52px + env(safe-area-inset-top)); }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-brand { top: calc(14px + env(safe-area-inset-top)); left: 16px; width: 36px; height: 24px; }
+.canary-home-profile { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 50%; text-decoration: none; }
+.canary-profile-avatar { display: flex; flex: none; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; font-family: Poppins, 'Noto Sans SC Variable', sans-serif; }
+.canary-home-profile.is-guest .canary-profile-avatar { background: #d9ddd9 !important; color: #fff !important; }
+.canary-home-profile:focus-visible { outline: 2px solid #568157; outline-offset: 2px; }
+.canary-workspace.realtime-showcase-device--welcome .canary-home-profile { position: absolute; top: calc(4px + env(safe-area-inset-top)); left: 14px; }
+.canary-meeting .meeting-header > .canary-home-profile { margin-left: -2px; }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-controls { top: calc(6px + env(safe-area-inset-top)); left: auto; right: 16px; width: 40px; height: 40px; }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-settings-wrap { top: 0; right: 0; }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-menu { width: 40px; height: 40px; }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-menu img { width: 24px; height: 24px; }
+.canary-home-languages { position: absolute; top: calc(66px + env(safe-area-inset-top)); left: 16px; right: 16px; z-index: 6; }
+.canary-home-languages .showcase-language-rail { position: static; padding: 0; background: transparent; }
+.canary-home-languages .showcase-duo-language-select { width: auto; display: flex; gap: 12px; align-items: center; }
+/* Canary already renders an SVG here; the legacy background doubled the glyph. */
+.canary-workspace .showcase-language-direction { width: 20px; height: 20px; background: none; }
+.canary-workspace .showcase-language-direction > img { display: block; width: 20px; height: 20px; }
+.canary-home-languages .showcase-language-picker-trigger { position:relative; isolation:isolate; height:44px; min-height:44px; padding:6px 16px; gap:12px; background:transparent; border:0; border-radius:999px; }
+.canary-home-languages .showcase-language-picker-trigger::before { content:''; position:absolute; inset:6px 0; z-index:-1; border:1px solid #e6e9e6; border-radius:999px; background:#fff; pointer-events:none; }
+.canary-home-languages .showcase-language-picker-trigger strong { font-size:14px; line-height:20px; font-weight:400; }
+.canary-home-empty { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 13px; pointer-events: none; }
+.canary-translation-symbol { position: relative; width: 129px; height: 129px; overflow: hidden; border-radius: 24px; background: rgba(54,83,55,.16); }
+.canary-translation-symbol img { position: absolute; top: -13px; left: -14px; width: 157px; height: 157px; }
+.canary-home-empty p { margin: 0; font: 400 24px/32px 'Songti SC','Noto Serif SC Variable',serif; color: rgba(0,0,0,.48); }
+.canary-home-dock { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom)); left: 24px; right: 24px; height: 64px; padding: 8px; box-sizing: border-box; display: flex; align-items: center; background: #f3f5f3; border-radius: 999px; z-index: 12; }
+.canary-home-mode-picker { position: relative; flex: none; }
+.canary-home-mode-picker > button { width: 48px; height: 48px; display: grid; place-items: center; padding: 12px; border: 0; border-radius: 999px; background: white; cursor: pointer; }
+.canary-home-mode-picker > button img { width: 24px; height: 24px; }
+.canary-mode-popover { max-height: calc(100dvh - 160px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 8px; position: absolute; bottom: 60px; left: 0; width: 164px; box-sizing: border-box; padding: 8px; background: white; border-radius: 24px; box-shadow: 0 6px 16px rgba(4,15,36,.08),0 3px 6px rgba(4,15,36,.12); }
+.canary-mode-popover > button { box-sizing: border-box; width: 100%; min-height: 56px; display: flex; align-items: center; gap: 12px; padding: 12px; border: 0; background: transparent; font: 600 14px/22px 'Songti SC','Noto Serif SC Variable',serif; text-align: left; cursor: pointer; }
+.canary-mode-popover > button:hover, .canary-mode-popover > button[aria-pressed=true] { background: #f3f5f3; border-radius: 12px; }
+.canary-mode-popover img { width: 32px; height: 32px; object-fit: contain; }
+.canary-quick-start { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0; min-height: 48px; border: 0; background: transparent; font: 700 20px/24px 'Songti SC','Noto Serif SC Variable',serif; color: rgba(0,0,0,.72); cursor: pointer; }
+.canary-quick-start img { width: 24px; height: 24px; }
+.canary-dock-spacer { width: 48px; }
+.canary-session-heading { position: absolute; top: calc(24px + env(safe-area-inset-top)); left: 0; right: 0; text-align: center; font: 600 18px/24px 'Songti SC','Noto Serif SC Variable',serif; pointer-events: none; }
+.canary-caption-viewport { position: absolute; top: calc(52px + env(safe-area-inset-top)); bottom: var(--caption-bottom, calc(164px + env(safe-area-inset-bottom))); left: 0; right: 0; overflow: hidden; }
+/* The viewport already reserves the header and measured dock. The rotated
+   transcript must fill it instead of reserving the legacy page offsets again. */
+.canary-workspace .canary-caption-rotated { position: absolute; transform-origin: center; }
+.showcase-multilingual-device.canary-workspace .canary-caption-rotated > .realtime-showcase-transcript.showcase-multilingual-transcript {
+  inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0; box-sizing: border-box;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8px, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent, #000 8px, #000 100%);
+}
+.showcase-multilingual-device.canary-workspace .canary-caption-rotated .realtime-showcase-transcript-track {
+  box-sizing: border-box; min-height: 100%; padding: 12px 24px 24px; gap: 32px;
+}
+.showcase-multilingual-device.canary-workspace .canary-caption-rotated > .showcase-multilingual-transcript--completed .realtime-showcase-transcript-track {
+  min-height: 0; padding: 12px 24px 16px; gap: 24px;
+}
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked { bottom: calc(92px + env(safe-area-inset-bottom)); left: 24px; right: 24px; justify-content: flex-start; z-index: 15; }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked button { min-height: 32px; min-width: 64px; background: white; }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked button.is-active { background: #568157; color: white; }
+
+
+.canary-login .consumer-login-title { font-weight: 400; }
+.canary-login .consumer-login-consent-text { font-size: calc(14 * var(--u)); line-height: calc(24 * var(--u)); color: #0a0f0a; }
+.canary-login .consumer-login-checkbox { width: calc(16 * var(--u)); height: calc(16 * var(--u)); border-radius: 2px; }
+
+.canary-session-dock { position: absolute; bottom: 0; left: 0; right: 0; min-height: 152px; box-sizing: border-box; padding: 84px 24px calc(24px + env(safe-area-inset-bottom)); display: flex; gap: 12px; align-items: center; background: #f3f5f3; z-index: 10; }
+.canary-session-dock button { border: 0; background: white; border-radius: 24px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.canary-session-dock img { width: 20px; height: 20px; }
+.canary-audio-controls { flex: 1.1; border-radius: 24px; background: white; display: flex; align-items: center; }
+.canary-audio-controls button { flex: 1; min-width: 44px; }
+.canary-audio-controls .canary-speaker-control { color: #0a0f0a; }
+.canary-audio-controls > span { width: 1px; height: 18px; background: #dfe1df; }
+.canary-pause-control { flex: 1; gap: 12px; }
+.canary-pause-control time { font: 400 12px/22px Poppins,sans-serif; color: rgba(0,0,0,.72); }
+.canary-pause-bars { display: flex; gap: 5px; }
+.canary-pause-bars i { width: 3px; height: 18px; border-radius: 2px; background: black; }
+.canary-finish-control { width: 48px; flex: none; }
+.showcase-multilingual-device.canary-workspace .showcase-multilingual-transcript { --showcase-source-font-size: 14px; --showcase-source-line-height: 22px; --showcase-primary-font-size: 16px; --showcase-primary-line-height: 24px; }
+
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked { display: flex; flex-wrap: wrap; }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked button { padding: 4px 20px; font-size: 14px; }
+
+.showcase-multilingual-device.canary-workspace .showcase-multilingual-row--featured .realtime-showcase-source { color: #568157 !important; font-size: var(--canary-feature-source,16px); line-height: 1.5; }
+.showcase-multilingual-device.canary-workspace .showcase-multilingual-row--featured .showcase-translation-line.is-primary { color: #568157 !important; font-size: var(--canary-feature-translation,20px); line-height: 1.5; font-weight: 600; }
+.showcase-multilingual-device.canary-workspace.showcase-font-size--small { --canary-feature-source:14px; --canary-feature-translation:18px; }
+.showcase-multilingual-device.canary-workspace.showcase-font-size--large { --canary-feature-source:18px; --canary-feature-translation:22px; }
+.showcase-multilingual-device.canary-workspace.showcase-font-size--small .showcase-multilingual-transcript { --showcase-source-font-size:12px; --showcase-source-line-height:20px; --showcase-primary-font-size:14px; --showcase-primary-line-height:22px; }
+.showcase-multilingual-device.canary-workspace.showcase-font-size--large .showcase-multilingual-transcript { --showcase-source-font-size:16px; --showcase-source-line-height:24px; --showcase-primary-font-size:18px; --showcase-primary-line-height:28px; }
+
+/* Separate flow slot: expanding, wrapping or compacting the invitation never covers captions. */
+.canary-speak-invitation .speak-invitation-slot { position: absolute; top: calc(64px + env(safe-area-inset-top)); left: 16px; right: 16px; z-index: 5; }
+.speak-invitation-bar { box-sizing: border-box; padding: 16px; border-radius: 20px; background: #f3f5f3; color: #0a0f0a; }
+.speak-invitation-bar strong { font: 600 18px/26px 'Songti SC','Noto Serif SC Variable',serif; }
+.speak-invitation-bar p { margin: 6px 0 12px; color: #687269; font: 400 13px/21px 'Songti SC','Noto Serif SC Variable',serif; }
+.speak-invitation-actions { display: flex; gap: 10px; }
+.speak-invitation-actions button { flex: 1; min-height: 44px; padding: 0 8px; border: 0; border-radius: 24px; background: #fff; color: #3b593c; font: 400 14px/22px 'Songti SC','Noto Serif SC Variable',serif; cursor: pointer; }
+.speak-invitation-actions button:first-child { background: #3b593c; color: #fff; }
+.speak-invitation-actions button:disabled { opacity: .6; cursor: default; }
+.speak-invitation-bar.is-compact { display: flex; flex-wrap: wrap; align-items: center; padding: 4px 12px; gap: 4px; }
+.speak-invitation-status { flex: 1; font: 400 13px/22px 'Songti SC','Noto Serif SC Variable',serif; color: #568157; }
+.speak-invitation-bar.is-compact button { flex: none; background: transparent; color: #3b593c; }
+.speak-invitation-error { display: block; width: 100%; margin-top: 6px; font-size: 13px; line-height: 20px; color: #9b453d; }
+.showcase-multilingual-device.canary-speak-invitation > .realtime-showcase-transcript { top: calc(76px + env(safe-area-inset-top) + var(--invitation-height)) !important; }
+.showcase-multilingual-device.canary-speak-invitation > .showcase-language-rail { display: none; }
+
+.speak-invitation-heading { position: absolute; top: calc(24px + env(safe-area-inset-top)); left: 0; right: 0; text-align: center; font: 600 18px/24px 'Songti SC','Noto Serif SC Variable',serif; pointer-events: none; }
+
+.canary-share-confirm-overlay { background: rgba(10,15,10,.18); padding: 24px; }
+.canary-share-confirm, .session-share-dialog.canary-share-panel { box-sizing: border-box; width: min(320px,100%); padding: 24px; border-radius: 24px; background: #fff; font-family: "Songti SC","Noto Serif SC Variable",serif; }
+.canary-share-confirm h2 { margin: 0 0 10px; font-size: 16px; line-height: 22px; color: #0a0f0a; font-weight: 600; }
+.canary-share-confirm p { margin: 0; font-size: 12px; line-height: 18px; color: rgba(0,0,0,.72); }
+.canary-share-confirm > div { display: flex; gap: 10px; margin-top: 16px; }
+.canary-share-confirm button { flex: 1; min-height: 44px; border: 1px solid rgba(0,0,0,.48); border-radius: 999px; background: #fff; font: 400 14px/22px "Songti SC","Noto Serif SC Variable",serif; color: rgba(0,0,0,.48); cursor: pointer; }
+.canary-share-confirm button:last-child { background: #3b593c; border-color: #3b593c; color: #fff; font-weight: 600; }
+.session-share-dialog.canary-share-panel h2 { font-size: 16px; line-height: 20px; margin-bottom: 12px; }
+.session-share-dialog.canary-share-panel p { font-size: 12px; line-height: 18px; margin: 12px 0; color: rgba(0,0,0,.72); }
+.session-share-dialog.canary-share-panel .session-share-qr { width: 162px; height: 162px; margin: 24px auto 8px; }
+.session-share-dialog.canary-share-panel .session-share-url { font-size: 9px; line-height: 18px; text-decoration: underline; }
+.session-share-dialog.canary-share-panel .session-share-options { gap: 5px; margin-top: 24px; }
+.session-share-dialog.canary-share-panel button, .session-share-dialog.canary-share-panel .session-share-options a { min-height: 44px; padding: 6px 10px; border-radius: 999px; font-size: 14px; line-height: 22px; border-color: rgba(0,0,0,.48); color: rgba(0,0,0,.48); display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.session-share-dialog.canary-share-panel .session-share-options a, .session-share-dialog.canary-share-panel .session-share-options button:last-child { background: #365337; border-color: #365337; color: #f8faf8; }
+.session-share-dialog.canary-share-panel .session-share-close { top: 12px; right: 12px; width: 40px; min-height: 40px; padding: 12px; border: 0; }
+.session-share-dialog.canary-share-panel .session-share-close img, .session-share-dialog.canary-share-panel .session-share-options img { width: 16px; height: 16px; }
+.session-share-dialog.canary-share-panel .session-share-options + p { font-size: 10px; color: rgba(0,0,0,.48); }
+
+.meeting-entry-footer.canary-meeting-entry-footer { padding: 12px 24px calc(24px + env(safe-area-inset-bottom)); border-top: 0; background: white; overflow: visible; }
+.canary-meeting-entry-footer .canary-home-dock { position: relative; bottom: auto; left: auto; right: auto; width: 100%; }
+.canary-meeting-entry-footer .canary-quick-start:disabled { opacity: .5; cursor: default; }
+
+.meeting-brand.canary-meeting-brand img { width: 36px; height: 24px; }
+
+.canary-session-dock { padding-top: 80px; }
+.canary-audio-controls > span { height: 20px; background: rgba(0,0,0,.16); }
+.canary-session-dock .canary-audio-controls img { width: 24px; height: 24px; }
+.canary-session-dock .canary-pause-icon { width: 32px; height: 32px; }
+.canary-pause-control time { font-size: 14px; line-height: 22px; color: rgba(0,0,0,.72); }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked { bottom: var(--caption-chips-bottom, calc(96px + env(safe-area-inset-bottom))); gap: 6px; max-width: 232px; }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked button { height: 32px; min-width: 73px; padding: 4px 20px; background: rgba(255,255,255,.56); }
+.showcase-multilingual-device.canary-workspace .showcase-row-languages--docked button.is-active { background: #568157; color: #f8faf8; }
+.canary-session-dock.canary-session-dock--with-languages { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 48px; min-height: 0; padding-top: 16px; row-gap: 16px; }
+.showcase-multilingual-device.canary-workspace .canary-session-dock > .showcase-row-languages--docked { position: static; grid-column: 1 / -1; width: 100%; margin: 0; }
+.showcase-multilingual-device.canary-speak-invitation .canary-caption-viewport { top: calc(76px + env(safe-area-inset-top) + var(--invitation-height)); }
+
+.speak-invitation-bar.is-compact { flex-wrap: nowrap; }
+.speak-invitation-bar.is-compact .speak-invitation-status { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.speak-invitation-bar.is-compact .speak-invitation-actions { flex-shrink: 0; }
+.speak-invitation-bar.is-compact button { white-space: nowrap; }
+
+/* Current Figma meeting flow on Canary, shared by phone and desktop. */
+.canary-meeting.meeting-page { --meeting-green: #3b593c; color: #0a0f0a; font-family: 'Songti SC','Noto Serif SC Variable',serif; }
+.canary-meeting .meeting-device, .canary-meeting .meeting-lobby { background: #fff; }
+.canary-meeting .meeting-header { min-height: 52px; padding: env(safe-area-inset-top) 16px 0; border: 0; }
+.canary-meeting .meeting-menu-button { border: 0; background: transparent; padding: 10px; min-height: 44px; }
+.canary-meeting .meeting-mode-badge { background: transparent; color: #0a0f0a; font-size: 18px; padding: 0; }
+.canary-meeting .meeting-back { color: rgba(0,0,0,.48); }
+.canary-meeting-languages { display: flex; flex: none; gap: 12px; align-items: center; padding: 14px 16px 12px; }
+.canary-meeting-languages label { flex: 1; min-width: 0; }
+.canary-meeting-languages select { min-height: 36px; width: 100%; border: 1px solid #e6e9e6; background: #fff; border-radius: 999px; padding: 6px 16px; color: #0a0f0a; font-size: 12px; }
+.canary-meeting .meeting-lobby { padding: 12px 16px 24px; gap: 16px; }
+.canary-meeting .meeting-intro h1 { margin: 0; font-size: 18px; line-height: 26px; font-weight: 600; letter-spacing: 0; }
+.canary-meeting .meeting-eyebrow, .canary-meeting .meeting-description, .canary-meeting .meeting-intro-note { display: none; }
+.canary-meeting .meeting-entry-tabs { border-radius: 999px; background: #f3f5f3; padding: 6px; margin-bottom: 16px; }
+.canary-meeting .meeting-entry-tabs button { min-height: 48px; border-radius: 999px; font-size: 16px; font-weight: 400; }
+.canary-meeting .meeting-field { color: #0a0f0a; font-size: 14px; gap: 8px; margin-bottom: 16px; }
+.canary-meeting .meeting-field input { min-height: 56px; border: 1px solid rgba(0,0,0,.16); border-radius: 12px; padding: 16px; font-size: 14px; }
+.canary-meeting .meeting-voice-clone { border: 0; padding: 0; }
+.canary-meeting .meeting-voice-clone label { flex-direction: row-reverse; justify-content: space-between; font-size: 14px; }
+.canary-meeting .meeting-voice-clone input { appearance: none; width: 36px; height: 18px; border-radius: 999px; background: #c4c8c4; position: relative; }
+.canary-meeting .meeting-voice-clone input::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: white; }
+.canary-meeting .meeting-voice-clone input:checked { background: #568157; }
+.canary-meeting .meeting-voice-clone input:checked::after { left: 20px; }
+.canary-meeting .meeting-muted-note, .canary-meeting .meeting-voice-clone p { color: rgba(0,0,0,.48); font-size: 12px; line-height: 18px; }
+.canary-meeting .meeting-room { padding: 0; }
+.canary-meeting .meeting-caption-panel { border: 0; border-radius: 0; }
+.canary-meeting .meeting-captions { padding: 16px 24px; }
+.canary-meeting .meeting-caption { margin-bottom: 32px; }
+.canary-meeting .meeting-caption > p { font: 400 16px/24px Poppins,'Noto Serif SC Variable',sans-serif; color: #0a0f0a; margin: 8px 0 0; }
+.canary-meeting .meeting-caption > .meeting-caption-original { font-family: 'Noto Serif SC Variable',serif; color: rgba(0,0,0,.48); font-size: 14px; line-height: 21px; }
+.canary-meeting .meeting-header-leave { background: transparent; border: 0; color: #f14b4b; font-size: 14px; white-space: nowrap; }
+.canary-meeting .meeting-code h1 { display: none; }
+.canary-meeting .meeting-code strong { color: #0a0f0a; font-size: 18px; line-height: 22px; letter-spacing: 0; font-weight: 600; }
+/* Meeting duration under the code (App MeetingElapsed: Poppins Regular 12/18, ink55, centred, HH:MM:SS). */
+.canary-meeting .meeting-elapsed { font: 400 12px/18px Poppins, sans-serif; color: rgba(10,15,10,.55); font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; }
+.canary-meeting .meeting-controls { display: flex; gap: 24px; flex: none; padding: 20px 24px calc(20px + env(safe-area-inset-bottom)); background: #fff; border: 0; }
+.canary-meeting-control-group { display: flex; flex: 1; min-width: 0; justify-content: space-around; align-items: center; background: #f3f5f3; border-radius: 999px; min-height: 72px; padding: 4px 16px; }
+.canary-meeting .meeting-controls button { border: 0; box-shadow: none; background: transparent; color: rgba(0,0,0,.72); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px; min-width: 0; min-height: 56px; padding: 4px; font-size: 12px; line-height: 18px; }
+.canary-meeting .meeting-controls .canary-meeting-settings { flex: none; width: 72px; min-height: 72px; border-radius: 999px; background: #f3f5f3; }
+.canary-meeting-icon { position: relative; display: block; width: 28px; height: 28px; }
+.canary-meeting-icon[data-muted=true]::after { content: ''; position: absolute; left: -2px; top: 13px; width: 32px; height: 2px; background: #0a0f0a; transform: rotate(-45deg); box-shadow: 0 1px #f3f5f3; }
+@media (max-width: 360px) { .canary-meeting .meeting-controls { gap: 12px; padding-left: 16px; padding-right: 16px; } .canary-meeting-control-group { padding: 4px 8px; } }
+.canary-meeting-room .meeting-menu-button { display: none; }
+.canary-meeting .meeting-caption { position: relative; display: flex; flex-direction: column; padding-left: 40px; }
+.canary-meeting .meeting-caption-meta { order: -1; min-width: 0; display: block; }
+.canary-meeting .meeting-caption-meta strong { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 600 14px/21px Poppins, 'Noto Serif SC Variable', sans-serif; color: rgba(0, 0, 0, .55); }
+.canary-meeting .meeting-caption-meta > span,
+.canary-meeting .meeting-caption-meta > small { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+.canary-meeting-avatar { position: absolute; top: 0; left: 0; width: 32px; height: 32px; border-radius: 50%; color: white; background: #568157; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.canary-meeting .meeting-caption > p { order: 1; }
+.canary-meeting .meeting-caption > .meeting-caption-original { order: 0; margin-top: 0; }
+.canary-meeting .meeting-caption:last-child > p { color: #568157; }
+.canary-meeting .meeting-caption:last-child > p:not(.meeting-caption-original) { font-size: 20px; font-weight: 600; line-height: 28px; }
+.canary-home-languages .showcase-duo-language-select { width: 100%; }
+.canary-home-languages .showcase-language-picker { flex: 1; width: auto; min-width: 0; }
+.canary-home-languages .showcase-language-picker-trigger { width: 100%; justify-content: space-between; }
+
+
+/* Shared scene controls: constrain content to its column even with native selects. */
+.canary-workspace .home-conversation-languages { font-size: 14px; }
+.canary-workspace .home-conversation-languages legend,
+.canary-workspace .home-conversation-languages > p,
+.canary-workspace .home-conversation-language-choice > span { display: none; }
+.canary-workspace .home-conversation-language-pair { grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); gap: 8px; }
+.canary-workspace .home-conversation-language-choice select { box-sizing: border-box; min-height: 44px; padding: 8px 16px; border-radius: 999px; background: #fff; font-size: 16px; }
+.canary-workspace .home-conversation-swap { width: 44px; min-height: 44px; font-size: 24px; }
+.canary-workspace .home-conversation-transcript { top: calc(80px + env(safe-area-inset-top)); bottom: var(--caption-bottom, calc(164px + env(safe-area-inset-bottom))); left: 16px; right: 16px; }
+.canary-workspace .canary-home-dock > *, .canary-meeting .canary-home-dock > * { min-width: 0; }
+.canary-dock-spacer { flex-shrink: 0; }
+.canary-workspace :is(button, select):focus-visible { outline: 2px solid #568157; outline-offset: 2px; }
+.canary-workspace button:disabled { cursor: default; opacity: .5; }
+
+/* Summary and transcript follow actual content height, including wrapped titles.
+   Fixed top offsets made the conversation language fieldset collide with these. */
+.showcase-multilingual-device.canary-workspace:has(> .realtime-showcase-header.is-finished) { display: flex; flex-direction: column; }
+.canary-workspace > .realtime-showcase-header.is-finished { position: relative; inset: auto; flex: none; min-height: 64px; height: auto; box-sizing: border-box; padding: 12px 24px; }
+.canary-workspace > .showcase-language-rail--finished { position: relative; inset: auto; flex: none; width: auto; height: auto; padding: 8px 24px 0; gap: 12px; box-sizing: border-box; }
+.canary-workspace .showcase-finished-summary.showcase-history-summary :is(strong, span) { height: auto; }
+.canary-workspace .showcase-finished-summary.showcase-history-summary strong { font-size: 20px; line-height: 28px; }
+.canary-workspace .showcase-finished-summary.showcase-history-summary span { font-size: 12px; line-height: 18px; overflow-wrap: anywhere; white-space: normal; overflow: visible; text-overflow: clip; }
+.canary-workspace .showcase-completed-language-group button { min-height: 44px; }
+.canary-workspace .showcase-finished-empty-title { margin: 0; font-size: 18px; line-height: 28px; }
+.showcase-multilingual-device.canary-workspace > .realtime-showcase-transcript.showcase-multilingual-transcript.showcase-multilingual-transcript--completed.showcase-multilingual-transcript--finished { position: relative; inset: auto; flex: 1; min-height: 0; height: auto; width: auto; margin: 0; padding: 12px 24px 16px; overflow-y: auto; }
+/* Match the iOS content flow: one horizontal inset and one 24px gap before
+   audio. A viewport-height inner track and the card's extra margin made both
+   short results and complete audio appear surrounded by blank space. */
+.showcase-multilingual-device.canary-workspace .showcase-multilingual-transcript--finished > .realtime-showcase-transcript-track {
+  min-height: 0; box-sizing: border-box; padding: 0; gap: 24px;
+}
+.canary-workspace .showcase-multilingual-transcript--completed .session-audio-downloads { margin-top: 0; }
+.canary-workspace:has(> .realtime-showcase-header.is-finished) > .realtime-showcase-notices { position: relative; inset: auto; flex: none; width: auto; margin: 0; padding: 8px 24px max(12px, env(safe-area-inset-bottom)); }
+
+/* Compact landscape viewports keep language controls, empty state and dock apart. */
+@media (max-height: 600px) {
+  .canary-home-empty { top: 52%; gap: 6px; }
+  .canary-translation-symbol { width: 64px; height: 64px; border-radius: 12px; }
+  .canary-translation-symbol img { width: 78px; height: 78px; top: -6px; left: -7px; }
+  .canary-home-empty p { font-size: 16px; line-height: 24px; }
+  .canary-home-dock { bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .canary-workspace > .realtime-showcase-header.is-finished { min-height: 48px; padding-block: 4px; }
+  .canary-session-dock { min-height: 112px; padding: 52px 16px calc(12px + env(safe-area-inset-bottom)); }
+  .canary-session-dock.canary-session-dock--with-languages { min-height: 0; padding-top: 12px; row-gap: 12px; }
+  .canary-caption-viewport { bottom: var(--caption-bottom, calc(144px + env(safe-area-inset-bottom))); }
+  .canary-workspace .home-conversation-transcript { top: calc(64px + env(safe-area-inset-top)); bottom: var(--caption-bottom, calc(144px + env(safe-area-inset-bottom))); }
+}
+
+
+.canary-workspace.realtime-showcase-device--welcome > .realtime-showcase-notices { bottom: calc(104px + env(safe-area-inset-bottom)); height: auto; padding-inline: 24px; }
+.canary-workspace.realtime-showcase-device--welcome .realtime-showcase-notice { color: rgba(10,15,10,.55); font-size: 12px; line-height: 18px; }
+.showcase-multilingual-device.canary-workspace .realtime-showcase-notice--info {
+  box-sizing: border-box; min-height: 44px; gap: 8px; padding: 0 0 0 12px; text-align: left;
+}
+.showcase-multilingual-device.canary-workspace .realtime-showcase-notice--info .realtime-showcase-notice-close {
+  display: block; flex: 0 0 44px; width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+  padding: 0; border: 0; background: url('/showcase/close.svg') center / 16px 16px no-repeat; cursor: pointer;
+}
+/* Single-screen notices share the measured dock/chip boundary. Keep them above
+   the controls so the message and its close action remain visible and usable. */
+.showcase-multilingual-device.canary-workspace:has(> .canary-caption-viewport) > .realtime-showcase-notices {
+  bottom: var(--caption-notice-bottom, 1.8rem); z-index: 20;
+}
+.showcase-multilingual-device.canary-workspace:is(.realtime-showcase-device--connecting, .realtime-showcase-device--recording, .realtime-showcase-device--processing):has(> .canary-caption-viewport) > .realtime-showcase-notices {
+  bottom: var(--caption-notice-bottom, calc(1.3rem + env(safe-area-inset-bottom)));
+}
+.showcase-multilingual-device.canary-workspace:has(> .canary-caption-viewport) > .showcase-multilingual-notices--ending {
+  bottom: var(--caption-notice-bottom, 2.6rem);
+}
+.showcase-multilingual-device.canary-workspace:is(.realtime-showcase-device--connecting, .realtime-showcase-device--recording, .realtime-showcase-device--processing):has(> .canary-caption-viewport) > .showcase-multilingual-notices--ending {
+  bottom: var(--caption-notice-bottom, calc(2.1rem + env(safe-area-inset-bottom)));
+}
+@media (max-height: 600px) {
+  .canary-workspace.realtime-showcase-device--welcome > .realtime-showcase-notices { bottom: calc(88px + env(safe-area-inset-bottom)); }
+}
+
+/* Each conversation half still needs room for a whole caption line in landscape.
+   Keep the rotate action beside the text instead of reserving a footer inside it. */
+@media (max-height: 540px) {
+  .canary-workspace .home-conversation-panel-content { padding: 0 52px; }
+  .canary-workspace .home-conversation-panel-header button { min-height: 24px; font-size: 12px; }
+  .canary-workspace .home-conversation-panel-scroll { padding: 2px 0; }
+  .canary-workspace .home-conversation-row:last-child { margin-bottom: 0; }
+  .canary-workspace .home-conversation-row p > span { font-size: 10px; line-height: 14px; }
+  .canary-workspace .home-conversation-original { font-size: 12px; line-height: 18px; }
+  .canary-workspace .home-conversation-row.is-latest .home-conversation-translation { font-size: 14px; line-height: 20px; }
+  .canary-workspace .home-conversation-rotate { top: 50%; bottom: auto; right: 4px; transform: translateY(-50%); min-height: 44px; min-width: 44px; padding: 0; font-size: 10px; }
+  .canary-workspace .home-conversation-rotate > span:first-child { font-size: 14px; }
+}
+
+/* Quick Start uses the same playback and three-detent controls as native mode settings. */
+.showcase-quick-audio { display:grid; gap:.12rem; min-width:0; }
+.showcase-quick-audio-slider { display:flex; flex-wrap:wrap; align-items:center; color:var(--ink55, #757c75); font-size:.14rem; gap:.04rem; }
+.showcase-quick-audio-slider > span { margin-left:auto; font-size:.12rem; }
+.showcase-quick-audio-slider input { width:100%; min-width:0; min-height:max(44px, .44rem); margin:0; accent-color:#365738; }
+.showcase-quick-audio-slider input:disabled { opacity:.45; }
+.showcase-quick-audio-slider > .showcase-quick-noise-labels { display:flex; justify-content:space-between; width:100%; margin:0; color:#858b85; }
+.showcase-quick-noise-labels .is-selected { color:#182418; }

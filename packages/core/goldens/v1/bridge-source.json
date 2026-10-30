@@ -1,0 +1,30 @@
+{
+  "contract": "realtime-text-sync",
+  "version": 1,
+  "reducer": "bridgeSource",
+  "cases": [
+    {
+      "id": "S1",
+      "rule": "R10",
+      "title": "source_delta 追加、source_update 替换、source_done 定稿",
+      "events": [
+        { "type": "source_delta", "text": "Hel" },
+        { "type": "source_delta", "text": "lo" },
+        { "type": "source_update", "text": " Hello world " },
+        { "type": "source_done", "text": "Hello world." }
+      ],
+      "expected": "Hello world."
+    },
+    {
+      "id": "S2",
+      "rule": "R10",
+      "title": "旧式 transcription 片段按 CJK / 标点规则拼接",
+      "events": [
+        { "type": "transcription", "text": "Hello" },
+        { "type": "transcription", "text": "world" },
+        { "type": "transcription", "text": "。" }
+      ],
+      "expected": "Hello world。"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+.conversation-settings { display: flex; flex-direction: column; gap: .14rem; min-width: 0; }
+.conversation-settings h2 { margin: 0; font-size: .18rem; line-height: 1.4; }
+.conversation-settings-side { display: flex; flex-direction: column; gap: .12rem; min-width: 0; margin: 0; padding: .12rem 0 .16rem; border: 0; border-bottom: 1px solid #e2e8e3; }
+.conversation-settings-side legend { padding: 0; color: #22332a; font-size: .14rem; font-weight: 600; }
+.conversation-settings-row { display: grid; grid-template-columns: .86rem minmax(0, 1fr); align-items: center; gap: .1rem; min-width: 0; min-height: 44px; font-size: .14rem; color: #68736b; }
+.conversation-settings-row > select { min-width: 0; width: 100%; min-height: 44px; padding: .06rem .1rem; border: 1px solid #dce2dd; border-radius: .2rem; background: white; color: #22332a; font: inherit; }
+.conversation-settings-row .realtime-showcase-device-combobox { min-width: 0; }
+.conversation-settings .realtime-showcase-combobox-trigger { min-height: 44px; }
+.conversation-settings-row > select { appearance: none; height: 44px; padding-right: .28rem; background: white url('/showcase/chevron.svg') right .08rem center / .14rem no-repeat; }
+.conversation-device-system { color: #22332a; }
+.conversation-settings-volume { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .04rem; font-size: .14rem; color: #68736b; }
+.conversation-settings-volume > input { grid-column: 1 / -1; width: 100%; margin: 0; min-height: 44px; accent-color: #365337; }
+.conversation-settings-link { min-height: 44px; padding: 0; text-align: left; color: #365337; background: transparent; border: 0; font: inherit; font-size: .14rem; cursor: pointer; }
+.conversation-settings-link:disabled { opacity: .45; cursor: default; }
+.conversation-settings-note { margin: 0; font-size: .12rem; line-height: 1.6; color: #68736b; overflow-wrap: anywhere; }
+.conversation-idle-languages { margin: 0; color: #365337; text-align: center; font-size: .16rem; }
+.showcase-scene--conversation .home-conversation-transcript { flex: 1; margin: .1rem .18rem 1.1rem; width: auto; height: auto; }
+.showcase-scene--conversation .home-conversation-panel-header button { min-height: 44px; }
+/* Keep the drawer readable at 320px; the surrounding stage scales its rem unit. */
+.showcase-scene--conversation .showcase-multilingual-settings { width: min(90vw, 324px); max-width: calc(100vw - 24px); padding: 16px; }
+.conversation-settings { gap: 14px; }
+.conversation-settings h2 { font-size: max(18px, .18rem); }
+.conversation-settings-side { gap: 12px; padding-bottom: 16px; }
+.conversation-settings-side legend, .conversation-settings-row, .conversation-settings-volume, .conversation-settings-link { font-size: max(14px, .14rem); }
+.conversation-settings-row { grid-template-columns: 86px minmax(0, 1fr); gap: 10px; }
+.conversation-settings .realtime-showcase-combobox-trigger, .conversation-settings .realtime-showcase-combobox-list [role="option"] { font-size: max(14px, .14rem); min-height: 44px; }
+.conversation-settings-note { font-size: max(12px, .12rem); }
+.conversation-settings .showcase-language-picker-trigger { width: 100%; min-height: 44px; font-size: 16px; padding: 8px 12px; border-radius: 24px; background: white; border: 1px solid #dce2dd; }
+.conversation-settings .showcase-language-picker-trigger strong { font-size: inherit; }
+.showcase-scene--conversation .conversation-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-trigger { font-size: 14px; line-height: 1.5; height: 44px; }
+.showcase-scene--conversation .conversation-settings .realtime-showcase-device-combobox .realtime-showcase-combobox-list [role="option"] { font-size: 14px; line-height: 1.5; min-height: 44px; }
+/* The conversation drawer has a physical-pixel width; keep its live close handle at that edge. */
+.showcase-multilingual-device.showcase-scene--conversation:is(.realtime-showcase-device--connecting, .realtime-showcase-device--recording, .realtime-showcase-device--processing) .realtime-showcase-settings-wrap:has(> .showcase-multilingual-settings) .realtime-showcase-menu {
+  right: calc(min(90vw, 324px) - .24rem);
+  width: 24px;
+  min-height: 72px;
+  background-position: center;
+  background-size: 16px;
+}

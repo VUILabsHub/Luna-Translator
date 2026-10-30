@@ -1,0 +1,211 @@
+{
+  "contract": "realtime-text-sync",
+  "version": 1,
+  "reducer": "vadPairs",
+  "cases": [
+    {
+      "id": "V1",
+      "rule": "R1",
+      "title": "句对身份：utteranceId 缺失时用 vad-{speechEpoch}，两者皆缺则忽略",
+      "events": [
+        { "type": "model_output", "epochText": "Ignored" },
+        { "type": "model_output", "epochText": "预览甲", "speechEpoch": 2 }
+      ],
+      "expectedPairs": [
+        { "id": "vad-2", "speechEpoch": 2, "translation": "预览甲", "translationEpochPriority": 1 }
+      ]
+    },
+    {
+      "id": "V2",
+      "rule": "R3",
+      "title": "model_output 仅消费 epochText，text 字段不得回填句对",
+      "events": [
+        { "type": "model_output", "text": "session-cumulative snapshot", "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "", "translationEpochPriority": 0 }
+      ]
+    },
+    {
+      "id": "V3",
+      "rule": "R4",
+      "title": "同水位下稳定终稿（P2）胜过预览（P1），其后同水位预览被拒",
+      "events": [
+        { "type": "model_output", "epochText": "Hello wor", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "translation_done", "epochText": "Hello world.", "segmentText": "Hello world.", "text": "Hello world.", "segmentId": "s1", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "model_output", "epochText": "Hello world", "utteranceId": "u1", "endMs": 1200 }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello world.", "translationEpochPriority": 2, "translationStableEpochText": "Hello world.", "translationStableEpochEndMs": 1200 }
+      ]
+    },
+    {
+      "id": "V4a",
+      "rule": "R4",
+      "title": "预览以严格前缀扩展且水位更新时可接管稳定文本",
+      "events": [
+        { "type": "model_output", "epochText": "Hello wor", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "translation_done", "epochText": "Hello world.", "segmentText": "Hello world.", "text": "Hello world.", "segmentId": "s1", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "model_output", "epochText": "Hello world. Nex", "utteranceId": "u1", "endMs": 1800 }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello world. Nex", "translationEpochPriority": 1, "translationStableEpochText": "Hello world." }
+      ]
+    },
+    {
+      "id": "V4b",
+      "rule": "R4",
+      "title": "预览非稳定前缀扩展时即便水位更新也被拒",
+      "events": [
+        { "type": "model_output", "epochText": "Hello wor", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "translation_done", "epochText": "Hello world.", "segmentText": "Hello world.", "text": "Hello world.", "segmentId": "s1", "utteranceId": "u1", "endMs": 1200 },
+        { "type": "model_output", "epochText": "Different text", "utteranceId": "u1", "endMs": 1800 }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello world.", "translationEpochPriority": 2 }
+      ]
+    },
+    {
+      "id": "V5",
+      "rule": "R5",
+      "title": "replaceSegmentIds 退役被替换分段，退役分段迟到事件永久丢弃",
+      "events": [
+        { "type": "translation_done", "segmentId": "a", "segmentText": "Alpha", "text": "Alpha", "utteranceId": "u1", "index": 0, "endMs": 900 },
+        { "type": "translation_done", "segmentId": "b", "segmentText": "Alpha beta", "text": "Alpha beta", "replaceSegmentIds": ["a"], "utteranceId": "u1", "index": 0, "endMs": 1400 },
+        { "type": "translation_done", "segmentId": "a", "segmentText": "Alpha stale", "text": "stale", "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        {
+          "id": "u1",
+          "translation": "Alpha beta",
+          "translationRetiredSegmentIds": ["a"],
+          "translationSegmentIds": ["b"],
+          "translationUnits": [ { "providerSegmentId": "b", "text": "Alpha beta" } ]
+        }
+      ]
+    },
+    {
+      "id": "V6",
+      "rule": "R6",
+      "title": "translation_done 以 segmentId+segmentText+text 为幂等键去重",
+      "events": [
+        { "type": "translation_done", "segmentId": "s1", "segmentText": "One.", "text": "One.", "utteranceId": "u1" },
+        { "type": "translation_done", "segmentId": "s1", "segmentText": "One.", "text": "One.", "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translationUnits": [ { "providerSegmentId": "s1", "text": "One." } ] }
+      ]
+    },
+    {
+      "id": "V7",
+      "rule": "R7",
+      "title": "分段按 providerIndex 排序而非到达顺序",
+      "events": [
+        { "type": "translation_done", "segmentId": "s2", "segmentText": "Second.", "text": "Second.", "index": 1, "utteranceId": "u1" },
+        { "type": "translation_done", "segmentId": "s1", "segmentText": "First.", "text": "First.", "index": 0, "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translationUnits": [ { "providerSegmentId": "s1" }, { "providerSegmentId": "s2" } ] }
+      ]
+    },
+    {
+      "id": "V8",
+      "rule": "R8",
+      "title": "model_output_reset 回退到最近稳定文本并恢复 P2",
+      "events": [
+        { "type": "translation_done", "epochText": "Hello.", "segmentText": "Hello.", "text": "Hello.", "segmentId": "s1", "utteranceId": "u1", "endMs": 1000 },
+        { "type": "model_output", "epochText": "Hello. Wor", "utteranceId": "u1", "endMs": 1600 },
+        { "type": "model_output_reset", "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello.", "translationEpochText": "Hello.", "translationEpochPriority": 2 }
+      ]
+    },
+    {
+      "id": "V9",
+      "rule": "R9",
+      "title": "source_done 后非稳定前缀的修订快照被拒",
+      "events": [
+        { "type": "source_update", "text": "你好世", "utteranceId": "u1" },
+        { "type": "source_done", "text": "你好世界。", "utteranceId": "u1" },
+        { "type": "source_update", "text": "改写的内容", "utteranceId": "u1" }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "source": "你好世界。", "sourceFinal": true, "sourceStableText": "你好世界。" }
+      ]
+    },
+    {
+      "id": "V10",
+      "rule": "R2",
+      "title": "VAD 起点权威，文本事件 startMs 仅作临时起点",
+      "events": [
+        { "type": "source_vad_state", "state": "speech_start", "speechEpoch": 7, "startMs": 4000 },
+        { "type": "source_delta", "text": "早", "speechEpoch": 7, "startMs": 4300 }
+      ],
+      "expectedPairs": [
+        { "id": "vad-7", "startMs": 4000, "sourceVadStartMs": 4000, "provisionalStartMs": 4300, "source": "早" }
+      ]
+    },
+    {
+      "id": "V11",
+      "rule": "R4-A",
+      "title": "权威模型文本（modelOutputAuthoritative）直接落成稳定文本，优先级 P2",
+      "events": [
+        { "type": "model_output", "epochText": "Hello", "utteranceId": "u1", "endMs": 900, "modelOutputAuthoritative": true }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello", "translationEpochPriority": 2, "translationStableEpochText": "Hello", "translationModelAuthoritative": true }
+      ]
+    },
+    {
+      "id": "V12",
+      "rule": "R4-A",
+      "title": "权威文本是追加式：同一水位继续补真标点（严格前缀扩展）照单全收",
+      "events": [
+        { "type": "model_output", "epochText": "Hello", "utteranceId": "u1", "endMs": 900, "modelOutputAuthoritative": true },
+        { "type": "model_output", "epochText": "Hello world.", "utteranceId": "u1", "endMs": 900, "modelOutputAuthoritative": true }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello world.", "translationEpochPriority": 2, "translationStableEpochText": "Hello world.", "translationModelAuthoritative": true }
+      ]
+    },
+    {
+      "id": "V13",
+      "rule": "R4-A",
+      "title": "权威态下非前缀改写与倒退水位一律被拒（已念出去的文字不许被搬动）",
+      "events": [
+        { "type": "model_output", "epochText": "Hello world", "utteranceId": "u1", "endMs": 1200, "modelOutputAuthoritative": true },
+        { "type": "model_output", "epochText": "Hi there", "utteranceId": "u1", "endMs": 1800, "modelOutputAuthoritative": true },
+        { "type": "model_output", "epochText": "Hello", "utteranceId": "u1", "endMs": 600, "modelOutputAuthoritative": true }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello world", "translationEpochPriority": 2, "translationStableEpochText": "Hello world", "translationModelAuthoritative": true }
+      ]
+    },
+    {
+      "id": "V14",
+      "rule": "R4-A",
+      "title": "权威态之后 translation_done 只登记 TTS 段，不得覆盖模型展示文本",
+      "events": [
+        { "type": "model_output", "epochText": "Hello, world.", "utteranceId": "u1", "endMs": 1200, "modelOutputAuthoritative": true },
+        { "type": "translation_done", "epochText": "Hello world", "segmentText": "Hello world", "text": "Hello world", "segmentId": "s1", "utteranceId": "u1", "index": 0, "endMs": 1200 }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello, world.", "translationEpochPriority": 2, "translationStableEpochText": "Hello, world.", "translationModelAuthoritative": true, "translationSegmentIds": ["s1"], "translationUnits": [{ "providerSegmentId": "s1", "text": "Hello world" }] }
+      ]
+    },
+    {
+      "id": "V15",
+      "rule": "R4-A",
+      "title": "权威标记只作用于本话轮：另一个 utteranceId 仍走可回改预览（P1）",
+      "events": [
+        { "type": "model_output", "epochText": "Hello", "utteranceId": "u1", "endMs": 900, "modelOutputAuthoritative": true },
+        { "type": "model_output", "epochText": "Bonjour", "utteranceId": "u2", "endMs": 1800 }
+      ],
+      "expectedPairs": [
+        { "id": "u1", "translation": "Hello", "translationEpochPriority": 2, "translationModelAuthoritative": true },
+        { "id": "u2", "translation": "Bonjour", "translationEpochPriority": 1 }
+      ]
+    }
+  ]
+}

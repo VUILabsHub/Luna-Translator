@@ -1,0 +1,289 @@
+/* C 端设置页 — 像素级对照 Figma 971:7289（页框/顶栏见 styles/consumer-page.css）。
+ * 内容列 Frame 2147225830：top 103、左右 48、高 789，列向 justify-between：
+ * 上组（标题 + 分区）gap 52；底部「退出登录」全宽 56，底边距 34。
+ * 全部按 1rem = 设计稿 100px 书写。 */
+
+/* 内容列上下分开：上组贴顶，「退出登录」压到 y=836（底边 892）。 */
+.consumer-settings-page .consumer-page-content {
+  justify-content: space-between;
+  gap: 0.24rem;
+}
+
+.consumer-settings-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.52rem;
+}
+
+/* Canary general settings follows the current App profile and compact header. */
+.canary-general-settings .consumer-page-topbar { height: calc(52px + env(safe-area-inset-top)); padding: env(safe-area-inset-top) 24px 0; }
+.canary-general-settings .consumer-page-back { height: auto; min-height: 44px; align-items: center; gap: 6px; font-size: 16px; line-height: 24px; }
+.canary-general-settings .consumer-page-back img { width: 20px; height: 20px; margin: 0; }
+.canary-general-settings .consumer-page-content { padding: 12px 24px max(24px, env(safe-area-inset-bottom)); gap: 24px; }
+.canary-general-settings .consumer-settings-top { gap: 24px; }
+.canary-general-settings .consumer-settings-title { height: auto; justify-content: center; font-size: 22px; line-height: 32px; }
+.canary-general-settings .consumer-settings-heading { height: auto; font-size: 14px; line-height: 24px; }
+.canary-general-settings .consumer-settings-section { gap: 8px; }
+.canary-general-settings .consumer-settings-sections { gap: 24px; }
+.canary-general-settings .consumer-settings-row { height: auto; min-height: 48px; font-size: 16px; line-height: 24px; white-space: normal; }
+.canary-general-settings .consumer-settings-note { font-size: 12px; line-height: 18px; }
+.consumer-settings-profile-heading { display: flex; align-items: center; gap: 12px; }
+.consumer-settings-profile-heading .canary-profile-avatar { width: 56px; height: 56px; }
+.consumer-settings-profile-heading > div { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 6px; overflow-wrap: anywhere; }
+.consumer-settings-profile-heading strong { font-size: 18px; line-height: 26px; }
+.consumer-settings-profile-heading span { font-size: 12px; line-height: 18px; color: #737a73; }
+.consumer-settings-profile button { min-height: 44px; padding: 8px; border: 0; border-radius: 8px; background: #f3f5f3; color: #365337; font-size: 14px; white-space: nowrap; cursor: pointer; }
+.consumer-settings-profile button:disabled { opacity: .5; cursor: default; }
+.consumer-settings-profile-form { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; font-size: 14px; }
+.consumer-settings-profile-form label { display: flex; justify-content: space-between; gap: 12px; }
+.consumer-settings-profile-form label span { font-size: 12px; color: #737a73; }
+.consumer-settings-profile-form .consumer-settings-profile-error { color: #b63333; }
+.consumer-settings-profile-form .consumer-settings-profile-error:empty { display: none; }
+.consumer-settings-profile-form input[aria-invalid="true"] { border-color: #b63333; }
+.consumer-settings-profile-form input { width: 100%; box-sizing: border-box; min-height: 44px; border: 1px solid #b9c2b9; border-radius: 8px; padding: 8px 12px; background: white; color: #0a0f0a; font-size: 16px; }
+.consumer-settings-profile-form p, .consumer-settings-profile > p { margin: 0; font-size: 12px; line-height: 18px; color: #737a73; }
+.consumer-settings-profile-form > div { display: flex; justify-content: flex-end; gap: 12px; }
+.consumer-settings-profile > p:not(:empty) { margin-top: 12px; }
+
+.showcase-confirm-dialog.consumer-settings-confirm { width: min(360px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); border-radius: 20px; }
+.consumer-settings-confirm .showcase-confirm-dialog__content { padding: 24px; }
+.showcase-confirm-dialog.consumer-settings-confirm h2 { margin: 0 0 14px; font-size: 20px; line-height: 28px; }
+.showcase-confirm-dialog.consumer-settings-confirm p { margin: 12px 0 0; font-size: 14px; line-height: 22px; }
+.consumer-settings-confirm .showcase-confirm-dialog__actions { margin-top: 20px; gap: 12px; }
+.consumer-settings-confirm .showcase-confirm-dialog__actions button { height: 44px; font-size: 14px; }
+
+/* 「设置」Songti Black 36 / 行高 56，文本框固定 34 高（Frame 2147226463）。 */
+.consumer-settings-title {
+  display: flex;
+  align-items: center;
+  height: 0.34rem;
+  margin: 0;
+  font: 900 0.36rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+}
+
+.consumer-settings-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+/* 分区（Frame 2147226475）：标题 → 行 间距 12。 */
+.consumer-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+/* 分区标题「协议与隐私」Songti Bold 16 / 行高 56，文本框 31 高，墨色 55%。 */
+.consumer-settings-heading {
+  display: flex;
+  align-items: center;
+  height: 0.31rem;
+  margin: 0;
+  font: 700 0.16rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.55);
+  white-space: nowrap;
+}
+
+/* 行（Frame 2147226476）：文字 Songti Bold 24 / 行高 56 + 底部 0.01rem 分割线 → 高 57，
+   右侧 chevron-right 20。 */
+.consumer-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.16rem;
+  box-sizing: border-box;
+  height: 0.57rem;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.01rem solid #e6e9e6;
+  font: 700 0.24rem / 0.56rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.consumer-settings-chevron {
+  display: block;
+  flex: none;
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+@media (hover: hover) {
+  .consumer-settings-row:hover {
+    color: #365337;
+  }
+}
+
+/* 统计开关：原生 checkbox 只保留可访问性，视觉由 40×20 的轨道 + 17 白色圆钮承担
+   （与设置面板 switch.svg 同规格）：开 #456746，关 #dfe1df。 */
+.consumer-settings-switch-input {
+  position: absolute;
+  width: 0.01rem;
+  height: 0.01rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.consumer-settings-switch-row {
+  position: relative;
+}
+
+.consumer-settings-switch {
+  position: relative;
+  flex: none;
+  width: 0.4rem;
+  height: 0.2rem;
+  border-radius: 99.99rem;
+  background: #dfe1df;
+  transition: background-color 0.16s ease;
+}
+
+.consumer-settings-switch::after {
+  content: "";
+  position: absolute;
+  top: 0.015rem;
+  left: 0.015rem;
+  width: 0.17rem;
+  height: 0.17rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.01rem 0.02rem rgba(0, 0, 0, 0.12);
+  transition: transform 0.16s ease;
+}
+
+.consumer-settings-switch-input:checked + .consumer-settings-switch {
+  background: #456746;
+}
+
+.consumer-settings-switch-input:checked + .consumer-settings-switch::after {
+  transform: translateX(0.2rem);
+}
+
+.consumer-settings-switch-input:focus-visible + .consumer-settings-switch {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.03rem;
+}
+
+/* 开关说明：Songti 12/22 墨色 45%。 */
+.consumer-settings-note {
+  margin: 0;
+  font: 400 0.12rem / 0.22rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.45);
+}
+
+/* 页脚账号信息与退出按钮保持同一内容列。 */
+.consumer-settings-account {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  width: 100%;
+}
+
+.consumer-settings-account-identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0.72rem;
+  padding: 0 0.08rem;
+}
+
+.consumer-settings-account-label {
+  font: 700 0.14rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: rgba(10, 15, 10, 0.55);
+}
+
+.consumer-settings-account-phone {
+  font: 700 0.22rem / 0.32rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 「退出登录」（Frame 2147226479）：全宽 425×56，0.01rem #0a0f0a 胶囊，透明底，
+   Songti Bold 16/24 墨色。 */
+.consumer-settings-logout {
+  flex: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 0.56rem;
+  margin: 0;
+  padding: 0 0.24rem;
+  border: 0.01rem solid #0a0f0a;
+  border-radius: 99.99rem;
+  background: transparent;
+  font: 700 0.16rem / 0.24rem "Songti SC", "Noto Serif SC Variable", serif;
+  color: #0a0f0a;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+@media (hover: hover) {
+  .consumer-settings-logout:hover {
+    background: rgba(10, 15, 10, 0.04);
+  }
+}
+
+/* 键盘焦点环统一用品牌绿；链接选择器写成 (0,2,1) 以盖过 base.css 的 a:focus-visible 蓝环。 */
+.consumer-settings-page a.consumer-settings-row:focus-visible,
+.consumer-settings-logout:focus-visible {
+  outline: 0.02rem solid #568157;
+  outline-offset: 0.03rem;
+}
+
+/* Canary72: scroll the settings body independently of the persistent account action. */
+.canary-general-settings .consumer-page-topbar { position:relative; }
+.canary-general-settings .consumer-settings-header-title { position:absolute; left:50%; transform:translateX(-50%); margin:0; font:600 18px/26px 'Noto Serif SC Variable',serif; white-space:nowrap; }
+.canary-general-settings .consumer-page-content { justify-content:flex-start; padding:16px 24px 24px; gap:0; }
+.canary-general-settings .consumer-settings-top { gap:16px; }
+.canary-general-settings .consumer-settings-profile-heading { gap:16px; min-height:76px; }
+.canary-general-settings .consumer-settings-profile-heading .canary-profile-avatar { width:60px; height:60px; }
+.canary-general-settings .consumer-settings-profile-heading > div { gap:6px; }
+.canary-general-settings .consumer-settings-profile-heading > div > span { font-size:16px; line-height:23px; }
+.canary-general-settings .consumer-settings-profile-name { display:flex; align-items:center; justify-content:flex-start; gap:4px; min-width:0; padding:0; background:transparent; text-align:left; white-space:normal; }
+.consumer-settings-profile-name img { width:16px; height:16px; flex:none; }
+.canary-general-settings .consumer-settings-profile-name strong { font:600 18px/26px 'Noto Serif SC Variable',serif; overflow-wrap:anywhere; }
+.consumer-settings-appearance { display:flex; flex-direction:column; gap:12px; }
+.consumer-settings-appearance > label { display:flex; align-items:center; justify-content:space-between; gap:16px; color:#737a73; font-size:14px; }
+.consumer-settings-appearance select { appearance:none; box-sizing:border-box; width:196px; max-width:68%; height:44px; min-height:44px; padding:8px 36px 8px 16px; border:1px solid #e6e9e6; border-radius:24px; background:white url('/showcase/chevron-down.svg') right 16px center / 16px no-repeat; color:#0a0f0a; font:400 14px/22px 'Noto Serif SC Variable',serif; }
+.consumer-settings-font-preview { border-radius:24px; background:#f5f6f5; padding:11px 16px 12px; font-size:16px; line-height:24px; }
+.consumer-settings-font-preview p { margin:0; font-weight:600; }
+.consumer-settings-font-preview p[lang] { margin-top:6px; font-family:Poppins,'Noto Sans SC Variable',sans-serif; font-weight:400; }
+.consumer-settings-appearance--small .consumer-settings-font-preview { font-size:14px; line-height:22px; }
+.consumer-settings-appearance--large .consumer-settings-font-preview { font-size:18px; line-height:28px; }
+.canary-general-settings .consumer-settings-sections { gap:0; }
+.canary-general-settings .consumer-settings-section { gap:0; padding:8px 0; border-bottom:1px solid #e6e9e6; }
+.canary-general-settings .consumer-settings-section:first-child { order:1; }
+.canary-general-settings .consumer-settings-section:nth-child(2) { order:2; }
+.canary-general-settings .consumer-settings-data { order:0; border-top:1px solid #e6e9e6; }
+.canary-general-settings .consumer-settings-data a[href='/history'] { order:-1; }
+.canary-general-settings .consumer-settings-heading { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.canary-general-settings .consumer-settings-row { min-height:44px; border:0; font:400 14px/22px 'Noto Serif SC Variable',serif; }
+.canary-general-settings .consumer-settings-account { gap:0; margin-top:8px; }
+.canary-general-settings .consumer-settings-account-identity { min-height:44px; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; }
+.canary-general-settings .consumer-settings-account-label, .canary-general-settings .consumer-settings-account-phone { font-size:14px; line-height:22px; }
+.consumer-settings-more > summary { display:flex; align-items:center; justify-content:space-between; min-height:44px; list-style:none; font-size:14px; cursor:pointer; }
+.consumer-settings-more > summary::-webkit-details-marker { display:none; }
+.consumer-settings-more > summary::after { content:'›'; color:#737a73; font-size:20px; }
+.consumer-settings-more[open] > summary::after { content:'⌄'; }
+.canary-general-settings .consumer-page-footer { flex:none; padding:8px 24px max(16px, env(safe-area-inset-bottom)); background:white; }
+.canary-general-settings .consumer-settings-logout { height:48px; border:1px solid #8b8e8b; color:#ef4545; font:400 16px/24px 'Noto Serif SC Variable',serif; }
+.consumer-settings-copyright { margin:8px 0 0; text-align:center; color:#8b8e8b; font-size:9px; line-height:13px; }
+.consumer-settings-support { width:min(360px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); border-radius:20px; }
+.consumer-settings-support p { font-size:14px; line-height:22px; }
+.consumer-settings-support img { display:block; max-width:100%; height:auto; margin:16px auto; }
+.consumer-settings-support a { display:block; min-height:44px; text-align:center; color:#365337; font-size:14px; }
+@media (max-width:900px), (pointer:coarse) and (hover:none) {
+  .canary-general-settings .consumer-page-device { height:100dvh; min-height:0; }
+  .canary-general-settings .consumer-page-scroll { min-height:0; overflow-y:auto; }
+}

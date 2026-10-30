@@ -1,0 +1,3 @@
+import { openAIConsentSettings } from '../lib/aiConsent'
+import { logout } from '@simultrans/ui-shared/src/lib/consumerSession'
+export default function ConsumerSettingsPage(){return <main className="community-settings"><h1>社区版设置</h1><p>这是独立的单工作区部署；同一部署密码的使用者共享会话历史。请为不同用户创建独立部署。</p><p>模型配置保存在后端环境变量中。真实同传需要自行开通模型 API。历史和音频保存在 Docker 数据卷，分享链接持有者可查看相应记录及音频。</p><p>首版支持单人、双向、历史、回放和分享；多人会议后续提供。</p><button onClick={openAIConsentSettings}>AI 数据授权</button><p></p><a href="/history">查看历史记录</a> · <a href="/">返回同传</a><p><button onClick={()=>void logout().finally(()=>window.location.assign('/'))}>退出工作区</button></p></main>}

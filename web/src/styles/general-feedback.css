@@ -1,0 +1,27 @@
+.consumer-settings-feedback-button { width: 100%; border-top: 0; border-left: 0; border-right: 0; background: transparent; text-align: left; }
+.consumer-settings-feedback-button:focus-visible { outline: 2px solid #568157; outline-offset: 3px; }
+.general-feedback-dialog { box-sizing: border-box; width: min(440px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 0; overflow: auto; overscroll-behavior: contain; border: 1px solid #dfe5df; border-radius: 20px; background: #fff; color: #0a0f0a; font: 400 14px/1.5 "Noto Sans SC Variable", sans-serif; }
+.general-feedback-dialog::backdrop { background: rgb(10 15 10 / 35%); }
+.general-feedback-content { padding: 24px; }
+.general-feedback-content h2 { margin: 0 0 20px; font-size: 22px; line-height: 30px; }
+.general-feedback-content p { margin: 8px 0; }
+.general-feedback-content form { display: flex; flex-direction: column; gap: 10px; }
+.general-feedback-content label { font-weight: 600; }
+.general-feedback-description-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.general-feedback-description-label span { color: #687069; font-size: 12px; font-weight: 400; }
+.general-feedback-content select, .general-feedback-content textarea { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid #b9c2b9; border-radius: 10px; background: #fff; color: #0a0f0a; font: inherit; font-size: 16px; }
+.general-feedback-content textarea { resize: vertical; max-height: 45dvh; }
+.general-feedback-content textarea[aria-invalid="true"] { border-color: #b63333; }
+.general-feedback-content .general-feedback-hint { margin: 0; color: #687069; font-size: 12px; }
+.general-feedback-hint a { display: inline-block; margin-left: 6px; color: #365337; white-space: nowrap; text-underline-offset: 2px; }
+.general-feedback-content .general-feedback-error { margin: 0; color: #b63333; }
+.general-feedback-actions { display: flex; gap: 12px; margin-top: 10px; }
+.general-feedback-actions button, .general-feedback-actions a { box-sizing: border-box; display: flex; flex: 1; justify-content: center; align-items: center; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid #dfe5df; border-radius: 24px; background: #f3f5f3; color: #365337; font: inherit; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; }
+.general-feedback-actions .is-primary { border-color: #365337; background: #365337; color: #fff; }
+.general-feedback-actions button:disabled { opacity: .5; cursor: default; }
+.general-feedback-dialog :is(button, a, select, textarea):focus-visible { outline: 2px solid #568157; outline-offset: 3px; }
+.general-feedback-support { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 16px; padding-top: 18px; border-top: 1px solid #e6e9e6; text-align: center; }
+.general-feedback-support h3 { margin: 0; font-size: 16px; }
+.general-feedback-support p { color: #687069; font-size: 12px; }
+.general-feedback-support img { display: block; width: 180px; height: 180px; max-width: 100%; object-fit: contain; }
+@media (max-width: 360px) { .general-feedback-content { padding: 20px; } }

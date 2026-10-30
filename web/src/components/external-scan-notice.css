@@ -1,0 +1,204 @@
+/* 微信扫码提示横幅：fixed 浮层，不改页面高度/滚动、不推顶栏（会议页与直播分享页在设备层里给它留位，见下方
+ * .meeting-header / .realtime-showcase-transcript 规则）。
+ *
+ * 纵向位置 = 设备框顶 + 页面自己的顶栏高度 + safe-area，保证「‹ 返回」和「☰」仍可点：
+ *   - 分享页 /s/<token>（ShowcaseFrame）：顶栏 .showcase-multilingual-device .realtime-showcase-header
+ *     高 0.96rem（styles/showcase-multilingual.css），横幅贴着顶栏下沿；
+ *   - 会议页 /meeting：.meeting-header 桌面 70px / 手机 64px / 矮屏与 Canary 52px（styles/meeting.css、
+ *     styles/canary-design.css），横幅再留 8px 间距。
+ * 桌面是居中的 9:16 设备框（root-scale.css：框高 9.26rem、上下居中），手机设备框撑满视口、框顶为 0。
+ *   - 登录门控与只读分享页的位置/层级见文件末尾的覆盖规则。
+ * 层级 29：盖住字幕区，但低于顶栏（z 30），顶栏 ☰ 打开的设置抽屉会盖在横幅上面。
+ *
+ * 只占一行（高 42）：文字列 minmax(0,1fr) 不折行，按钮与关闭键视觉收窄、点击区用 ::after 补足 44。
+ * 文字宽度预算：横幅宽 − 边框 2 − 左内边距 12 − 右 2 − 关闭 36 − 两个间距 12 − 「复制链接」68，
+ * 375 宽 = 219px、360 宽 = 204px。「麦克风不可用？点 ··· 用浏览器打开」13px 实测约 200px（分享页「语音」187），
+ * 375 及以上用 13px；≤ 370 宽（360 档安卓机）降到 12px（约 185px），给字体差异留出余量；
+ * 再窄（320）才省略号截断。复制失败的链接行在第二行（.external-scan-notice-status 跨整行）。 */
+.external-scan-notice {
+  --external-scan-notice-header: 0.96rem;
+  --external-scan-notice-gap: 0px;
+  position: fixed;
+  z-index: 29;
+  top: calc(max(0px, (100vh - 9.26rem) / 2) + var(--external-scan-notice-header) + var(--external-scan-notice-gap) + env(safe-area-inset-top));
+  right: 12px;
+  left: 12px;
+  max-width: calc(5.21rem - 24px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 6px;
+  padding: 2px 2px 2px 12px;
+  color: #3b593c;
+  background: #eef3eb;
+  border: 1px solid rgba(59, 89, 60, 0.14);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(4, 15, 36, 0.08), 0 3px 6px -4px rgba(4, 15, 36, 0.12);
+  font: 400 13px/18px "Songti SC", "Noto Serif SC Variable", serif;
+  letter-spacing: 0;
+}
+
+/* 会议页层级降到 2：底部「会议设置 / 参会成员」浮窗（.meeting-panel-layer z 3）
+ * 在矮屏上长到顶部时会盖过横幅，「收起设置」不被挡住。 */
+.external-scan-notice--meeting {
+  --external-scan-notice-header: 70px;
+  --external-scan-notice-gap: 6px;
+  z-index: 2;
+}
+
+/* 会议页：顶栏下方给横幅留出一条位置（间距 6 + 横幅 42 + 间距 6），入会页的语言选择、会中的连接状态与
+ * 「实时字幕」标题整体下移，不被横幅盖住。设备层是定高的 flex 列（手机上 = 可见高度，见 styles/viewport-fit.css），
+ * 留位只压缩中间的内容区，底部工具栏 / 入会按钮不动、文档也不会变高；关掉横幅后 :has 不再命中，位置随即收回。
+ * 复制失败露出链接行时横幅变高（+34），留位跟着加。 */
+.global-main:has(> .external-scan-notice--meeting) .meeting-header {
+  margin-bottom: 54px;
+}
+
+.global-main:has(> .external-scan-notice--meeting .external-scan-notice-url) .meeting-header {
+  margin-bottom: 88px;
+}
+
+/* 直播分享页（/s/<token> 收听中，顶栏有「‹ 返回 / ☰」）：字幕列表的上沿挪到横幅下方（顶栏 0.96rem + 横幅 42 + 间距 6），
+ * 滚到最上面时第一句也不被横幅盖住；列表底边、底部「收听」栏不动，跟随最新一句不受影响。
+ * 只读分享页（结束后）横幅贴屏幕顶部，不在此列。关掉横幅后 :has 不再命中，列表上沿随即收回；复制失败露出链接行时 +34。 */
+.global-main:has(> .external-scan-notice--share) .showcase-multilingual-device .realtime-showcase-header:not(.is-readonly) ~ .realtime-showcase-transcript {
+  top: calc(0.96rem + 48px + env(safe-area-inset-top));
+}
+
+.global-main:has(> .external-scan-notice--share .external-scan-notice-url) .showcase-multilingual-device .realtime-showcase-header:not(.is-readonly) ~ .realtime-showcase-transcript {
+  top: calc(0.96rem + 82px + env(safe-area-inset-top));
+}
+
+@media (max-width: 900px), (pointer: coarse) and (hover: none) {
+  .external-scan-notice {
+    top: calc(var(--external-scan-notice-header) + var(--external-scan-notice-gap) + env(safe-area-inset-top));
+  }
+
+  .external-scan-notice--meeting {
+    --external-scan-notice-header: 64px;
+  }
+}
+
+@media (max-height: 500px) {
+  .external-scan-notice--meeting {
+    --external-scan-notice-header: 52px;
+  }
+}
+
+.global-main:has(.canary-meeting) > .external-scan-notice--meeting {
+  --external-scan-notice-header: 52px;
+}
+
+/* 登录门控（/meeting 未登录、展会模式的分享页）：贴着登录页 0.8rem 白条下沿，
+ * 落在白条与「您好,」（内容列起点 1.6rem）之间，不压标题。 */
+.global-main:has(.consumer-login-device) > .external-scan-notice {
+  --external-scan-notice-header: 0.8rem;
+  --external-scan-notice-gap: 0px;
+}
+
+/* 只读分享页（结束后的 /s/<token>）：顶栏没有返回/菜单，标题下方 1.48–1.82rem 是语言页签。
+ * 横幅改贴屏幕顶部，只盖标题这类纯展示信息，语言页签与正文仍可点；
+ * 层级 33：高于概要栏（z 7，带双麦切换时 z 32）与正文（z 31），低于底部入口（z 34）。 */
+.global-main:has(.realtime-showcase-header.is-readonly) > .external-scan-notice--share {
+  --external-scan-notice-header: 0px;
+  --external-scan-notice-gap: 8px;
+  z-index: 33;
+}
+
+.external-scan-notice-text {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 370px) {
+  .external-scan-notice-text {
+    font-size: 12px;
+  }
+}
+
+.external-scan-notice-dots {
+  font: 700 13px/1 system-ui, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.external-scan-notice-copy {
+  position: relative;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: #3b593c;
+  font: 400 12px/1 "Noto Sans SC Variable", system-ui, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* 视觉 28 高，点击区向上下各扩 8px 到 44。 */
+.external-scan-notice-copy::after {
+  content: "";
+  position: absolute;
+  inset: -8px 0;
+}
+
+.external-scan-notice-copy.is-copied {
+  color: #3b593c;
+  background: rgba(59, 89, 60, 0.12);
+}
+
+/* 视觉 36×36，点击区四周各扩 4px 到 44×44（右侧伸进横幅外的 12px 页边，不和「复制链接」重叠）。 */
+.external-scan-notice-close {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  color: rgba(59, 89, 60, 0.72);
+  background: transparent;
+  font: 400 20px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.external-scan-notice-close::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+}
+
+.external-scan-notice-status {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0;
+}
+
+.external-scan-notice-url {
+  display: block;
+  margin: 2px 12px 6px 0;
+  padding: 4px 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  color: #0a0f0a;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 6px;
+  font: 400 12px/18px system-ui, sans-serif;
+  -webkit-user-select: all;
+  user-select: all;
+  scrollbar-width: none;
+}
+
+.external-scan-notice-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

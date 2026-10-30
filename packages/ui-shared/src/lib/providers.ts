@@ -1,0 +1,215 @@
+export type ProviderNames = {
+  fullName: string
+  label: string
+  shortName: string
+}
+
+export const PROVIDERS: Record<string, ProviderNames> = {
+  demo: { fullName: '模拟体验（非真实翻译）', label: '模拟体验', shortName: '模拟' },
+  aliyun: { fullName: '阿里云 · 千问 LiveTranslate', label: '阿里云 · 千问', shortName: '千问' },
+  volcengine: { fullName: '火山引擎 · 豆包同声传译 2.0', label: '火山引擎 · 豆包', shortName: '豆包' },
+  gemini: { fullName: 'Google · Gemini Live Translation', label: 'Google · Gemini', shortName: 'Gemini' },
+  iflytek: { fullName: '科大讯飞 · 同声传译', label: '科大讯飞', shortName: '讯飞' },
+  tencent: { fullName: '腾讯云 · 混元实时语音翻译', label: '腾讯云 · 混元', shortName: '腾讯' },
+  youdao: { fullName: '网易有道 · 同传 PaaS', label: '网易有道 · 同传', shortName: '有道' },
+  luna: { fullName: 'VUILabs · Luna S2ST', label: 'VUILabs · Luna S2ST', shortName: 'Luna' },
+  'vuilabs-qwen25-omni-qwen': { fullName: 'VUILabs · Qwen2.5-Omni + QwenTTS', label: 'VUILabs · Qwen2.5-Omni + QwenTTS', shortName: 'Qwen2.5·Qwen' },
+  'vuilabs-qwen25-omni-qwen17b': { fullName: 'VUILabs · Qwen2.5-Omni + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen2.5-Omni + Qwen3-TTS 1.7B', shortName: 'Qwen2.5·1.7B' },
+  'vuilabs-qwen25-omni-omnivoice': { fullName: 'VUILabs · Qwen2.5-Omni + OmniVoice', label: 'VUILabs · Qwen2.5-Omni + OmniVoice', shortName: 'Qwen2.5·OmniVoice' },
+  'vuilabs-qwen25-omni-omnivoice-xc': { fullName: 'VUILabs · Qwen2.5-Omni + OmniVoice-XC', label: 'VUILabs · Qwen2.5-Omni + OmniVoice-XC', shortName: 'Qwen2.5·OmniVoice-XC' },
+  'vuilabs-qwen25-omni-cosyvoice': { fullName: 'VUILabs · Qwen2.5-Omni + CosyVoice', label: 'VUILabs · Qwen2.5-Omni + CosyVoice', shortName: 'Qwen2.5·Cosy' },
+  'vuilabs-qwen3-omni-qwen': { fullName: 'VUILabs · Qwen3-Omni + QwenTTS', label: 'VUILabs · Qwen3-Omni + QwenTTS', shortName: 'Qwen3·Qwen' },
+  'vuilabs-qwen3-omni-qwen17b': { fullName: 'VUILabs · Qwen3-Omni + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen3-Omni + Qwen3-TTS 1.7B', shortName: 'Qwen3·1.7B' },
+  'vuilabs-qwen3-omni-omnivoice': { fullName: 'VUILabs · Qwen3-Omni + OmniVoice', label: 'VUILabs · Qwen3-Omni + OmniVoice', shortName: 'Qwen3·OmniVoice' },
+  'vuilabs-qwen3-omni-omnivoice-xc': { fullName: 'VUILabs · Qwen3-Omni + OmniVoice-XC', label: 'VUILabs · Qwen3-Omni + OmniVoice-XC', shortName: 'Qwen3·OmniVoice-XC' },
+  'vuilabs-qwen3-omni-cosyvoice': { fullName: 'VUILabs · Qwen3-Omni + CosyVoice', label: 'VUILabs · Qwen3-Omni + CosyVoice', shortName: 'Qwen3·Cosy' },
+  'vuilabs-qwen3simul-qwen': { fullName: 'VUILabs · Qwen3Simul + QwenTTS', label: 'VUILabs · Qwen3Simul + QwenTTS', shortName: 'Qwen3Simul·Qwen' },
+  'vuilabs-qwen3simul-qwen17b': { fullName: 'VUILabs · Qwen3Simul + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen3Simul + Qwen3-TTS 1.7B', shortName: 'Qwen3Simul·1.7B' },
+  'vuilabs-qwen3simul-omnivoice': { fullName: 'VUILabs · Qwen3Simul + OmniVoice', label: 'VUILabs · Qwen3Simul + OmniVoice', shortName: 'Qwen3Simul·OmniVoice' },
+  'vuilabs-qwen3simul-omnivoice-xc': { fullName: 'VUILabs · Qwen3Simul + OmniVoice-XC', label: 'VUILabs · Qwen3Simul + OmniVoice-XC', shortName: 'Qwen3Simul·OmniVoice-XC' },
+  'vuilabs-qwen3simul-qwentts-sc': { fullName: 'VUILabs · Qwen3Simul + qwentts-sc', label: 'VUILabs · Qwen3Simul + qwentts-sc', shortName: 'Qwen3Simul·qwentts-sc' },
+  'vuilabs-qwen3-omni-qwentts-sc': { fullName: 'VUILabs · Qwen3-Omni + qwentts-sc', label: 'VUILabs · Qwen3-Omni + qwentts-sc', shortName: 'Qwen3-Omni·qwentts-sc' },
+  'vuilabs-qwen25-omni-qwen-webrtc': { fullName: 'VUILabs · Qwen2.5-Omni + QwenTTS', label: 'VUILabs · Qwen2.5-Omni + QwenTTS', shortName: 'Qwen2.5·Qwen·RTC' },
+  'vuilabs-qwen25-omni-qwen17b-webrtc': { fullName: 'VUILabs · Qwen2.5-Omni + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen2.5-Omni + Qwen3-TTS 1.7B', shortName: 'Qwen2.5·1.7B·RTC' },
+  'vuilabs-qwen25-omni-cosyvoice-webrtc': { fullName: 'VUILabs · Qwen2.5-Omni + CosyVoice', label: 'VUILabs · Qwen2.5-Omni + CosyVoice', shortName: 'Qwen2.5·Cosy·RTC' },
+  'vuilabs-qwen3-omni-qwen-webrtc': { fullName: 'VUILabs · Qwen3-Omni + QwenTTS', label: 'VUILabs · Qwen3-Omni + QwenTTS', shortName: 'Qwen3·Qwen·RTC' },
+  'vuilabs-qwen3-omni-qwen17b-webrtc': { fullName: 'VUILabs · Qwen3-Omni + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen3-Omni + Qwen3-TTS 1.7B', shortName: 'Qwen3·1.7B·RTC' },
+  'vuilabs-qwen3-omni-cosyvoice-webrtc': { fullName: 'VUILabs · Qwen3-Omni + CosyVoice', label: 'VUILabs · Qwen3-Omni + CosyVoice', shortName: 'Qwen3·Cosy·RTC' },
+  'vuilabs-qwen3simul-qwen-webrtc': { fullName: 'VUILabs · Qwen3Simul + QwenTTS', label: 'VUILabs · Qwen3Simul + QwenTTS', shortName: 'Qwen3Simul·Qwen·RTC' },
+  'vuilabs-qwen3simul-qwen17b-webrtc': { fullName: 'VUILabs · Qwen3Simul + Qwen3-TTS 1.7B', label: 'VUILabs · Qwen3Simul + Qwen3-TTS 1.7B', shortName: 'Qwen3Simul·1.7B·RTC' },
+  // Legacy IDs remain readable in existing history and benchmark records.
+  'luna-qwen': { fullName: 'VUILabs · Luna S2ST QwenTTS', label: 'VUILabs · Luna S2ST QwenTTS', shortName: 'Luna·Qwen' },
+  'luna-cosyvoice': { fullName: 'VUILabs · Luna S2ST CosyVoice', label: 'VUILabs · Luna S2ST CosyVoice', shortName: 'Luna·Cosy' },
+  'qwen3-omni-qwen': { fullName: '本地 · Qwen3-Omni S2ST QwenTTS', label: '本地 · Qwen3-Omni S2ST QwenTTS', shortName: 'Omni·Qwen' },
+  'qwen3-omni-cosyvoice': { fullName: '本地 · Qwen3-Omni S2ST CosyVoice', label: '本地 · Qwen3-Omni S2ST CosyVoice', shortName: 'Omni·Cosy' },
+}
+
+export function providerFullName(provider: string) {
+  return (providerNames(provider) || PROVIDERS.aliyun).fullName
+}
+
+export function providerLabel(provider: string) {
+  return (providerNames(provider) || PROVIDERS.aliyun).label
+}
+
+export function providerShortName(provider: string) {
+  return providerNames(provider)?.shortName || provider
+}
+
+function providerNames(provider: string) {
+  if (PROVIDERS[provider]) return PROVIDERS[provider]
+  if (provider.endsWith('-volc-rtc')) return PROVIDERS[provider.slice(0, -'-volc-rtc'.length)]
+  return undefined
+}
+
+export const voiceOptions: Record<string, Array<{ id: string; name: string }>> = {
+  'vuilabs-qwen25-omni-qwen17b': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  'vuilabs-qwen25-omni-qwen17b-webrtc': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  'vuilabs-qwen3-omni-qwen17b': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  'vuilabs-qwen3-omni-qwen17b-webrtc': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  'vuilabs-qwen3simul-qwen17b': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  'vuilabs-qwen3simul-qwen17b-webrtc': [
+    { id: 'qingyan', name: '广告清妍 · 默认女声' },
+  ],
+  aliyun: [
+    { id: 'Tina', name: 'Tina · 温暖甜美女声（默认）' },
+    { id: 'Cindy', name: 'Cindy · 软甜台湾女声' },
+    { id: 'Liora Mira', name: 'Liora Mira · 温柔自然女声' },
+    { id: 'Sunnybobi', name: 'Sunnybobi · 活泼邻家女声' },
+    { id: 'Raymond', name: 'Raymond · 清亮男声' },
+    { id: 'Ethan', name: 'Ethan · 阳光北方男声' },
+    { id: 'Theo Calm', name: 'Theo Calm · 沉静治愈男声' },
+    { id: 'Serena', name: 'Serena · 温柔年轻女声' },
+    { id: 'Harvey', name: 'Harvey · 低沉醇厚男声' },
+    { id: 'Maia', name: 'Maia · 知性温柔女声' },
+    { id: 'Evan', name: 'Evan · 青春温暖男声' },
+    { id: 'Qiao', name: 'Qiao · 甜美个性女声' },
+    { id: 'Momo', name: 'Momo · 俏皮甜美女声' },
+    { id: 'Wil', name: 'Wil · 港台口音男声' },
+    { id: 'Angel', name: 'Angel · 台湾甜美女声' },
+    { id: 'Li Cassian', name: 'Li Cassian · 克制沉稳男声' },
+    { id: 'Mia', name: 'Mia · 舒缓生活感女声' },
+    { id: 'Joyner', name: 'Joyner · 幽默夸张男声' },
+    { id: 'Gold', name: 'Gold · 西海岸说唱男声' },
+    { id: 'Katerina', name: 'Katerina · 成熟有力女声' },
+    { id: 'Ryan', name: 'Ryan · 高能戏剧男声' },
+    { id: 'Jennifer', name: 'Jennifer · 电影感美式女声' },
+    { id: 'Aiden', name: 'Aiden · 年轻美式男声' },
+    { id: 'Mione', name: 'Mione · 成熟英式女声' },
+    { id: 'Sohee', name: 'Sohee · 温暖韩系女声' },
+    { id: 'Lenn', name: 'Lenn · 理性德系男声' },
+    { id: 'Ono Anna', name: 'Ono Anna · 灵动日系女声' },
+    { id: 'Sonrisa', name: 'Sonrisa · 热情拉美女声' },
+    { id: 'Bodega', name: 'Bodega · 热情西班牙男声' },
+    { id: 'Emilien', name: 'Emilien · 浪漫法语男声' },
+    { id: 'Andre', name: 'Andre · 磁性自然男声' },
+    { id: 'Radio Gol', name: 'Radio Gol · 足球解说男声' },
+    { id: 'Alek', name: 'Alek · 冷峻俄系男声' },
+    { id: 'Rizky', name: 'Rizky · 印尼年轻男声' },
+    { id: 'Roya', name: 'Roya · 自由运动女声' },
+    { id: 'Arda', name: 'Arda · 清爽温暖男声' },
+    { id: 'Hana', name: 'Hana · 成熟越南女声' },
+    { id: 'Dolce', name: 'Dolce · 松弛意大利男声' },
+    { id: 'Jakub', name: 'Jakub · 艺术感波兰男声' },
+    { id: 'Griet', name: 'Griet · 成熟荷兰女声' },
+    { id: 'Eliška', name: 'Eliška · 温暖捷克女声' },
+    { id: 'Marina', name: 'Marina · 多文化年轻女声' },
+    { id: 'Siiri', name: 'Siiri · 安静芬兰女声' },
+    { id: 'Ingrid', name: 'Ingrid · 挪威乡村女声' },
+    { id: 'Sigga', name: 'Sigga · 知性冰岛女声' },
+    { id: 'Bea', name: 'Bea · 甜美菲律宾女声' },
+    { id: 'Chloe', name: 'Chloe · 马来西亚女声' },
+  ],
+  volcengine: [
+    { id: 'zh_female_vv_uranus_bigtts', name: 'Vivi 2.0 · 活泼女声（默认）' },
+    { id: 'zh_male_jingqiangkanye_emo_mars_bigtts', name: '京腔侃爷 · 成熟男声' },
+  ],
+  gemini: [
+    { id: 'Kore', name: 'Kore · 坚定（默认）' },
+    { id: 'Zephyr', name: 'Zephyr · 明亮' },
+    { id: 'Puck', name: 'Puck · 活泼' },
+    { id: 'Charon', name: 'Charon · 知性' },
+    { id: 'Fenrir', name: 'Fenrir · 兴奋' },
+    { id: 'Leda', name: 'Leda · 年轻' },
+    { id: 'Orus', name: 'Orus · 坚定' },
+    { id: 'Aoede', name: 'Aoede · 轻盈' },
+    { id: 'Callirrhoe', name: 'Callirrhoe · 随和' },
+    { id: 'Autonoe', name: 'Autonoe · 明亮' },
+    { id: 'Enceladus', name: 'Enceladus · 气声' },
+    { id: 'Iapetus', name: 'Iapetus · 清晰' },
+    { id: 'Umbriel', name: 'Umbriel · 随和' },
+    { id: 'Algieba', name: 'Algieba · 顺滑' },
+    { id: 'Despina', name: 'Despina · 顺滑' },
+    { id: 'Erinome', name: 'Erinome · 清晰' },
+    { id: 'Algenib', name: 'Algenib · 沙哑' },
+    { id: 'Rasalgethi', name: 'Rasalgethi · 知性' },
+    { id: 'Laomedeia', name: 'Laomedeia · 活泼' },
+    { id: 'Achernar', name: 'Achernar · 柔和' },
+    { id: 'Alnilam', name: 'Alnilam · 坚定' },
+    { id: 'Schedar', name: 'Schedar · 平稳' },
+    { id: 'Gacrux', name: 'Gacrux · 成熟' },
+    { id: 'Pulcherrima', name: 'Pulcherrima · 直接' },
+    { id: 'Achird', name: 'Achird · 友好' },
+    { id: 'Zubenelgenubi', name: 'Zubenelgenubi · 轻松' },
+    { id: 'Vindemiatrix', name: 'Vindemiatrix · 温柔' },
+    { id: 'Sadachbia', name: 'Sadachbia · 生动' },
+    { id: 'Sadaltager', name: 'Sadaltager · 博学' },
+    { id: 'Sulafat', name: 'Sulafat · 温暖' },
+  ],
+  iflytek: [
+    { id: 'x2_catherine', name: 'Catherine · 英文女声（默认）' },
+    { id: 'x2_john', name: 'John · 英文男声' },
+    { id: 'x2_xiaoguo', name: '小果 · 成年女声' },
+    { id: 'x2_xiaozhong', name: '小忠 · 成年男声' },
+    { id: 'x2_xiaofang_cts', name: '小芳 · 儿童女声' },
+    { id: 'x2_mengmenghappy', name: '萌萌 · 开心童声' },
+    { id: 'x2_mengmengnetural', name: '萌萌 · 自然童声' },
+  ],
+  tencent: [
+    { id: '502003', name: '智小敏 · 聊天女声（默认）' },
+    { id: '502006', name: '智小悟 · 聊天男声' },
+    { id: '502005', name: '智小解 · 旁白男声' },
+    { id: '502004', name: '智小满 · 营销女声' },
+    { id: '502001', name: '智小柔 · 聊天女声' },
+    { id: '502007', name: '智小虎 · 活力童声' },
+    { id: '602004', name: '暖心阿灿 · 聊天男声' },
+    { id: '602005', name: '专业梓欣 · 聊天女声' },
+    { id: '603000', name: '懂事少年 · 男声' },
+    { id: '603001', name: '潇湘妹妹 · 女声' },
+    { id: '603002', name: '软萌心心 · 童声' },
+    { id: '603003', name: '随和老李 · 男声' },
+    { id: '603004', name: '温柔小柠 · 女声' },
+    { id: '603005', name: '知心大林 · 男声' },
+    { id: '603006', name: '沉稳青叔 · 男声' },
+    { id: '603007', name: '邻家女孩 · 女声' },
+    { id: '602003', name: '爱小悠 · 女声' },
+  ],
+  youdao: [
+    { id: 'female', name: 'Female · 女声（默认）' },
+    { id: 'male', name: 'Male · 男声' },
+  ],
+  luna: [],
+  'vuilabs-qwen25-omni-qwen': [],
+  'vuilabs-qwen25-omni-omnivoice': [],
+  'vuilabs-qwen25-omni-cosyvoice': [],
+  'vuilabs-qwen3-omni-qwen': [],
+  'vuilabs-qwen3-omni-omnivoice': [],
+  'vuilabs-qwen3simul-qwen': [],
+  'vuilabs-qwen3simul-qwen-webrtc': [],
+  'vuilabs-qwen3simul-omnivoice': [],
+  'vuilabs-qwen3-omni-cosyvoice': [],
+  'luna-qwen': [],
+  'luna-cosyvoice': [],
+  'qwen3-omni-qwen': [],
+  'qwen3-omni-cosyvoice': [],
+}
