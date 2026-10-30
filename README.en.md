@@ -9,3 +9,5 @@ Default mode is explicitly simulated: fixed sample captions and a tone, with no 
 This is a single-workspace deployment: everyone with its password shares the same history. Use separate deployments for separate users. Remote microphone access requires HTTPS. Private keys stay in the backend environment. Provider accounts, costs and concurrency limits are separate from this application's source license.
 
 Read the [Chinese quick start](README.md), [deployment guide](docs/deployment.md), [provider contracts](docs/providers.md), [validation record](docs/validation.md), [roadmap](docs/open-source-plan.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+Download the versioned source archives and checksums from [Releases](https://github.com/VUILabsHub/Luna-Translator/releases/tag/v0.1.0). See the [validation record](docs/validation.md) for cloud, browser, Docker, CI and unverified hardware boundaries.

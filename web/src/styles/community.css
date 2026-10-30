@@ -5,7 +5,7 @@
 /* Keep the product's scaled layout, with readable community text on phones. */
 @media (max-width:900px) {
  .global-shell .showcase-multilingual-device .realtime-showcase-source {font-size:14px;line-height:1.65}
- .global-shell .showcase-multilingual-device .showcase-translation-line strong {font-size:16px;line-height:1.65}
+ .global-shell .showcase-multilingual-device .showcase-multilingual-row .showcase-translation-line.is-primary strong {font-size:16px;line-height:1.65}
  .global-shell .showcase-finished-summary strong {font-size:20px;line-height:1.4}
  .global-shell .showcase-finished-summary span {font-size:12px;line-height:1.6}
  .global-shell .session-audio-label,.global-shell .session-audio-time,.global-shell .session-audio-rate {font-size:12px;line-height:1.5}

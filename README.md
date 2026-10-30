@@ -8,7 +8,7 @@
 
 前提：已安装 [Docker Engine/Desktop 和 Compose](https://docs.docker.com/compose/install/)，可访问公开镜像及 npm/Go 依赖源。无需 GPU、Node、Go、短信平台或外部数据库。
 
-下载本仓库的 ZIP 并解压，或 `git clone https://github.com/VUILabsHub/Luna-Translator.git`。进入目录后执行：
+下载 [v0.1.0 源码包与校验文件](https://github.com/VUILabsHub/Luna-Translator/releases/tag/v0.1.0) 并解压，或 `git clone https://github.com/VUILabsHub/Luna-Translator.git`。进入目录后执行：
 
 ```sh
 ./start.sh
